@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "title": "Ventura Auto — Sewa Mobil Premium",
+    "description": "Sewa mobil premium dengan armada pilihan, layanan 24 jam, dan pengalaman mengemudi terbaik di Indonesia."
+  },
+  "common": {
+    "loading": "Memuat model…"
+  },
+  "nav": {
+    "home": "Beranda",
+    "services": "Layanan",
+    "experience": "Pengalaman",
+    "fleet": "Armada",
+    "contact": "Kontak",
+    "getInTouch": "Hubungi Kami"
+  },
+  "hero": {
+    "title": "MCLAREN 720S",
+    "subtitle": "Sewa supercar impianmu dengan syarat mudah, didampingi profesional berpengalaman.",
+    "badge": "Tersedia di 12 kota",
+    "tabs": {
+      "performance": "Performa",
+      "design": "Desain",
+      "safety": "Keamanan",
+      "luxury": "Kemewahan",
+      "multimedia": "Multimedia"
+    },
+    "tabCopy": {
+      "performance": "V8 twin-turbo 4.0L, 710 hp, 0–100 km/jam dalam 2,9 detik.",
+      "design": "Aerodinamika aktif dan bodi serat karbon yang ringan.",
+      "safety": "Rem karbon-keramik, kontrol traksi, dan rangka kokpit monokok.",
+      "luxury": "Interior kulit premium dengan jok elektrik berpemanas.",
+      "multimedia": "Sistem audio 12-speaker dan layar sentuh 8 inci."
+    },
+    "cta": "Sewa Sekarang",
+    "ctaSecondary": "Lihat Armada",
+    "priceLabel": "Mulai dari",
+    "price": "Rp 4.500.000/hari",
+    "dragHint": "Geser untuk memutar",
+    "tabKicker": "Sorotan"
+  },
+  "stats": {
+    "cars": "120+",
+    "cities": "12",
+    "customers": "15.000+",
+    "rating": "4.9",
+    "carsLabel": "Unit Mobil",
+    "citiesLabel": "Kota Layanan",
+    "customersLabel": "Pelanggan Puas",
+    "ratingLabel": "Rating Pengguna"
+  },
+  "about": {
+    "heading1": "Kendaraan pilihan, pengalaman",
+    "heading2": "berkelas sejak 2015",
+    "paragraph": "Ventura Auto menghadirkan armada premium yang terawat dan siap dipakai untuk perjalanan bisnis, wisata, maupun acara spesial. Setiap unit melewati inspeksi 120 poin dan disertai sopir profesional yang berpengalaman.",
+    "cta": "Tentang Kami",
+    "imageLeftAlt": "Mobil sport silver dari depan",
+    "imageRightAlt": "Mobil SUV hitam dari samping"
+  },
+  "collection": {
+    "title": "Koleksi Unggulan",
+    "subtitle": "Jelajahi armada pilihan yang paling banyak dirental di bulan ini.",
+    "tabs": ["Semua", "Supercar", "SUV", "Sedan", "Minibus"],
+    "featured": {
+      "category": "Supercar",
+      "name": "Ferrari 488 GTB",
+      "price": "Rp 4.500.000/hari"
+    },
+    "items": [
+      { "category": "Supercar", "name": "Lamborghini Huracán", "price": "Rp 5.200.000/hari" },
+      { "category": "SUV", "name": "Range Rover Sport", "price": "Rp 2.800.000/hari" },
+      { "category": "Sedan", "name": "BMW 530i", "price": "Rp 1.750.000/hari" },
+      { "category": "Minibus", "name": "Toyota Hiace Premio", "price": "Rp 1.200.000/hari" }
+    ]
+  },
+  "valueProps": {
+    "title": "Kendaraan, dipahami",
+    "subtitle": "Setiap detail dirancang untuk kenyamanan dan kendali penuh.",
+    "markers": [
+      { "label": "Panel instrumen digital" },
+      { "label": "Material interior premium" },
+      { "label": "Sistem keselamatan aktif" },
+      { "label": "Suspensi adaptif" },
+      { "label": "Transmisi 7-percepatan" },
+      { "label": "Rem karbon-keramik" },
+      { "label": "Aerodinamika aktif" },
+      { "label": "Lampu LED Matrix" }
+    ]
+  },
+  "showcase": {
+    "modelName": "SU-18",
+    "tagline": "Supercar impian, siap dipakai harian.",
+    "price": "Mulai Rp 4.500.000/hari",
+    "ctaPrimary": "Sewa Sekarang",
+    "ctaSecondary": "Hubungi Sales",
+    "badge": "360°"
+  },
+  "testimonials": {
+    "title": "Kepercayaan",
+    "subtitle": "dari ribuan pelanggan",
+    "prev": "Sebelumnya",
+    "next": "Berikutnya",
+    "cards": [
+      {
+        "quote": "Prosesnya cepat, mobilnya bersih, dan sopirnya sangat profesional. Langganan tiap bulan!",
+        "name": "Rizky Pratama",
+        "role": "Pengusaha, Jakarta"
+      },
+      {
+        "quote": "Dipakai untuk acara pernikahan di Bandung. Semua tamu kagum dengan kondisinya.",
+        "name": "Dinda Anggraini",
+        "role": "Event Organizer, Bandung"
+      },
+      {
+        "quote": "Perjalanan dinas jadi terasa ringan. Armadanya selalu tepat waktu dan rapi.",
+        "name": "Bagus Setiawan",
+        "role": "Manajer Logistik, Surabaya"
+      },
+      {
+        "quote": "Mobil mewah untuk wisata honeymoon di Bali. Layarannya benar-benar memanjakan.",
+        "name": "Maya Kusuma",
+        "role": "Travel Blogger, Denpasar"
+      },
+      {
+        "quote": "Kru-nya ramah dan cekatan. Saya merekomendasikan ke semua rekan kantor.",
+        "name": "Andhika Firmansyah",
+        "role": "Direktur Startup, Yogyakarta"
+      },
+      {
+        "quote": "Antar jemput tamu VIP terasa premium dari awal sampai akhir. Harga sebanding.",
+        "name": "Sarah Widodo",
+        "role": "Hotel Manager, Semarang"
+      }
+    ],
+    "membershipTitle": "Menjadi anggota",
+    "membershipSub": "15.000+ pengemudi terdaftar",
+    "ctaPrimary": "Daftar Sekarang",
+    "ctaSecondary": "Pelajari Program"
+  },
+  "mission": {
+    "title": "Membawa standar baru",
+    "subtitle": "untuk mobilitas premium di Indonesia",
+    "paragraph": "Kami percaya setiap perjalanan layak terasa istimewa. Dengan armada terawat, kru terlatih, dan layanan tanpa henti, kami menjadikan sewa premium pengalaman yang mudah dan menyenangkan.",
+    "cta": "Tonton Video"
+  },
+  "contactModal": {
+    "title": "Hubungi Kami",
+    "description": "Ceritakan kebutuhanmu, tim kami siap membantu memilih unit yang tepat.",
+    "formTitle": "Tinggalkan pesan",
+    "nameLabel": "Nama",
+    "namePlaceholder": "Nama lengkap",
+    "phoneLabel": "No. HP / WhatsApp",
+    "phonePlaceholder": "0812 3456 7890",
+    "cityLabel": "Kota",
+    "carLabel": "Unit yang diminati",
+    "carPlaceholder": "Pilih unit",
+    "messageLabel": "Pesan",
+    "messagePlaceholder": "Tanggal sewa, durasi, keperluan…",
+    "submit": "Kirim Permintaan",
+    "successTitle": "Terima kasih!",
+    "successBody": "Permintaanmu sudah kami terima. Tim Ventura Auto akan menghubungimu dalam maksimal 2 jam kerja.",
+    "successCta": "Selesai",
+    "infoTitle": "Kontak langsung",
+    "emailLabel": "Email",
+    "phoneLabelInfo": "Telepon",
+    "whatsappLabel": "WhatsApp",
+    "hoursLabel": "Jam layanan",
+    "hoursValue": "24 jam, setiap hari",
+    "citiesLabel": "Kota layanan",
+    "required": "Wajib diisi",
+    "cities": [
+      "Jakarta",
+      "Bandung",
+      "Surabaya",
+      "Yogyakarta",
+      "Semarang",
+      "Denpasar"
+    ],
+    "cars": [
+      "McLaren 720S",
+      "Ferrari 488 GTB",
+      "Lamborghini Huracán",
+      "Range Rover Sport",
+      "BMW 530i",
+      "Toyota Hiace Premio"
+    ]
+  },
+  "footer": {
+    "tagline": "Mobilitas premium, pengalaman tanpa batas.",
+    "email": "halo@venturaauto.id",
+    "learnMore": "Pelajari Lebih Lanjut",
+    "learnMoreDesc": "Ventura Auto adalah penyedia rental mobil premium yang melayani kebutuhan bisnis, wisata, dan acara khusus di 12 kota di Indonesia.",
+    "navTitle": "Navigasi",
+    "aboutTitle": "Tentang Kami",
+    "newsletterTitle": "Berlangganan",
+    "newsletterPlaceholder": "Alamat email",
+    "newsletterButton": "Kirim",
+    "newsletterHint": "Dapatkan penawaran eksklusif bulanan.",
+    "links": {
+      "home": "Beranda",
+      "fleet": "Armada",
+      "services": "Layanan",
+      "experience": "Pengalaman",
+      "contact": "Kontak"
+    },
+    "aboutLinks": {
+      "story": "Cerita Kami",
+      "team": "Tim Kami",
+      "careers": "Karier",
+      "press": "Media"
+    },
+    "copyright": "© 2026 Ventura Auto. Seluruh hak cipta.",
+    "privacy": "Kebijakan Privasi"
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "title": "Ventura Auto — Premium Car Rental",
+    "description": "Premium car rental with a hand-picked fleet, 24/7 support, and the finest driving experience in Indonesia."
+  },
+  "common": {
+    "loading": "Loading model…"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "experience": "Experience",
+    "fleet": "Fleet",
+    "contact": "Contact",
+    "getInTouch": "Get in touch"
+  },
+  "hero": {
+    "title": "MCLAREN 720S",
+    "subtitle": "Rent your dream supercar with easy requirements and experienced professional chauffeurs.",
+    "badge": "Available in 12 cities",
+    "tabs": {
+      "performance": "Performance",
+      "design": "Design",
+      "safety": "Safety",
+      "luxury": "Luxury",
+      "multimedia": "Multimedia"
+    },
+    "tabCopy": {
+      "performance": "4.0L twin-turbo V8, 710 hp, 0–100 km/h in 2.9 seconds.",
+      "design": "Active aerodynamics and a lightweight carbon-fibre body.",
+      "safety": "Carbon-ceramic brakes, traction control, monocoque cockpit.",
+      "luxury": "Premium leather interior with heated power seats.",
+      "multimedia": "12-speaker audio system and 8-inch touchscreen."
+    },
+    "cta": "Rent Now",
+    "ctaSecondary": "View Fleet",
+    "priceLabel": "Starting from",
+    "price": "Rp 4,500,000/day",
+    "dragHint": "Drag to rotate",
+    "tabKicker": "Highlights"
+  },
+  "stats": {
+    "cars": "120+",
+    "cities": "12",
+    "customers": "15K+",
+    "rating": "4.9",
+    "carsLabel": "Cars in Fleet",
+    "citiesLabel": "Service Cities",
+    "customersLabel": "Happy Customers",
+    "ratingLabel": "User Rating"
+  },
+  "about": {
+    "heading1": "Hand-picked vehicles,",
+    "heading2": "first-class experience since 2015",
+    "paragraph": "Ventura Auto brings a premium, well-maintained fleet ready for business trips, road trips, and special occasions. Every unit passes a 120-point inspection and comes with an experienced professional chauffeur.",
+    "cta": "About Us",
+    "imageLeftAlt": "Silver sports car front view",
+    "imageRightAlt": "Black SUV side view"
+  },
+  "collection": {
+    "title": "Featured Collection",
+    "subtitle": "Explore the hand-picked fleet most rented this month.",
+    "tabs": ["All", "Supercar", "SUV", "Sedan", "Minibus"],
+    "featured": {
+      "category": "Supercar",
+      "name": "Ferrari 488 GTB",
+      "price": "IDR 4,500,000/day"
+    },
+    "items": [
+      { "category": "Supercar", "name": "Lamborghini Huracán", "price": "IDR 5,200,000/day" },
+      { "category": "SUV", "name": "Range Rover Sport", "price": "IDR 2,800,000/day" },
+      { "category": "Sedan", "name": "BMW 530i", "price": "IDR 1,750,000/day" },
+      { "category": "Minibus", "name": "Toyota Hiace Premio", "price": "IDR 1,200,000/day" }
+    ]
+  },
+  "valueProps": {
+    "title": "The vehicle, understood",
+    "subtitle": "Every detail is engineered for comfort and total control.",
+    "markers": [
+      { "label": "Digital instrument cluster" },
+      { "label": "Premium cabin materials" },
+      { "label": "Active safety systems" },
+      { "label": "Adaptive suspension" },
+      { "label": "7-speed gearbox" },
+      { "label": "Carbon-ceramic brakes" },
+      { "label": "Active aerodynamics" },
+      { "label": "LED Matrix headlights" }
+    ]
+  },
+  "showcase": {
+    "modelName": "SU-18",
+    "tagline": "Your dream supercar, ready for daily driving.",
+    "price": "From IDR 4,500,000/day",
+    "ctaPrimary": "Rent Now",
+    "ctaSecondary": "Talk to Sales",
+    "badge": "360°"
+  },
+  "testimonials": {
+    "title": "Trusted",
+    "subtitle": "by thousands of customers",
+    "prev": "Previous",
+    "next": "Next",
+    "cards": [
+      {
+        "quote": "Fast process, spotless car, and a very professional chauffeur. A monthly subscriber now!",
+        "name": "Rizky Pratama",
+        "role": "Entrepreneur, Jakarta"
+      },
+      {
+        "quote": "Used it for a wedding in Bandung. Every guest was amazed by the condition.",
+        "name": "Dinda Anggraini",
+        "role": "Event Organizer, Bandung"
+      },
+      {
+        "quote": "Business trips feel effortless. The fleet is always on time and spotless.",
+        "name": "Bagus Setiawan",
+        "role": "Logistics Manager, Surabaya"
+      },
+      {
+        "quote": "A luxury car for our honeymoon trip in Bali. The service truly spoiled us.",
+        "name": "Maya Kusuma",
+        "role": "Travel Blogger, Denpasar"
+      },
+      {
+        "quote": "The crew is friendly and quick. I recommend them to everyone at the office.",
+        "name": "Andhika Firmansyah",
+        "role": "Startup Director, Yogyakarta"
+      },
+      {
+        "quote": "VIP guest transfers felt premium from start to finish. Worth every rupiah.",
+        "name": "Sarah Widodo",
+        "role": "Hotel Manager, Semarang"
+      }
+    ],
+    "membershipTitle": "Become a member",
+    "membershipSub": "15K+ drivers registered",
+    "ctaPrimary": "Sign Up Now",
+    "ctaSecondary": "Learn the Program"
+  },
+  "mission": {
+    "title": "Setting a new standard",
+    "subtitle": "for premium mobility in Indonesia",
+    "paragraph": "We believe every journey deserves to feel special. With a well-kept fleet, trained crew, and nonstop service, we make premium rental an easy and enjoyable experience.",
+    "cta": "Watch Video"
+  },
+  "contactModal": {
+    "title": "Get in touch",
+    "description": "Tell us what you need and our team will help you pick the right car.",
+    "formTitle": "Leave a message",
+    "nameLabel": "Name",
+    "namePlaceholder": "Full name",
+    "phoneLabel": "Phone / WhatsApp",
+    "phonePlaceholder": "+62 812 3456 7890",
+    "cityLabel": "City",
+    "carLabel": "Car of interest",
+    "carPlaceholder": "Select a car",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Rental date, duration, purpose…",
+    "submit": "Send Request",
+    "successTitle": "Thank you!",
+    "successBody": "We received your request. The Ventura Auto team will get back to you within 2 working hours.",
+    "successCta": "Done",
+    "infoTitle": "Reach us directly",
+    "emailLabel": "Email",
+    "phoneLabelInfo": "Phone",
+    "whatsappLabel": "WhatsApp",
+    "hoursLabel": "Service hours",
+    "hoursValue": "24/7, every day",
+    "citiesLabel": "Cities served",
+    "required": "Required",
+    "cities": [
+      "Jakarta",
+      "Bandung",
+      "Surabaya",
+      "Yogyakarta",
+      "Semarang",
+      "Denpasar"
+    ],
+    "cars": [
+      "McLaren 720S",
+      "Ferrari 488 GTB",
+      "Lamborghini Huracán",
+      "Range Rover Sport",
+      "BMW 530i",
+      "Toyota Hiace Premio"
+    ]
+  },
+  "footer": {
+    "tagline": "Premium mobility, boundless experience.",
+    "email": "hello@venturaauto.id",
+    "learnMore": "Learn More",
+    "learnMoreDesc": "Ventura Auto is a premium car rental provider serving business, leisure, and special events across 12 cities in Indonesia.",
+    "navTitle": "Navigation",
+    "aboutTitle": "About Us",
+    "newsletterTitle": "Newsletter",
+    "newsletterPlaceholder": "Email address",
+    "newsletterButton": "Send",
+    "newsletterHint": "Get exclusive monthly offers.",
+    "links": {
+      "home": "Home",
+      "fleet": "Fleet",
+      "services": "Services",
+      "experience": "Experience",
+      "contact": "Contact"
+    },
+    "aboutLinks": {
+      "story": "Our Story",
+      "team": "Our Team",
+      "careers": "Careers",
+      "press": "Press"
+    },
+    "copyright": "© 2026 Ventura Auto. All rights reserved.",
+    "privacy": "Privacy Policy"
+  }
+}
