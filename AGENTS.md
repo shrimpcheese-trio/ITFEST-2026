@@ -62,6 +62,7 @@ Extra sections allowed if relevant to rental business (pricing, testimonials, FA
 
 - Hero section only.
 - Compress geometry + textures (Draco/gltf-transform); keep model low-poly enough not to tank load time.
+- Recompress exported/processed models with `gltfpak` (e.g. `npx gltfpack -i car.glb -o car-packed.glb`); the shipped model in `public/models/` must be the packed copy, never the raw source.
 - Lazy-load the model — don't block LCP/first paint.
 - Provide a static image fallback for slow connections or if WebGL unsupported.
 - Measure FPS after every change. If janky, strip detail before adding more features. Perf > flash.
