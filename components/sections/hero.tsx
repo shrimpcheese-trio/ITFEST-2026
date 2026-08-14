@@ -91,7 +91,7 @@ export function Hero() {
 
       <div className="relative z-10 h-[52svh] min-h-[380px] md:h-[58svh]">
         <LazyCanvas
-          camera={{ position: [-3.4, 2.1, 3.4], fov: 32 }}
+          camera={{ position: [-3.4, 1.0, 3.4], fov: 32 }}
           fallback={
             // eslint-disable-next-line @next/next/no-img-element
             <img
