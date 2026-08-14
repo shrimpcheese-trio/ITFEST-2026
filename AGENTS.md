@@ -129,6 +129,13 @@ style: align fleet card spacing to design tokens
 - Before submission: `npm run lint`, `npm run build`, verify both locales, verify 3D model loads on deployed build (not just local).
 - Submission = ZIP of source code + live deployment link.
 
+## Local Verification (IMPORTANT)
+
+- **Verify against production builds, not the dev server.** `next dev` on this project serves stale message modules (edited `messages/*.json` keys intermittently fail to resolve in dev, e.g. `MISSING_MESSAGE: Could not resolve hero.dragHint`), even after `rm -rf .next` and a full restart. The production build is the source of truth.
+- Verification loop for any change that touches copy/translations: `npm run build`, then grep the SSG output — `.next/server/app/id.html` and `.next/server/app/en.html` — for the expected translated strings (e.g. `grep -o "Mulai dari" .next/server/app/id.html`). SSG HTML is generated for both locales and can be inspected without running any server.
+- For static/text/JSX changes that don't involve i18n, `npm run lint` + `npm run build` + grepping the built HTML is sufficient. For runtime behavior, use `npm run start` (serves the verified production build) if a server is needed.
+- Do not leave a long-lived `npm run dev` process running; if one is needed for interactive preview, the developer starts and manages it themselves.
+
 ---
 
 ## AI-Generated Code Guardrails
