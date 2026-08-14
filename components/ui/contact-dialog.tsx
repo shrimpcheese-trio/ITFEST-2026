@@ -13,7 +13,7 @@ const WHATSAPP =
   "https://wa.me/6281210002000?text=Halo%20Ventura%20Auto%2C%20saya%20ingin%20tanya%20seputar%20sewa%20mobil.";
 
 const inputClass =
-  "h-12 w-full rounded-full border border-hairline bg-canvas px-5 text-sm text-ink placeholder:text-stone focus:border-ink focus:outline-none focus:ring-[3px] focus:ring-ink/10";
+  "h-12 w-full rounded-full border border-hairline bg-canvas px-5 text-sm text-ink placeholder:text-stone focus:border-stone focus:outline-none focus:ring-[3px] focus:ring-stone/15";
 
 function Field({
   label,
@@ -152,7 +152,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
                     <textarea
                       rows={4}
                       placeholder={t("messagePlaceholder")}
-                      className="w-full resize-none rounded-lg border border-hairline bg-canvas px-5 py-4 text-sm text-ink placeholder:text-stone focus:border-ink focus:outline-none focus:ring-[3px] focus:ring-ink/10"
+                      className="w-full resize-none rounded-lg border border-hairline bg-canvas px-5 py-4 text-sm text-ink placeholder:text-stone focus:border-stone focus:outline-none focus:ring-[3px] focus:ring-stone/15"
                     />
                   </Field>
                 </div>
