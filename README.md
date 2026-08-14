@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Auto Rental Landing Page
+
+Landing page for **Lomba Landing Page, IT FEST 2026** (HMPS Informatika UIN Gus Dur). Theme: Produk Jasa — car rental business, with an interactive 3D car model (McLaren 720S reference) in the hero.
+
+Built with Next.js (App Router), Tailwind CSS, three.js (react-three-fiber), and next-intl for bilingual ID/EN support.
+
+## Features
+
+- **Bilingual** — Indonesian (default) and English, toggled in the navbar
+- **Interactive 3D hero** — lazy-loaded GLB car model with a static image fallback
+- **Responsive** sections: Hero, Stats, About, Collection/Fleet, Value Props, Showcase, Testimonials, Footer, Contact dialog
+- **Design tokens** — all colors/type/spacing come from `DESIGN.md`
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Locale routes: `/id` and `/en`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local Verification
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Verify against production builds, not the dev server (`next dev` serves stale message modules). For any copy/translation change:
 
-## Learn More
+```bash
+npm run lint
+npm run build
+grep -o "Mulai dari" .next/server/app/id.html   # check ID strings
+grep -o "Starting from" .next/server/app/en.html # check EN strings
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+app/[locale]/          — localized routes (layout + page)
+components/
+  sections/            — Navbar, Hero, About, Collection, Value Props, Showcase, Testimonials, Footer
+  ui/                  — base reusable components (button, logo, contact dialog)
+  3d/                  — car model, lazy canvas, scenes
+i18n/                  — next-intl routing/config
+messages/              — id.json / en.json translation strings
+public/
+  images/              — section imagery
+  models/              — compressed car.glb (hero); raw/ holds the uncompressed source (gitignored)
+docs/DESIGN.md         — design tokens and visual language
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Commands
 
-## Deploy on Vercel
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Development server |
+| `npm run build` | Production build (source of truth for i18n checks) |
+| `npm run start` | Serve the production build |
+| `npm run lint` | ESLint |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The production build must run clean and both locales must render before submitting. Submit a ZIP of the source plus the live deployment link.
