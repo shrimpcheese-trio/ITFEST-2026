@@ -55,7 +55,10 @@
     "paragraph": "Ventura Auto brings a premium, well-maintained fleet ready for business trips, road trips, and special occasions. Every unit passes a 120-point inspection and comes with an experienced professional chauffeur.",
     "cta": "About Us",
     "imageLeftAlt": "Silver sports car front view",
-    "imageRightAlt": "Black SUV side view"
+    "imageRightAlt": "Black SUV side view",
+    "imageLeftCaption": "120-point inspection on every unit",
+    "imageRightCaption": "Professional chauffeur included",
+    "chip": "4.9/5 · 15,000+ customers"
   },
   "collection": {
     "title": "Featured Collection",
@@ -136,6 +139,86 @@
     "membershipSub": "15K+ drivers registered",
     "ctaPrimary": "Sign Up Now",
     "ctaSecondary": "Learn the Program"
+  },
+  "pricing": {
+    "title": "Transparent pricing,",
+    "titleAccent": "no hidden fees",
+    "subtitle": "Simple daily, weekly, and monthly rates. Fuel and tolls included.",
+    "bookCta": "Book Now",
+    "popular": "Most Popular",
+    "quoteTitle": "Need a custom quote?",
+    "quoteDesc": "Long-term rental, multi-car fleet, or a special event? Tell us what you need.",
+    "quoteCta": "Get a Quote",
+    "plans": [
+      {
+        "name": "Daily",
+        "price": "IDR 1,200,000",
+        "period": "/day",
+        "features": [
+          "Single-day rental",
+          "100 km/day included",
+          "Basic insurance coverage",
+          "24/7 roadside assistance"
+        ]
+      },
+      {
+        "name": "Weekly",
+        "price": "IDR 7,000,000",
+        "period": "/week",
+        "popular": true,
+        "features": [
+          "7-day rental",
+          "700 km included",
+          "Extended insurance coverage",
+          "Free airport pickup",
+          "Flexible rescheduling"
+        ]
+      },
+      {
+        "name": "Monthly",
+        "price": "IDR 24,000,000",
+        "period": "/month",
+        "features": [
+          "30-day rental",
+          "Unlimited mileage",
+          "Full insurance coverage",
+          "Dedicated chauffeur",
+          "Priority booking"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked",
+    "titleAccent": "questions",
+    "moreTitle": "Still have questions?",
+    "moreCta": "Contact Us",
+    "items": [
+      {
+        "q": "What documents do I need to rent a car?",
+        "a": "A valid driver's license, national ID or passport, and a refundable deposit. Corporate clients can rent with just a company letter."
+      },
+      {
+        "q": "Is there a minimum rental duration?",
+        "a": "Standard rentals start from a single day. Weekly and monthly plans are available with better rates."
+      },
+      {
+        "q": "Are the cars insured?",
+        "a": "Yes, every unit is fully covered. Tiers range from basic third-party coverage up to full insurance for monthly plans."
+      },
+      {
+        "q": "Can I rent a car with a chauffeur?",
+        "a": "Of course. Our experienced professional chauffeurs are available for every unit in the fleet."
+      },
+      {
+        "q": "What if I need to cancel or reschedule?",
+        "a": "Weekly and monthly plans allow free rescheduling. Cancellations made more than 24 hours before pickup are fully refunded."
+      },
+      {
+        "q": "Which cities do you serve?",
+        "a": "We operate across 12 cities in Indonesia, including Jakarta, Bandung, Surabaya, Yogyakarta, Semarang, and Denpasar."
+      }
+    ]
   },
   "mission": {
     "title": "Setting a new standard",

@@ -6,7 +6,9 @@ import { About } from "@/components/sections/about";
 import { Collection } from "@/components/sections/collection";
 import { ValueProps } from "@/components/sections/value-props";
 import { Showcase } from "@/components/sections/showcase";
+import { Pricing } from "@/components/sections/pricing";
 import { Testimonials } from "@/components/sections/testimonials";
+import { Faq } from "@/components/sections/faq";
 import { Footer } from "@/components/sections/footer";
 import type { Locale } from "@/i18n/routing";
 
@@ -32,7 +34,9 @@ export default async function HomePage({
         <Collection />
         <ValueProps />
         <Showcase />
+        <Pricing />
         <Testimonials />
+        <Faq />
       </main>
       <Footer />
     </>

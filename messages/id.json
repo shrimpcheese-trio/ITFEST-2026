@@ -55,7 +55,10 @@
     "paragraph": "Ventura Auto menghadirkan armada premium yang terawat dan siap dipakai untuk perjalanan bisnis, wisata, maupun acara spesial. Setiap unit melewati inspeksi 120 poin dan disertai sopir profesional yang berpengalaman.",
     "cta": "Tentang Kami",
     "imageLeftAlt": "Mobil sport silver dari depan",
-    "imageRightAlt": "Mobil SUV hitam dari samping"
+    "imageRightAlt": "Mobil SUV hitam dari samping",
+    "imageLeftCaption": "Inspeksi 120 poin di setiap unit",
+    "imageRightCaption": "Sopir profesional disertakan",
+    "chip": "Rating 4.9 · 15.000+ pelanggan"
   },
   "collection": {
     "title": "Koleksi Unggulan",
@@ -136,6 +139,86 @@
     "membershipSub": "15.000+ pengemudi terdaftar",
     "ctaPrimary": "Daftar Sekarang",
     "ctaSecondary": "Pelajari Program"
+  },
+  "pricing": {
+    "title": "Harga transparan,",
+    "titleAccent": "tanpa biaya tersembunyi",
+    "subtitle": "Tarif harian, mingguan, dan bulanan yang simpel. BBM dan tol sudah termasuk.",
+    "bookCta": "Pesan Sekarang",
+    "popular": "Paling Populer",
+    "quoteTitle": "Butuh penawaran khusus?",
+    "quoteDesc": "Sewa jangka panjang, armada multi-mobil, atau acara spesial? Ceritakan kebutuhanmu.",
+    "quoteCta": "Minta Penawaran",
+    "plans": [
+      {
+        "name": "Harian",
+        "price": "Rp 1.200.000",
+        "period": "/hari",
+        "features": [
+          "Sewa satu hari",
+          "Termasuk 100 km/hari",
+          "Asuransi dasar",
+          "Bantuan pinggir jalan 24 jam"
+        ]
+      },
+      {
+        "name": "Mingguan",
+        "price": "Rp 7.000.000",
+        "period": "/minggu",
+        "popular": true,
+        "features": [
+          "Sewa 7 hari",
+          "Termasuk 700 km",
+          "Perlindungan asuransi diperluas",
+          "Penjemputan bandara gratis",
+          "Reschedule fleksibel"
+        ]
+      },
+      {
+        "name": "Bulanan",
+        "price": "Rp 24.000.000",
+        "period": "/bulan",
+        "features": [
+          "Sewa 30 hari",
+          "Kilometer tanpa batas",
+          "Asuransi penuh",
+          "Sopir khusus",
+          "Prioritas booking"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "title": "Pertanyaan yang sering",
+    "titleAccent": "diajukan",
+    "moreTitle": "Masih ada pertanyaan?",
+    "moreCta": "Hubungi Kami",
+    "items": [
+      {
+        "q": "Dokumen apa saja yang diperlukan untuk sewa mobil?",
+        "a": "SIM aktif, KTP atau paspor, dan deposit yang dapat dikembalikan. Klien korporat cukup melampirkan surat keterangan perusahaan."
+      },
+      {
+        "q": "Apakah ada durasi sewa minimal?",
+        "a": "Sewa standar mulai dari satu hari. Paket mingguan dan bulanan tersedia dengan tarif yang lebih hemat."
+      },
+      {
+        "q": "Apakah mobil dilindungi asuransi?",
+        "a": "Ya, setiap unit terlindungi penuh. Tingkatannya mulai dari jaminan pihak ketiga dasar hingga asuransi penuh untuk paket bulanan."
+      },
+      {
+        "q": "Bisa sewa mobil sekaligus dengan sopir?",
+        "a": "Tentu. Sopir profesional kami yang berpengalaman tersedia untuk setiap unit di armada."
+      },
+      {
+        "q": "Bagaimana jika saya ingin batal atau mengubah jadwal?",
+        "a": "Paket mingguan dan bulanan memungkinkan reschedule gratis. Pembatalan lebih dari 24 jam sebelum penjemputan akan dikembalikan penuh."
+      },
+      {
+        "q": "Kota apa saja yang dilayani?",
+        "a": "Kami beroperasi di 12 kota di Indonesia, termasuk Jakarta, Bandung, Surabaya, Yogyakarta, Semarang, dan Denpasar."
+      }
+    ]
   },
   "mission": {
     "title": "Membawa standar baru",
