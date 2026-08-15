@@ -1,11 +1,18 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperInstance } from "swiper";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card } from "@/components/ui/card";
+
+import "swiper/css";
 
 const AVATARS = [
   "/images/avatar-1.jpg",
@@ -24,122 +31,82 @@ function TestimonialCarousel() {
     role: string;
   }[];
   const len = cards.length;
-  const track = [...cards, ...cards];
-  const [perView, setPerView] = useState(1);
-  const [index, setIndex] = useState(0);
-  const [smooth, setSmooth] = useState(true);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const sync = () => setPerView(mq.matches ? 3 : 1);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
-
-  const jump = (target: number) => {
-    setSmooth(false);
-    setIndex(target);
-    requestAnimationFrame(() => requestAnimationFrame(() => setSmooth(true)));
-  };
-
-  const step = useCallback(
-    (dir: number) => {
-      const target = index + dir;
-      if (target > len) jump(0);
-      else if (target < 0) jump(len);
-      else setIndex(target);
-    },
-    [index, len],
-  );
-
-  useEffect(() => {
-    if (paused) return;
-    const timer = window.setInterval(() => step(1), 6000);
-    return () => window.clearInterval(timer);
-  }, [paused, step]);
-
-  const centerIndex = index + Math.floor(perView / 2);
+  const [swiper, setSwiper] = useState<SwiperInstance | null>(null);
+  const [realIndex, setRealIndex] = useState(0);
 
   return (
-    <div
-      className="mx-auto max-w-5xl px-0"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="overflow-hidden px-1 md:px-3">
-        <div
-          className={cn(
-            "flex",
-            smooth
-              ? "transition-transform duration-500 ease-out"
-              : "transition-none",
-          )}
-          style={{ transform: `translateX(-${index * (100 / perView)}%)` }}
-        >
-          {track.map((card, slot) => (
-            <div
-              key={`${card.name}-${slot}`}
-              className="w-full shrink-0 px-1 py-2 md:w-1/3 md:px-2"
+    <div className="mx-auto max-w-5xl px-0">
+      <Swiper
+        modules={[Autoplay]}
+        loop
+        centeredSlides
+        slidesPerView={1}
+        spaceBetween={8}
+        autoplay={{
+          delay: 6000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        onSwiper={setSwiper}
+        onSlideChange={(slide) => setRealIndex(slide.realIndex)}
+        breakpoints={{ 768: { slidesPerView: 3, spaceBetween: 16 } }}
+        className="!overflow-visible px-1 md:px-3"
+      >
+        {cards.map((card, slot) => (
+          <SwiperSlide key={card.name} className="!h-auto py-2">
+            <Card
+              className={cn(
+                "h-full rounded-lg p-8 ring-2 transition-all duration-500 md:p-10",
+                slot === realIndex
+                  ? "translate-y-0 bg-canvas opacity-100 ring-ink md:-translate-y-3"
+                  : "translate-y-0 bg-soft-cloud opacity-50 ring-transparent md:translate-y-3 md:opacity-70",
+              )}
             >
-              <figure
-                className={cn(
-                  "h-full rounded-lg p-8 transition-all duration-500 md:p-10",
-                  slot === centerIndex
-                    ? "translate-y-0 bg-canvas opacity-100 ring-2 ring-ink md:-translate-y-3"
-                    : "translate-y-0 bg-soft-cloud opacity-50 md:translate-y-3 md:opacity-70",
-                )}
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="relative size-12 overflow-hidden rounded-full">
-                    <Image
-                      src={AVATARS[slot % AVATARS.length]}
-                      alt={card.name}
-                      fill
-                      sizes="48px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex gap-0.5">
-                    {[0, 1, 2, 3, 4].map((star) => (
-                      <Star key={star} className="size-4 fill-ink text-ink" />
-                    ))}
-                  </div>
+              <div className="flex items-center justify-between gap-4">
+                <Avatar size="lg" className="size-12">
+                  <AvatarImage src={AVATARS[slot % AVATARS.length]} alt={card.name} />
+                  <AvatarFallback>{card.name.charAt(0)}</AvatarFallback>
+                </Avatar>
+                <div className="flex gap-0.5">
+                  {[0, 1, 2, 3, 4].map((star) => (
+                    <Star key={star} className="size-4 fill-ink text-ink" />
+                  ))}
                 </div>
-                <blockquote className="mt-6 text-lg leading-relaxed text-charcoal">
-                  &ldquo;{card.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-6">
-                  <p className="font-semibold text-ink">{card.name}</p>
-                  <p className="text-sm text-mute">{card.role}</p>
-                </figcaption>
-              </figure>
-            </div>
-          ))}
-        </div>
-      </div>
+              </div>
+              <blockquote className="mt-6 text-lg leading-relaxed text-charcoal">
+                &ldquo;{card.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6">
+                <p className="font-semibold text-ink">{card.name}</p>
+                <p className="text-sm text-mute">{card.role}</p>
+              </figcaption>
+            </Card>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
       <div className="mt-8 flex items-center justify-center gap-5">
-        <button
+        <Button
           type="button"
-          onClick={() => step(-1)}
+          variant="secondary"
+          size="icon-lg"
+          onClick={() => swiper?.slidePrev()}
           aria-label={t("prev")}
-          className="flex size-10 items-center justify-center rounded-full bg-soft-cloud text-ink transition-colors hover:bg-hairline-soft"
+          className="rounded-full"
         >
           <ChevronLeft className="size-4" />
-        </button>
+        </Button>
 
         <div className="flex items-center gap-2">
           {Array.from({ length: len }).map((_, dot) => (
             <button
               key={dot}
               type="button"
-              onClick={() => setIndex(dot)}
+              onClick={() => swiper?.slideToLoop(dot)}
               aria-label={`Slide ${dot + 1}`}
               className={cn(
                 "h-1.5 rounded-full transition-all",
-                dot === index % len
+                dot === realIndex
                   ? "w-6 bg-ink"
                   : "w-1.5 bg-hairline hover:bg-stone",
               )}
@@ -147,14 +114,16 @@ function TestimonialCarousel() {
           ))}
         </div>
 
-        <button
+        <Button
           type="button"
-          onClick={() => step(1)}
+          variant="secondary"
+          size="icon-lg"
+          onClick={() => swiper?.slideNext()}
           aria-label={t("next")}
-          className="flex size-10 items-center justify-center rounded-full bg-soft-cloud text-ink transition-colors hover:bg-hairline-soft"
+          className="rounded-full"
         >
           <ChevronRight className="size-4" />
-        </button>
+        </Button>
       </div>
     </div>
   );

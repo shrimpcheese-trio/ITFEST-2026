@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Toggle } from "@/components/ui/toggle";
 import { ContactDialog } from "@/components/ui/contact-dialog";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
 import { ShowcaseScene } from "@/components/3d/showcase-scene";
@@ -37,20 +37,14 @@ export function Showcase() {
           <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-hairline-soft ring-inset" />
         </div>
 
-        <button
-          type="button"
-          onClick={() => setSpinning((value) => !value)}
-          aria-pressed={spinning}
+        <Toggle
+          pressed={spinning}
+          onPressedChange={setSpinning}
           aria-label="360"
-          className={cn(
-            "absolute bottom-6 left-1/2 flex size-20 -translate-x-1/2 items-center justify-center rounded-full border font-display text-3xl transition-colors",
-            spinning
-              ? "border-ink bg-ink text-canvas"
-              : "border-hairline bg-canvas text-ink hover:border-ink/40",
-          )}
+          className="absolute bottom-6 left-1/2 flex size-20 -translate-x-1/2 items-center justify-center rounded-full border font-display text-3xl transition-colors aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-canvas data-[state=off]:border-hairline data-[state=off]:bg-canvas data-[state=off]:text-ink hover:border-ink/40"
         >
           360°
-        </button>
+        </Toggle>
       </div>
 
       <div className="mx-auto mt-10 max-w-xl px-6 text-center">

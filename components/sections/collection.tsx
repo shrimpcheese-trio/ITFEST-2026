@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { Card } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ITEMS = [
   { category: 1, image: "/images/collection-featured.jpg" },
@@ -35,26 +37,25 @@ export function Collection() {
           <p className="mx-auto mt-4 max-w-xl text-mute">{t("subtitle")}</p>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-2.5">
-          {tabs.map((tab, index) => (
-            <button
-              key={tab}
-              type="button"
-              onClick={() => setActiveTab(index)}
-              aria-pressed={activeTab === index}
-              className={cn(
-                "rounded-full border px-5 py-2 text-sm font-medium transition-colors",
-                activeTab === index
-                  ? "border-ink bg-ink text-canvas"
-                  : "border-hairline bg-canvas text-ink hover:border-ink/40",
-              )}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+        <Tabs
+          value={String(activeTab)}
+          onValueChange={(value) => setActiveTab(Number(value))}
+          className="mt-10 flex justify-center"
+        >
+          <TabsList className="h-auto flex-wrap gap-2.5 rounded-full bg-transparent p-0">
+            {tabs.map((tab, index) => (
+              <TabsTrigger
+                key={tab}
+                value={String(index)}
+                className="h-auto flex-none rounded-full border border-hairline bg-canvas px-5 py-2 text-sm font-medium text-ink transition-colors hover:border-ink/40 data-active:border-ink data-active:bg-ink data-active:text-canvas"
+              >
+                {tab}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
 
-        <div className="relative mt-12 overflow-hidden rounded-lg">
+        <Card className="relative mt-12 overflow-hidden rounded-lg ring-0 [--card-spacing:0px]">
           <div className="relative aspect-[16/9] md:aspect-[21/10]">
             <Image
               src={featured.image}
@@ -78,7 +79,7 @@ export function Collection() {
               </p>
             </div>
           </div>
-        </div>
+        </Card>
 
         <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
           {thumbs.map((thumb, index) => {

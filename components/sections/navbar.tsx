@@ -41,14 +41,20 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href={pathname}
-            locale={otherLocale}
-            className="flex size-10 items-center justify-center rounded-full border border-hairline text-xs font-semibold uppercase tracking-wider text-ink transition-colors hover:bg-soft-cloud"
-            aria-label="Switch language"
+          <Button
+            asChild
+            variant="outline"
+            size="icon-lg"
+            className="rounded-full text-xs font-semibold uppercase tracking-wider"
           >
-            {locale === "id" ? "EN" : "ID"}
-          </Link>
+            <Link
+              href={pathname}
+              locale={otherLocale}
+              aria-label="Switch language"
+            >
+              {locale === "id" ? "EN" : "ID"}
+            </Link>
+          </Button>
           {/* <button
             type="button"
             className="relative flex size-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-soft-cloud"

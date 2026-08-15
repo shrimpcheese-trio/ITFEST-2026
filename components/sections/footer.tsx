@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/ui/logo";
+import { Button } from "@/components/ui/button";
 import { NewsletterForm } from "./newsletter-form";
 
 const NAV_LINKS = [
@@ -124,16 +125,19 @@ export async function Footer() {
             </a>
             <div className="flex gap-2">
               {SOCIALS.map((social) => (
-                <a
+                <Button
                   key={social.label}
-                  href="#"
-                  aria-label={social.label}
-                  className="flex size-10 items-center justify-center rounded-full border border-canvas/15 text-canvas/70 transition-colors hover:border-canvas/50 hover:text-canvas"
+                  asChild
+                  variant="ghost"
+                  size="icon-lg"
+                  className="rounded-full border border-canvas/15 text-canvas/70 hover:border-canvas/50 hover:bg-transparent hover:text-canvas"
                 >
-                  <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden>
-                    <path d={social.path} />
-                  </svg>
-                </a>
+                  <a href="#" aria-label={social.label}>
+                    <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden>
+                      <path d={social.path} />
+                    </svg>
+                  </a>
+                </Button>
               ))}
             </div>
           </div>
