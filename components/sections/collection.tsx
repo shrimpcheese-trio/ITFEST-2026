@@ -22,13 +22,19 @@ export function Collection() {
 
   const [activeTab, setActiveTab] = useState(0);
   const featuredIndex =
-    activeTab === 0 ? 0 : ITEMS.findIndex((item) => item.category === activeTab);
+    activeTab === 0
+      ? 0
+      : ITEMS.findIndex((item) => item.category === activeTab);
   const featured = ITEMS[featuredIndex];
-  const featuredMeta = featuredIndex === 0 ? t.raw("featured") : items[featuredIndex - 1];
+  const featuredMeta =
+    featuredIndex === 0 ? t.raw("featured") : items[featuredIndex - 1];
   const thumbs = ITEMS.slice(1);
 
   return (
-    <section id="fleet" className="relative scroll-mt-20 overflow-hidden bg-canvas pb-32 pt-28 md:pt-36">
+    <section
+      id="fleet"
+      className="relative scroll-mt-20 overflow-hidden bg-canvas pb-32 pt-28 md:pt-36"
+    >
       <div className="mx-auto max-w-6xl px-6 md:px-10">
         <div className="text-center">
           <h2 className="font-display text-5xl uppercase leading-[0.9] md:text-7xl">
@@ -113,12 +119,12 @@ export function Collection() {
         </div>
       </div>
 
-      <div
+      {/* <div
         aria-hidden
         className="text-watermark pointer-events-none relative -mb-[4vw] mt-10 text-center font-display text-[19vw] leading-[0.75] md:text-[16vw]"
       >
         {t("title")}
-      </div>
+      </div> */}
     </section>
   );
 }
