@@ -1,20 +1,34 @@
-# Auto Rental Landing Page
+# Ventura Auto
 
-Landing page for **Lomba Landing Page, IT FEST 2026** (HMPS Informatika UIN Gus Dur). Theme: Produk Jasa — car rental business, with an interactive 3D car model (McLaren 720S reference) in the hero.
+Landing page for **Lomba Landing Page, IT FEST 2026** (HMPS Informatika UIN Gus Dur).
 
-Built with Next.js (App Router), Tailwind CSS, three.js (react-three-fiber), and next-intl for bilingual ID/EN support.
+Built with Next.js 16 (App Router), Tailwind CSS v4, three.js (react-three-fiber + drei), and next-intl for bilingual ID/EN support.
 
 ## Features
 
-- **Bilingual** — Indonesian (default) and English, toggled in the navbar
-- **Interactive 3D hero** — lazy-loaded GLB car model with a static image fallback
-- **Responsive** sections: Hero, Stats, About, Collection/Fleet, Value Props, Showcase, Testimonials, Footer, Contact dialog
+- **Bilingual** — Indonesian (default) and English, toggled in the navbar (`/id`, `/en`)
+- **Interactive 3D** — lazy-loaded GLB car model in the hero with a static image fallback; lightweight 3D scenes in Value Props and Showcase
+- **Responsive sections** — Navbar, Hero, Stats, About, Mission, Collection, Value Props, Showcase, Pricing, Testimonials, FAQ, Newsletter, Footer, Contact dialog
 - **Design tokens** — all colors/type/spacing come from `DESIGN.md`
+- **Env-configurable contact details** — site name, email, and phone read from `NEXT_PUBLIC_*` vars with sane defaults (see `lib/config.ts`)
+
+## Tech Stack
+
+| Layer | Technology |
+| --- | --- |
+| Framework | Next.js 16 (App Router) + React 19, TypeScript |
+| Styling | Tailwind CSS v4, tw-animate-css |
+| UI components | shadcn/ui (Radix primitives), lucide-react icons, motion |
+| 3D | three.js, @react-three/fiber, @react-three/drei, gltf-transform (packing) |
+| Carousel | swiper |
+| i18n | next-intl (route-based ID/EN locales) |
+| Tooling | ESLint, PostCSS |
 
 ## Getting Started
 
 ```bash
 npm install
+cp .env.example .env.local   # optional — defaults work fine
 npm run dev
 ```
 
@@ -36,16 +50,20 @@ grep -o "Starting from" .next/server/app/en.html # check EN strings
 ```text
 app/[locale]/          — localized routes (layout + page)
 components/
-  sections/            — Navbar, Hero, About, Collection, Value Props, Showcase, Testimonials, Footer
-  ui/                  — base reusable components (button, logo, contact dialog)
-  3d/                  — car model, lazy canvas, scenes
-i18n/                  — next-intl routing/config
+  sections/            — Navbar, Hero, Stats, About, Mission, Collection, Value Props, Showcase, Pricing, Testimonials, FAQ, Newsletter, Footer
+  ui/                  — base reusable components (button, card, dialog, tabs, …)
+  3d/                  — car model, lazy canvas, hero/showcase/value-props scenes
+i18n/                  — next-intl routing, config, request
+lib/                   — config.ts (env-driven contact details), utils.ts
 messages/              — id.json / en.json translation strings
+types/                 — i18n type declarations
 public/
   images/              — section imagery
-  models/              — compressed car.glb (hero); raw/ holds the uncompressed source (gitignored)
+  models/              — packed car.glb (hero); raw/ holds the uncompressed source (gitignored)
 docs/DESIGN.md         — design tokens and visual language
 ```
+
+`proxy.ts` (root) wires next-intl's middleware to the routing config. The shipped model in `public/models/car.glb` is the gltfpack-compressed copy — `public/models/raw/` keeps the source, which is gitignored.
 
 ## Commands
 
@@ -56,6 +74,16 @@ docs/DESIGN.md         — design tokens and visual language
 | `npm run start` | Serve the production build |
 | `npm run lint` | ESLint |
 
+## Environment Variables
+
+All optional — see `.env.example`. Values are inlined into the client bundle at build time.
+
+| Variable | Default |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_NAME` | Ventura Auto |
+| `NEXT_PUBLIC_SITE_EMAIL` | halo@venturaauto.id |
+| `NEXT_PUBLIC_SITE_PHONE` | +62 812 1000 2000 |
+
 ## Deployment
 
-The production build must run clean and both locales must render before submitting. Submit a ZIP of the source plus the live deployment link.
+Deploy to Netlify, Vercel, or GitHub Pages and keep the link live through the judging period. Before submitting: `npm run lint`, `npm run build`, verify both locales and that the 3D model loads on the deployed build (not just locally). Submission = ZIP of the source plus the live deployment link.
