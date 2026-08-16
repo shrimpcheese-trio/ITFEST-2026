@@ -1,9 +1,10 @@
 "use client";
 
-import { Suspense, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls, MeshReflectorMaterial } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { useReducedMotion } from "motion/react";
 import { CarModel, type MaterialOverrides } from "./car-model";
 import { StudioEnvironment } from "./studio-environment";
 import { ModelLoader } from "./model-loader";
@@ -129,6 +130,121 @@ function ShowroomFloor() {
   );
 }
 
+let glowTexture: THREE.Texture | null = null;
+
+function getGlowTexture() {
+  if (glowTexture) return glowTexture;
+  const size = 256;
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = size;
+  const context = canvas.getContext("2d");
+  if (!context) {
+    glowTexture = new THREE.Texture();
+    return glowTexture;
+  }
+  const gradient = context.createRadialGradient(
+    size / 2,
+    size / 2,
+    0,
+    size / 2,
+    size / 2,
+    size / 2,
+  );
+  gradient.addColorStop(0, "rgba(255,255,255,1)");
+  gradient.addColorStop(0.55, "rgba(255,255,255,0.45)");
+  gradient.addColorStop(1, "rgba(255,255,255,0)");
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, size, size);
+  glowTexture = new THREE.CanvasTexture(canvas);
+  glowTexture.colorSpace = THREE.SRGBColorSpace;
+  return glowTexture;
+}
+
+function FloorDynamics({ tab }: { tab: HeroTab }) {
+  const reduceMotion = useReducedMotion();
+  const glowMaterial = useRef<THREE.MeshBasicMaterial>(null);
+  const ring = useRef<THREE.Mesh>(null);
+  const ringMaterial = useRef<THREE.MeshBasicMaterial>(null);
+  const state = useRef({
+    color: new THREE.Color("#ffffff"),
+    opacity: 0,
+    ripple: -1,
+    previousTab: null as HeroTab | null,
+  });
+
+  useEffect(() => {
+    const snapshot = state.current;
+    snapshot.color.set(HERO_TABS[tab].light);
+    snapshot.opacity = 0.2;
+    if (!reduceMotion && snapshot.previousTab !== null) {
+      snapshot.ripple = 0;
+    }
+    snapshot.previousTab = tab;
+  }, [tab, reduceMotion]);
+
+  useFrame((_, delta) => {
+    const snapshot = state.current;
+    const glow = glowMaterial.current;
+    const ringMesh = ring.current;
+    const ringPaint = ringMaterial.current;
+    if (!glow || !ringMesh || !ringPaint) return;
+
+    if (!glow.color.equals(snapshot.color)) {
+      glow.color.lerp(snapshot.color, 0.08);
+    }
+    if (Math.abs(glow.opacity - snapshot.opacity) > 0.01) {
+      glow.opacity += (snapshot.opacity - glow.opacity) * 0.08;
+    }
+
+    if (snapshot.ripple >= 0 && snapshot.ripple < 1) {
+      snapshot.ripple += delta / 0.9;
+      const progress = Math.min(snapshot.ripple, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      ringMesh.visible = true;
+      ringMesh.scale.setScalar(1 + eased * 4.5);
+      ringPaint.opacity = Math.pow(1 - progress, 1.4) * 0.55;
+    } else if (snapshot.ripple >= 1) {
+      snapshot.ripple = -1;
+      ringMesh.visible = false;
+    }
+  });
+
+  return (
+    <>
+      <mesh rotation-x={-Math.PI / 2} position={[0, 0.521, 0]}>
+        <circleGeometry args={[5.5, 48]} />
+        <meshBasicMaterial
+          ref={glowMaterial}
+          map={getGlowTexture()}
+          color="#ffffff"
+          transparent
+          opacity={0}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh
+        ref={ring}
+        rotation-x={-Math.PI / 2}
+        position={[0, 0.523, 0]}
+        visible={false}
+      >
+        <ringGeometry args={[1, 1.06, 64]} />
+        <meshBasicMaterial
+          ref={ringMaterial}
+          color="#ffffff"
+          transparent
+          opacity={0}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </mesh>
+    </>
+  );
+}
+
 export function HeroScene({ tab }: { tab: HeroTab }) {
   return (
     <>
@@ -140,6 +256,7 @@ export function HeroScene({ tab }: { tab: HeroTab }) {
         <CarRig tab={tab} />
       </Suspense>
       <ShowroomFloor />
+      <FloorDynamics tab={tab} />
       <OrbitControls
         makeDefault
         enableZoom={false}
