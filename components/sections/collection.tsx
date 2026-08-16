@@ -9,11 +9,11 @@ import { Reveal } from "@/components/ui/reveal";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ITEMS = [
-  { category: 1, image: "/images/collection-supercar.jpg" },
-  { category: 1, image: "/images/collection-supercar.jpg" },
-  { category: 2, image: "/images/collection-suv.jpg" },
-  { category: 3, image: "/images/collection-sedan.jpg" },
-  { category: 4, image: "/images/collection-minibus.jpg" },
+  { category: 1, image: "/images/collection-supercar.webp" },
+  { category: 1, image: "/images/collection-supercar.webp" },
+  { category: 2, image: "/images/collection-suv.webp" },
+  { category: 3, image: "/images/collection-sedan.webp" },
+  { category: 4, image: "/images/collection-minibus.webp" },
 ];
 
 export function Collection() {

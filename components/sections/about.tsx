@@ -14,7 +14,7 @@ export async function About() {
         <Reveal from="left" className="relative hidden pb-8 md:block">
           <div className="relative aspect-[4/5] w-[78%] overflow-hidden rounded-lg">
             <Image
-              src="/images/about-left.jpg"
+              src="/images/about-left.webp"
               alt={t("imageLeftAlt")}
               fill
               sizes="(max-width: 1024px) 50vw, 40vw"
@@ -27,7 +27,7 @@ export async function About() {
 
           <div className="relative -mt-[16%] ml-auto aspect-[4/5] w-[58%] overflow-hidden rounded-lg">
             <Image
-              src="/images/about-right.jpg"
+              src="/images/about-right.webp"
               alt={t("imageRightAlt")}
               fill
               sizes="(max-width: 1024px) 40vw, 30vw"

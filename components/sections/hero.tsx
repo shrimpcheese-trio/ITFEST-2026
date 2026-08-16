@@ -112,7 +112,7 @@ export function Hero() {
           fallback={
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src="/images/hero-fallback.jpg"
+              src="/images/hero-fallback.webp"
               alt=""
               className="h-full w-full object-cover"
               loading="lazy"

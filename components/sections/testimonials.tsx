@@ -16,12 +16,12 @@ import { Reveal } from "@/components/ui/reveal";
 import "swiper/css";
 
 const AVATARS = [
-  "/images/avatar-1.jpg",
-  "/images/avatar-2.jpg",
-  "/images/avatar-3.jpg",
-  "/images/avatar-4.jpg",
-  "/images/avatar-5.jpg",
-  "/images/avatar-6.jpg",
+  "/images/avatar-1.webp",
+  "/images/avatar-2.webp",
+  "/images/avatar-3.webp",
+  "/images/avatar-4.webp",
+  "/images/avatar-5.webp",
+  "/images/avatar-6.webp",
 ];
 
 function TestimonialCarousel() {
@@ -142,7 +142,7 @@ export function Testimonials() {
       <Reveal className="relative mt-16 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/testimonials-bg.jpg"
+            src="/images/testimonials-bg.webp"
             alt=""
             fill
             sizes="100vw"

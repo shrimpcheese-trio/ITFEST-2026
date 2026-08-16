@@ -28,7 +28,7 @@ export function Showcase() {
             fallback={
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src="/images/showcase-alt.jpg"
+                src="/images/showcase-alt.webp"
                 alt=""
                 className="h-full w-full object-cover"
                 loading="lazy"
