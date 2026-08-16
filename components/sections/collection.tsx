@@ -6,16 +6,11 @@ import { useTranslations } from "next-intl";
 import {
   m,
   AnimatePresence,
-  useScroll,
-  useTransform,
-  useSpring,
 } from "motion/react";
 import { Link } from "@/i18n/navigation";
-import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 import { staggerContainer, fadeUp } from "@/lib/motion/variants";
-import { useReducedMotion } from "@/lib/motion/hooks";
 
 type CarItem = {
   id: string;
@@ -58,19 +53,6 @@ export function Collection() {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedCarId, setSelectedCarId] = useState<string | null>(null);
 
-  const containerRef = useRef<HTMLElement>(null);
-  const prefersReducedMotion = useReducedMotion();
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
-  // Ghost text moves left to right as we scroll down
-  const watermarkX = useTransform(smoothScroll, [0, 1], ["-10%", "5%"]);
-  const watermarkOpacity = useTransform(smoothScroll, [0.5, 1], [1, 0]);
-
   // Filter dataset based on selected tab
   const filteredCars =
     activeTab === 0
@@ -94,7 +76,10 @@ export function Collection() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center"
         >
-          <m.h2 variants={fadeUp} className="font-display text-5xl uppercase leading-[0.9] md:text-7xl">
+          <m.h2
+            variants={fadeUp}
+            className="font-display text-5xl uppercase leading-[0.9] md:text-7xl"
+          >
             {t("title")}
           </m.h2>
           <m.p variants={fadeUp} className="mx-auto mt-4 max-w-xl text-mute">
@@ -122,7 +107,7 @@ export function Collection() {
                 }}
                 className={cn(
                   "relative rounded-full px-5 py-2 text-sm font-medium transition-colors",
-                  isActive ? "text-canvas" : "text-ink hover:text-ink/60"
+                  isActive ? "text-canvas" : "text-ink hover:text-ink/60",
                 )}
               >
                 {isActive && (
@@ -150,9 +135,12 @@ export function Collection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="group relative mt-12 block overflow-hidden bg-canvas"
+              className="group relative mt-12 block overflow-hidden rounded-xl bg-canvas"
             >
-              <Link href={`/fleet/${featuredCar.id}`} className="block relative aspect-[16/9] md:aspect-[21/10] overflow-hidden">
+              <Link
+                href={`/fleet/${featuredCar.id}`}
+                className="block relative aspect-[16/9] md:aspect-[21/10] overflow-hidden"
+              >
                 <m.div
                   className="h-full w-full"
                   whileHover={{ scale: 1.05 }}
@@ -167,10 +155,10 @@ export function Collection() {
                     className="object-cover"
                   />
                 </m.div>
-                
+
                 {/* Editorial-style overlay with sharp pill */}
                 <div className="absolute inset-0 bg-black/15 transition-opacity duration-500 group-hover:bg-black/30" />
-                
+
                 <div className="absolute inset-x-0 bottom-0 flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-end md:p-10">
                   <div className="translate-y-2 opacity-0 transition-all duration-700 ease-[0.25,0.1,0.25,1] group-hover:translate-y-0 group-hover:opacity-100">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-canvas">
@@ -180,11 +168,15 @@ export function Collection() {
                       {featuredCar.name}
                     </p>
                   </div>
-                  
+
                   {/* Action Pill anchoring bottom right */}
                   <div className="flex shrink-0 items-center gap-2 rounded-full bg-canvas/95 px-5 py-2.5 shadow-sm backdrop-blur transition-transform duration-500 group-hover:scale-105">
-                    <span className="text-xs font-semibold uppercase tracking-[0.1em] text-mute">From</span>
-                    <span className="text-sm font-bold text-ink">{featuredCar.price}</span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.1em] text-mute">
+                      From
+                    </span>
+                    <span className="text-sm font-bold text-ink">
+                      {featuredCar.price}
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -214,7 +206,7 @@ export function Collection() {
                   onClick={() => setSelectedCarId(thumb.id)}
                   className="group relative flex w-full flex-col text-left focus:outline-none"
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-soft-cloud">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-soft-cloud">
                     <m.div
                       className="h-full w-full"
                       whileHover={{ scale: 1.05 }}
@@ -247,18 +239,6 @@ export function Collection() {
           </AnimatePresence>
         </m.div>
       </div>
-
-      <m.div
-        aria-hidden
-        style={
-          prefersReducedMotion
-            ? {}
-            : { x: watermarkX, opacity: watermarkOpacity }
-        }
-        className="text-watermark pointer-events-none relative -mb-[4vw] mt-10 text-center font-display text-[19vw] leading-[0.75] md:text-[16vw]"
-      >
-        {t("title")}
-      </m.div>
     </section>
   );
 }

@@ -6,7 +6,14 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { ContactDialog } from "@/components/ui/contact-dialog";
-import { m, useScroll, useTransform, AnimatePresence, useMotionTemplate, useSpring } from "motion/react";
+import {
+  m,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+  useMotionTemplate,
+  useSpring,
+} from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion/variants";
 import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/lib/config";
@@ -24,7 +31,7 @@ export function Navbar() {
   const t = useTranslations("nav");
   const locale = useLocale();
   const pathname = usePathname();
-  
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   const smoothScroll = useSpring(scrollY, { stiffness: 300, damping: 40 });
@@ -32,38 +39,38 @@ export function Navbar() {
   const backgroundColor = useTransform(
     smoothScroll,
     [0, 150],
-    ["rgba(17, 17, 17, 0)", "rgba(17, 17, 17, 0.85)"]
+    ["rgba(233, 233, 233, 0)", "rgba(233, 233, 233, 0.85)"],
   );
-  
-  const color = useTransform(
-    smoothScroll,
-    [0, 150],
-    ["#111111", "#ffffff"]
-  );
-  
+
+  const color = useTransform(smoothScroll, [0, 150], ["#1a1a1a", "#1a1a1a"]);
+
   const borderColor = useTransform(
     smoothScroll,
     [0, 150],
-    ["rgba(202, 202, 203, 0.5)", "rgba(255, 255, 255, 0.15)"]
+    ["rgba(202, 202, 203, 0.5)", "rgba(255, 255, 255, 0.15)"],
   );
-  
+
   const backdropFilter = useTransform(
     smoothScroll,
     [0, 150],
-    ["blur(0px)", "blur(12px)"]
+    ["blur(0px)", "blur(12px)"],
   );
 
-  const headerPaddingTop = useTransform(smoothScroll, [0, 150], ["0px", "12px"]);
+  const headerPaddingTop = useTransform(
+    smoothScroll,
+    [0, 150],
+    ["0px", "12px"],
+  );
   const headerPaddingX = useTransform(smoothScroll, [0, 150], ["0px", "24px"]);
   const borderRadius = useTransform(smoothScroll, [0, 150], ["0px", "9999px"]);
-  
+
   const progress = useTransform(smoothScroll, [0, 150], [0, 1]);
-  const percentSub = useTransform(progress, p => p * 100);
-  const pxAdd = useTransform(progress, p => p * 1240);
+  const percentSub = useTransform(progress, (p) => p * 100);
+  const pxAdd = useTransform(progress, (p) => p * 1240);
   const maxWidth = useMotionTemplate`calc(100% - ${percentSub}% + ${pxAdd}px)`;
 
-  const logoStroke = useTransform(scrollY, [0, 100], ["#ffffff", "#111111"]);
-  const textColor = useTransform(scrollY, [0, 100], ["#ffffff", "#111111"]);
+  const logoStroke = useTransform(scrollY, [0, 100], ["#fafafa", "#fafafa"]);
+  const textColor = useTransform(scrollY, [0, 100], ["#fafafa", "#fafafa"]);
 
   return (
     <m.header
@@ -79,20 +86,26 @@ export function Navbar() {
     >
       <m.div
         className="mx-auto flex w-full items-center justify-between gap-6 px-4 py-3 transition-colors"
-        style={{
-          backgroundColor,
-          borderColor,
-          borderWidth: 1,
-          borderStyle: "solid",
-          backdropFilter,
-          color,
-          borderRadius,
-          maxWidth,
-          "--logo-stroke": logoStroke,
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any -- motion style accepts custom CSS properties
-        } as any}
+        style={
+          {
+            backgroundColor,
+            borderColor,
+            borderWidth: 1,
+            borderStyle: "solid",
+            backdropFilter,
+            color,
+            borderRadius,
+            maxWidth,
+            "--logo-stroke": logoStroke,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- motion style accepts custom CSS properties
+          } as any
+        }
       >
-        <Link href="/" aria-label={siteConfig.name} onClick={() => setMobileMenuOpen(false)}>
+        <Link
+          href="/"
+          aria-label={siteConfig.name}
+          onClick={() => setMobileMenuOpen(false)}
+        >
           <Logo />
         </Link>
 
@@ -109,9 +122,9 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2 md:gap-3">
-          <m.div 
+          <m.div
             className="relative flex items-center rounded-full p-1"
-            style={{ 
+            style={{
               borderColor,
               borderWidth: 1,
               borderStyle: "solid",
@@ -131,16 +144,22 @@ export function Navbar() {
                       layoutId="lang-indicator"
                       className="absolute inset-0 -z-10 rounded-full"
                       style={{ backgroundColor: color }}
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
                     />
                   )}
                   <m.span
                     style={{
-                      color: isActive 
-                        ? textColor 
-                        : "inherit"
+                      color: isActive ? textColor : "inherit",
                     }}
-                    className={isActive ? "" : "opacity-60 transition-opacity hover:opacity-100"}
+                    className={
+                      isActive
+                        ? ""
+                        : "opacity-60 transition-opacity hover:opacity-100"
+                    }
                   >
                     {l}
                   </m.span>
@@ -164,7 +183,7 @@ export function Navbar() {
           <m.button
             type="button"
             className="flex size-10 items-center justify-center rounded-full lg:hidden"
-            style={{ 
+            style={{
               borderColor,
               borderWidth: 1,
               borderStyle: "solid",
@@ -172,7 +191,11 @@ export function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            {mobileMenuOpen ? (
+              <X className="size-5" />
+            ) : (
+              <Menu className="size-5" />
+            )}
           </m.button>
         </div>
       </m.div>
@@ -184,7 +207,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-x-3 top-full mt-2 rounded-2xl border border-hairline bg-canvas p-6 shadow-2xl lg:hidden text-ink"
+            className="absolute inset-x-3 top-full mt-2 rounded-xl border border-hairline bg-canvas p-6 shadow-2xl lg:hidden text-ink"
           >
             <m.nav
               variants={staggerContainer}
@@ -204,9 +227,15 @@ export function Navbar() {
                   </Link>
                 </m.div>
               ))}
-              <m.div variants={fadeUp} className="mt-4 border-t border-hairline pt-6">
+              <m.div
+                variants={fadeUp}
+                className="mt-4 border-t border-hairline pt-6"
+              >
                 <ContactDialog>
-                  <Button className="w-full" onClick={() => setMobileMenuOpen(false)}>
+                  <Button
+                    className="w-full"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     {t("getInTouch")}
                   </Button>
                 </ContactDialog>

@@ -33,7 +33,7 @@ export function Showcase() {
         </m.h2>
 
         <m.div variants={scaleIn} className="relative mx-auto mt-2 w-full max-w-6xl px-4 md:px-10">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-soft-cloud sm:aspect-[16/10]">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-soft-cloud sm:aspect-[16/10]">
           {/* Subtle ambient light movement in background */}
           <m.div
             animate={prefersReducedMotion ? {} : { 
@@ -58,7 +58,7 @@ export function Showcase() {
           >
             <ShowcaseScene spinning={spinning} />
           </LazyCanvas>
-          <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-hairline-soft ring-inset" />
+          <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-hairline-soft ring-inset" />
         </div>
 
         <m.button

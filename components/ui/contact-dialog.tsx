@@ -88,7 +88,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
     >
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent
-        className="max-h-[90svh] overflow-y-auto rounded-lg border-hairline bg-canvas p-6 text-ink md:max-w-3xl md:p-10"
+        className="max-h-[90svh] overflow-y-auto rounded-xl border-hairline bg-canvas p-6 text-ink md:max-w-3xl md:p-10"
         showCloseButton={false}
       >
         <div className="flex items-start justify-between gap-4">

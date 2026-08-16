@@ -117,7 +117,7 @@ function TestimonialCarousel() {
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   className={cn(
-                    "relative h-full flex flex-col justify-between p-8 md:p-10 transition-colors duration-500 rounded-none border",
+                    "relative h-full flex flex-col justify-between p-8 md:p-10 transition-colors duration-500 rounded-xl border",
                     isActive 
                       ? "bg-canvas border-ink shadow-[8px_8px_0_0_rgba(17,17,17,1)]" 
                       : "bg-canvas border-hairline shadow-none pointer-events-none"

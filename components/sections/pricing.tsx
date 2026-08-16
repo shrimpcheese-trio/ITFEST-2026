@@ -36,7 +36,7 @@ export function Pricing() {
               <Reveal key={plan.name} delay={index * 0.08} className="h-full">
                 <div
                   className={cn(
-                    "relative flex h-full flex-col rounded-lg p-8 ring-1",
+                    "relative flex h-full flex-col rounded-xl p-8 ring-1",
                     featured
                       ? "bg-ink text-canvas ring-hairline-soft"
                       : "bg-canvas text-ink ring-hairline",
@@ -102,7 +102,7 @@ export function Pricing() {
           })}
         </div>
 
-        <Reveal delay={0.15} className="mt-14 flex flex-col items-center gap-5 rounded-lg bg-soft-cloud px-6 py-10 text-center md:flex-row md:justify-between md:px-12 md:text-left">
+        <Reveal delay={0.15} className="mt-14 flex flex-col items-center gap-5 rounded-xl bg-soft-cloud px-6 py-10 text-center md:flex-row md:justify-between md:px-12 md:text-left">
           <div>
             <p className="font-display text-2xl uppercase leading-tight md:text-3xl">
               {t("quoteTitle")}

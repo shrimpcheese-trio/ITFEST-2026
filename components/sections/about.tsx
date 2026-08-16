@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { m, useScroll, useTransform } from "motion/react";
 import { staggerContainer, fadeUp, scaleIn } from "@/lib/motion/variants";
 import { useReducedMotion } from "@/lib/motion/hooks";
@@ -41,7 +40,7 @@ export function About() {
           className="relative w-full max-w-sm md:w-5/12 lg:w-4/12"
         >
           <m.div style={prefersReducedMotion ? {} : { y: yLeft }}>
-            <div className="relative aspect-[4/5] w-full overflow-hidden bg-soft-cloud">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-soft-cloud">
               <Image
                 src="/images/about-left.webp"
                 alt={t("imageLeftAlt")}
@@ -70,7 +69,7 @@ export function About() {
           >
             {t("paragraph")}
           </m.p>
-          <m.div variants={fadeUp} className="mt-9">
+          {/* <m.div variants={fadeUp} className="mt-9">
             <Link
               href="/about"
               className="group relative inline-flex items-center pb-1 text-sm font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-ink/70"
@@ -78,7 +77,7 @@ export function About() {
               {t("cta")}
               <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-ink transition-transform duration-500 ease-[0.4,0,0.2,1] group-hover:scale-x-100" />
             </Link>
-          </m.div>
+          </m.div> */}
         </m.div>
 
         {/* Right Image (Smaller, offset) */}
@@ -87,7 +86,7 @@ export function About() {
           className="hidden relative w-full md:block md:w-3/12 lg:w-3/12 md:mt-32"
         >
           <m.div style={prefersReducedMotion ? {} : { y: yRight }}>
-            <div className="relative aspect-[3/4] w-full overflow-hidden bg-soft-cloud">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-soft-cloud">
               <Image
                 src="/images/about-right.webp"
                 alt={t("imageRightAlt")}
