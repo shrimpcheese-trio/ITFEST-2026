@@ -1,10 +1,12 @@
 const name = process.env.NEXT_PUBLIC_SITE_NAME ?? "Ventura Auto";
+const assistantName = process.env.NEXT_PUBLIC_ASSISTANT_NAME ?? "Ventura Auto";
 const email = process.env.NEXT_PUBLIC_SITE_EMAIL ?? "halo@venturaauto.id";
 const phone = process.env.NEXT_PUBLIC_SITE_PHONE ?? "+62 812 1000 2000";
 const phoneDigits = phone.replace(/\D/g, "");
 
 export const siteConfig = {
   name,
+  assistantName,
   wordmark: "Ventura",
   email,
   phone,

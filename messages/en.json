@@ -292,6 +292,19 @@
       "Toyota Hiace"
     ]
   },
+  "chat": {
+    "launcherLabel": "Chat with {name}",
+    "title": "{name} Assistant",
+    "subtitle": "Online 24/7 · Fast replies",
+    "placeholder": "Type your question…",
+    "send": "Send",
+    "close": "Close",
+    "greeting": "Hi! I'm the Ventura Auto assistant. Ask me anything about car rental, our fleet, pricing, or rental requirements.",
+    "refusal": "Sorry, I can only help with questions about Ventura Auto's car rental services.",
+    "offline": "The assistant is unavailable right now. Please reach out via WhatsApp — our team is happy to help.",
+    "error": "Oops, something went wrong. Please try again shortly, or contact us via WhatsApp.",
+    "typing": "Typing…"
+  },
   "footer": {
     "tagline": "Premium mobility, boundless experience.",
     "learnMore": "Learn More",

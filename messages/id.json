@@ -292,6 +292,19 @@
       "Toyota Hiace"
     ]
   },
+  "chat": {
+    "launcherLabel": "Chat dengan {name}",
+    "title": "Asisten {name}",
+    "subtitle": "Online 24 jam · Balas cepat",
+    "placeholder": "Tulis pertanyaanmu…",
+    "send": "Kirim",
+    "close": "Tutup",
+    "greeting": "Halo! Saya asisten Ventura Auto. Tanya apa saja seputar sewa mobil, armada, harga, atau syarat sewa, ya.",
+    "refusal": "Maaf, saya hanya bisa membantu pertanyaan seputar layanan sewa mobil Ventura Auto.",
+    "offline": "Asisten sedang tidak tersedia saat ini. Silakan hubungi kami via WhatsApp — tim kami siap membantu.",
+    "error": "Ups, ada kendala teknis. Coba lagi sebentar, atau hubungi kami via WhatsApp.",
+    "typing": "Mengetik…"
+  },
   "footer": {
     "tagline": "Mobilitas premium, pengalaman tanpa batas.",
     "learnMore": "Pelajari Lebih Lanjut",

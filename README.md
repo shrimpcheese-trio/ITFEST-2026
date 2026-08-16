@@ -81,8 +81,14 @@ All optional — see `.env.example`. Values are inlined into the client bundle a
 | Variable | Default |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_NAME` | Ventura Auto |
+| `NEXT_PUBLIC_ASSISTANT_NAME` | Ventura Auto (chatbot title + system prompt) |
 | `NEXT_PUBLIC_SITE_EMAIL` | halo@venturaauto.id |
 | `NEXT_PUBLIC_SITE_PHONE` | +62 812 1000 2000 |
+| `GROQ_API_KEY` | — (optional; chat shows an offline notice without it) |
+| `GROQ_MODEL` | `llama-3.1-8b-instant` |
+| `GROQ_GUARD_MODEL` | `llama-3.1-8b-instant` (safety classifier run before the main model) |
+
+> The chatbot widget (`components/ui/chat-widget.tsx`) calls a server-side route (`app/api/chat/route.ts`) that runs a strict jailbreak guard (`lib/chat-guard.ts`) before querying Groq. The guard is two-layered: a regex blocklist, then a separate Groq guard model (see `GROQ_GUARD_MODEL`) that classifies each user message as safe or unsafe; flagged messages are refused without reaching the main model. It needs a serverless deploy (Vercel or Netlify); on pure-static hosting the chat falls back to the offline notice.
 
 ## Deployment
 
