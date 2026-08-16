@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/lib/config";
 
 export function Logo({ className }: { className?: string }) {
   return (
@@ -25,7 +26,7 @@ export function Logo({ className }: { className?: string }) {
         </svg>
       </span>
       <span className="font-display text-2xl uppercase leading-none tracking-wide">
-        Ventura
+        {siteConfig.wordmark}
       </span>
     </span>
   );

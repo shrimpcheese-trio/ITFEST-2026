@@ -73,7 +73,7 @@
       { "category": "Supercar", "name": "Ferrari 488 GTB", "price": "IDR 5,200,000/day" },
       { "category": "SUV", "name": "Range Rover", "price": "IDR 2,800,000/day" },
       { "category": "Sedan", "name": "BMW 530i", "price": "IDR 1,750,000/day" },
-      { "category": "Minibus", "name": "Toyota Hiace Premio", "price": "IDR 1,200,000/day" }
+      { "category": "Minibus", "name": "Toyota Hiace", "price": "IDR 1,200,000/day" }
     ]
   },
   "valueProps": {
@@ -152,7 +152,7 @@
     "plans": [
       {
         "name": "Daily",
-        "price": "IDR 1,200,000",
+        "price": "IDR 2,500,000",
         "period": "/day",
         "features": [
           "Single-day rental",
@@ -163,7 +163,7 @@
       },
       {
         "name": "Weekly",
-        "price": "IDR 7,000,000",
+        "price": "IDR 14,000,000",
         "period": "/week",
         "popular": true,
         "features": [
@@ -176,7 +176,7 @@
       },
       {
         "name": "Monthly",
-        "price": "IDR 24,000,000",
+        "price": "IDR 45,000,000",
         "period": "/month",
         "features": [
           "30-day rental",
@@ -263,14 +263,13 @@
       "McLaren 720S",
       "Ferrari 488 GTB",
       "Lamborghini Huracán",
-      "Range Rover Sport",
+      "Range Rover",
       "BMW 530i",
-      "Toyota Hiace Premio"
+      "Toyota Hiace"
     ]
   },
   "footer": {
     "tagline": "Premium mobility, boundless experience.",
-    "email": "hello@venturaauto.id",
     "learnMore": "Learn More",
     "learnMoreDesc": "Ventura Auto is a premium car rental provider serving business, leisure, and special events across 12 cities in Indonesia.",
     "navTitle": "Navigation",

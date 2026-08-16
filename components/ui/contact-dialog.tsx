@@ -30,12 +30,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-const EMAIL = "halo@venturaauto.id";
-const PHONE = "+62 812 1000 2000";
-const PHONE_TEL = "tel:+6281210002000";
-const WHATSAPP =
-  "https://wa.me/6281210002000?text=Halo%20Ventura%20Auto%2C%20saya%20ingin%20tanya%20seputar%20sewa%20mobil.";
+import { siteConfig } from "@/lib/config";
 
 function Field({
   label,
@@ -67,15 +62,20 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
     {
       icon: Mail,
       label: t("emailLabel"),
-      value: EMAIL,
-      href: `mailto:${EMAIL}`,
+      value: siteConfig.email,
+      href: `mailto:${siteConfig.email}`,
     },
-    { icon: Phone, label: t("phoneLabelInfo"), value: PHONE, href: PHONE_TEL },
+    {
+      icon: Phone,
+      label: t("phoneLabelInfo"),
+      value: siteConfig.phone,
+      href: siteConfig.phoneTel,
+    },
     {
       icon: MessageCircle,
       label: t("whatsappLabel"),
-      value: PHONE,
-      href: WHATSAPP,
+      value: siteConfig.phone,
+      href: siteConfig.whatsapp,
     },
     { icon: Clock, label: t("hoursLabel"), value: t("hoursValue"), href: null },
   ];
@@ -154,7 +154,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
               </Field>
               <Field label={t("cityLabel")} required>
                 <Select required>
-                  <SelectTrigger className="h-12 rounded-lg border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
+                  <SelectTrigger className="h-12 rounded-sm border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
                     <SelectValue placeholder={t("cityLabel")} />
                   </SelectTrigger>
                   <SelectContent>
@@ -168,7 +168,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
               </Field>
               <Field label={t("carLabel")}>
                 <Select>
-                  <SelectTrigger className="h-12 rounded-lg border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
+                  <SelectTrigger className="h-12 rounded-sm border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
                     <SelectValue placeholder={t("carPlaceholder")} />
                   </SelectTrigger>
                   <SelectContent>

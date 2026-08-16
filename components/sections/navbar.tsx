@@ -7,6 +7,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { ContactDialog } from "@/components/ui/contact-dialog";
+import { siteConfig } from "@/lib/config";
 
 const LINKS = [
   { key: "home", href: "#home" },
@@ -30,7 +31,7 @@ export function Navbar() {
       className="fixed inset-x-0 top-3 z-50 px-3 md:px-6"
     >
       <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-6 rounded-full border border-hairline bg-canvas/85 px-4 backdrop-blur-md py-3">
-        <Link href="/" aria-label="Ventura Auto">
+        <Link href="/" aria-label={siteConfig.name}>
           <Logo />
         </Link>
 

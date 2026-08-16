@@ -73,7 +73,7 @@
       { "category": "Supercar", "name": "Ferrari 488 GTB", "price": "Rp 5.200.000/hari" },
       { "category": "SUV", "name": "Range Rover", "price": "Rp 2.800.000/hari" },
       { "category": "Sedan", "name": "BMW 530i", "price": "Rp 1.750.000/hari" },
-      { "category": "Minibus", "name": "Toyota Hiace Premio", "price": "Rp 1.200.000/hari" }
+      { "category": "Minibus", "name": "Toyota Hiace", "price": "Rp 1.200.000/hari" }
     ]
   },
   "valueProps": {
@@ -152,7 +152,7 @@
     "plans": [
       {
         "name": "Harian",
-        "price": "Rp 1.200.000",
+        "price": "Rp 2.500.000",
         "period": "/hari",
         "features": [
           "Sewa satu hari",
@@ -163,7 +163,7 @@
       },
       {
         "name": "Mingguan",
-        "price": "Rp 7.000.000",
+        "price": "Rp 14.000.000",
         "period": "/minggu",
         "popular": true,
         "features": [
@@ -176,7 +176,7 @@
       },
       {
         "name": "Bulanan",
-        "price": "Rp 24.000.000",
+        "price": "Rp 45.000.000",
         "period": "/bulan",
         "features": [
           "Sewa 30 hari",
@@ -263,14 +263,13 @@
       "McLaren 720S",
       "Ferrari 488 GTB",
       "Lamborghini Huracán",
-      "Range Rover Sport",
+      "Range Rovert",
       "BMW 530i",
-      "Toyota Hiace Premio"
+      "Toyota Hiace"
     ]
   },
   "footer": {
     "tagline": "Mobilitas premium, pengalaman tanpa batas.",
-    "email": "halo@venturaauto.id",
     "learnMore": "Pelajari Lebih Lanjut",
     "learnMoreDesc": "Ventura Auto adalah penyedia rental mobil premium yang melayani kebutuhan bisnis, wisata, dan acara khusus di 12 kota di Indonesia.",
     "navTitle": "Navigasi",
