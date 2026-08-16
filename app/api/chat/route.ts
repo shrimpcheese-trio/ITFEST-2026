@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { groq } from "@/lib/groq";
 import {
   buildSystemPrompt,
@@ -9,23 +8,32 @@ import {
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
-type ChatResponse = {
-  status: "ok" | "refused" | "offline" | "error";
-  message?: string;
+type StreamEvent = { type: "status" | "chunk" | "done"; status?: string; text?: string };
+
+function encodeEvent(event: StreamEvent): string {
+  return `data: ${JSON.stringify(event)}\n\n`;
+}
+
+function stream(event: StreamEvent): Response {
+  return new Response(encodeEvent(event), {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      "X-Accel-Buffering": "no",
+    },
+  });
+}
+
+type GroqChunk = {
+  choices?: { delta?: { content?: string } }[];
 };
 
-type GroqCompletion = {
-  choices?: { message?: { content?: string } }[];
-};
-
-export async function POST(request: Request): Promise<NextResponse<ChatResponse>> {
+export async function POST(request: Request): Promise<Response> {
   let body: { locale?: string; messages?: unknown };
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ status: "error" } satisfies ChatResponse, {
-      status: 400,
-    });
+    return stream({ type: "status", status: "error" });
   }
 
   const locale = body.locale === "en" ? "en" : "id";
@@ -41,27 +49,24 @@ export async function POST(request: Request): Promise<NextResponse<ChatResponse>
 
   const last = history[history.length - 1];
   if (!last) {
-    return NextResponse.json({ status: "error" } satisfies ChatResponse, {
-      status: 400,
-    });
+    return stream({ type: "status", status: "error" });
   }
 
   const guard = inspectUserMessage(last.content);
   if (!guard.ok) {
-    return NextResponse.json(
-      {
-        status: guard.reason === "jailbreak" ? "refused" : "error",
-      } satisfies ChatResponse,
-    );
+    return stream({
+      type: "status",
+      status: guard.reason === "jailbreak" ? "refused" : "error",
+    });
   }
   history[history.length - 1] = { ...last, content: guard.text };
 
   if (!groq.apiKey) {
-    return NextResponse.json({ status: "offline" } satisfies ChatResponse);
+    return stream({ type: "status", status: "offline" });
   }
 
   if (await judgeWithGuardModel(guard.text)) {
-    return NextResponse.json({ status: "refused" } satisfies ChatResponse);
+    return stream({ type: "status", status: "refused" });
   }
 
   const trimmed = trimConversation(history);
@@ -76,6 +81,7 @@ export async function POST(request: Request): Promise<NextResponse<ChatResponse>
       model: groq.model,
       temperature: 0.3,
       max_tokens: 400,
+      stream: true,
       messages: [
         { role: "system", content: buildSystemPrompt(locale) },
         ...trimmed,
@@ -83,18 +89,63 @@ export async function POST(request: Request): Promise<NextResponse<ChatResponse>
     }),
   });
 
-  if (!completion.ok) {
-    return NextResponse.json({ status: "error" } satisfies ChatResponse);
+  if (!completion.ok || !completion.body) {
+    return stream({ type: "status", status: "error" });
   }
 
-  const data = (await completion.json()) as GroqCompletion;
-  const reply = data.choices?.[0]?.message?.content;
-  if (typeof reply !== "string" || !reply.trim()) {
-    return NextResponse.json({ status: "error" } satisfies ChatResponse);
-  }
+  const encoder = new TextEncoder();
+  const decoder = new TextDecoder();
+  const reader = completion.body.getReader();
 
-  return NextResponse.json({
-    status: "ok",
-    message: reply.trim(),
-  } satisfies ChatResponse);
+  const readable = new ReadableStream<Uint8Array>({
+    async start(controller) {
+      controller.enqueue(encoder.encode(encodeEvent({ type: "status", status: "ok" })));
+
+      let buffer = "";
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          let boundary: number;
+          while ((boundary = buffer.indexOf("\n")) !== -1) {
+            const line = buffer.slice(0, boundary);
+            buffer = buffer.slice(boundary + 1);
+            if (!line.startsWith("data:")) continue;
+
+            const payload = line.slice(5).trim();
+            if (!payload || payload === "[DONE]") continue;
+
+            let chunk: GroqChunk;
+            try {
+              chunk = JSON.parse(payload) as GroqChunk;
+            } catch {
+              continue;
+            }
+
+            const delta = chunk.choices?.[0]?.delta?.content;
+            if (typeof delta === "string" && delta.length > 0) {
+              controller.enqueue(
+                encoder.encode(encodeEvent({ type: "chunk", text: delta })),
+              );
+            }
+          }
+        }
+      } catch {
+        // Fall through and end the stream on any read error.
+      } finally {
+        controller.enqueue(encoder.encode(encodeEvent({ type: "done" })));
+        controller.close();
+      }
+    },
+  });
+
+  return new Response(readable, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      "X-Accel-Buffering": "no",
+    },
+  });
 }

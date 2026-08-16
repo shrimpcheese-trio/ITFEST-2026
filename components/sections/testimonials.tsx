@@ -4,7 +4,13 @@ import { useCallback, useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { m, PanInfo, useScroll, useTransform } from "motion/react";
+import {
+  m,
+  PanInfo,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion/variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -248,6 +254,67 @@ function TestimonialCarousel() {
   );
 }
 
+function BrandMarquee() {
+  const t = useTranslations("testimonials");
+  const reduceMotion = useReducedMotion();
+  const brands = t.raw("brands") as { name: string; logo: string }[];
+  const track = [...brands, ...brands];
+
+  const logo = (brand: { name: string; logo: string }, slot: number) => (
+    <Image
+      key={`${brand.name}-${slot}`}
+      src={brand.logo}
+      alt=""
+      width={24}
+      height={24}
+      draggable={false}
+      className="mr-16 h-8 w-auto object-contain grayscale opacity-70 transition-opacity duration-300 hover:opacity-100 md:h-10"
+    />
+  );
+
+  if (reduceMotion) {
+    return (
+      <div className="mt-20 px-6 md:px-10">
+        <ul className="flex flex-wrap items-center justify-center gap-x-16 gap-y-8">
+          {brands.map((brand, slot) => (
+            <li key={brand.name} className="flex">
+              {logo(brand, slot)}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  return (
+    <m.div
+      variants={fadeUp}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, margin: "-50px" }}
+      className="mt-20 px-6 md:px-10"
+    >
+      <div
+        aria-hidden="true"
+        className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]"
+      >
+        <m.div
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 45, ease: "linear", repeat: Infinity }}
+          className="flex w-max items-center"
+        >
+          {track.map(logo)}
+        </m.div>
+      </div>
+      <ul className="sr-only">
+        {brands.map((brand) => (
+          <li key={brand.name}>{brand.name}</li>
+        ))}
+      </ul>
+    </m.div>
+  );
+}
+
 export function Testimonials() {
   const t = useTranslations("testimonials");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -265,7 +332,9 @@ export function Testimonials() {
         <TestimonialCarousel />
       </div>
 
-      <div ref={containerRef} className="relative mt-24 overflow-hidden">
+      <BrandMarquee />
+
+      <div ref={containerRef} className="relative mt-12 overflow-hidden">
         <m.div
           style={{ y }}
           className="absolute inset-0 -top-[20%] -bottom-[20%]"
