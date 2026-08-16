@@ -73,52 +73,74 @@
     "title": "Featured Collection",
     "subtitle": "Explore the hand-picked fleet most rented this month.",
     "from": "From",
-    "tabs": ["All", "Supercar", "SUV", "Sedan", "Minibus"],
+    "tabs": [
+      "All",
+      "Supercar",
+      "SUV",
+      "Sedan",
+      "Minibus"
+    ],
     "featured": {
       "category": "Supercar",
       "name": "McLaren 720S",
       "price": "IDR 4,500,000/day"
     },
     "items": [
-      { "category": "Supercar", "name": "Lamborghini Huracán", "price": "IDR 5,200,000/day" },
-      { "category": "SUV", "name": "Range Rover", "price": "IDR 2,800,000/day" },
-      { "category": "Sedan", "name": "BMW 530i", "price": "IDR 1,750,000/day" },
-      { "category": "Minibus", "name": "Toyota Hiace", "price": "IDR 1,200,000/day" }
+      {
+        "category": "Supercar",
+        "name": "Lamborghini Huracán",
+        "price": "IDR 5,200,000/day"
+      },
+      {
+        "category": "SUV",
+        "name": "Range Rover",
+        "price": "IDR 2,800,000/day"
+      },
+      {
+        "category": "Sedan",
+        "name": "BMW 530i",
+        "price": "IDR 1,750,000/day"
+      },
+      {
+        "category": "Minibus",
+        "name": "Toyota Hiace",
+        "price": "IDR 1,200,000/day"
+      }
     ]
   },
   "valueProps": {
     "title": "The vehicle, understood",
     "subtitle": "Every detail is engineered for comfort and total control.",
     "markers": [
-      { 
+      {
         "label": "Digital instrument cluster",
         "description": "A high-resolution active display providing real-time telemetry, advanced navigation overlays, and customizable driving modes directly in your line of sight."
       },
-      { 
+      {
         "label": "Premium cabin materials",
         "description": "Hand-stitched Alcantara leather and aerospace-grade carbon fiber trim offer unmatched tactile luxury and weight reduction."
       },
-      { 
+      {
         "label": "Active safety systems",
         "description": "Continuous monitoring via radar and optical sensors to enable collision avoidance, lane keeping, and automated emergency braking."
       },
-      { 
+      {
         "label": "Adaptive suspension",
         "description": "Proactive damping systems that instantly adjust to road conditions, delivering track-level stiffness or highway comfort at the push of a button."
       },
-      { 
+      {
         "label": "7-speed gearbox",
         "description": "A lightning-fast dual-clutch transmission providing seamless gear changes in milliseconds, ensuring uninterrupted power delivery."
       },
-      { 
+      {
         "label": "Carbon-ceramic brakes",
         "description": "Massive rotors designed to resist heat fade under extreme conditions, offering immediate and predictable stopping power."
       },
-      { 
+      {
         "label": "Active aerodynamics",
         "description": "Deployable spoilers and dynamic air intakes that adjust automatically to optimize downforce, cooling, and straight-line speed."
       },
-      { 
+      {
         "label": "LED Matrix headlights",
         "description": "Intelligent illumination that dynamically shapes the light beam to avoid dazzling oncoming traffic while maximizing visibility."
       }
@@ -137,6 +159,73 @@
     "subtitle": "by thousands of customers",
     "prev": "Previous",
     "next": "Next",
+    "brandsLabel": "Trusted brands",
+    "brands": [
+      {
+        "name": "McLaren",
+        "logo": "/images/brands/mclaren.svg"
+      },
+      {
+        "name": "Ferrari",
+        "logo": "/images/brands/ferrari.svg"
+      },
+      {
+        "name": "Lamborghini",
+        "logo": "/images/brands/lamborghini.svg"
+      },
+      {
+        "name": "BMW",
+        "logo": "/images/brands/bmw.svg"
+      },
+      {
+        "name": "Porsche",
+        "logo": "/images/brands/porsche.svg"
+      },
+      {
+        "name": "Audi",
+        "logo": "/images/brands/audi.svg"
+      },
+      {
+        "name": "Bugatti",
+        "logo": "/images/brands/bugatti.svg"
+      },
+      {
+        "name": "Aston Martin",
+        "logo": "/images/brands/astonmartin.svg"
+      },
+      {
+        "name": "Tesla",
+        "logo": "/images/brands/tesla.svg"
+      },
+      {
+        "name": "Honda",
+        "logo": "/images/brands/honda.svg"
+      },
+      {
+        "name": "Jeep",
+        "logo": "/images/brands/jeep.svg"
+      },
+      {
+        "name": "Toyota",
+        "logo": "/images/brands/toyota.svg"
+      },
+      {
+        "name": "Volvo",
+        "logo": "/images/brands/volvo.svg"
+      },
+      {
+        "name": "Nissan",
+        "logo": "/images/brands/nissan.svg"
+      },
+      {
+        "name": "Hyundai",
+        "logo": "/images/brands/hyundai.svg"
+      },
+      {
+        "name": "Volkswagen",
+        "logo": "/images/brands/volkswagen.svg"
+      }
+    ],
     "cards": [
       {
         "quote": "Fast process, spotless car, and a very professional chauffeur. A monthly subscriber now!",

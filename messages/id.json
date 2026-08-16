@@ -73,52 +73,74 @@
     "title": "Koleksi Unggulan",
     "subtitle": "Jelajahi armada pilihan yang paling banyak dirental di bulan ini.",
     "from": "Mulai dari",
-    "tabs": ["Semua", "Supercar", "SUV", "Sedan", "Minibus"],
+    "tabs": [
+      "Semua",
+      "Supercar",
+      "SUV",
+      "Sedan",
+      "Minibus"
+    ],
     "featured": {
       "category": "Supercar",
       "name": "McLaren 720S",
       "price": "Rp 4.500.000/hari"
     },
     "items": [
-      { "category": "Supercar", "name": "Lamborghini Huracán", "price": "Rp 5.200.000/hari" },
-      { "category": "SUV", "name": "Range Rover", "price": "Rp 2.800.000/hari" },
-      { "category": "Sedan", "name": "BMW 530i", "price": "Rp 1.750.000/hari" },
-      { "category": "Minibus", "name": "Toyota Hiace", "price": "Rp 1.200.000/hari" }
+      {
+        "category": "Supercar",
+        "name": "Lamborghini Huracán",
+        "price": "Rp 5.200.000/hari"
+      },
+      {
+        "category": "SUV",
+        "name": "Range Rover",
+        "price": "Rp 2.800.000/hari"
+      },
+      {
+        "category": "Sedan",
+        "name": "BMW 530i",
+        "price": "Rp 1.750.000/hari"
+      },
+      {
+        "category": "Minibus",
+        "name": "Toyota Hiace",
+        "price": "Rp 1.200.000/hari"
+      }
     ]
   },
   "valueProps": {
     "title": "Kendaraan, dipahami",
     "subtitle": "Setiap detail dirancang untuk kenyamanan dan kendali penuh.",
     "markers": [
-      { 
+      {
         "label": "Panel instrumen digital",
         "description": "Layar aktif beresolusi tinggi yang menyajikan telemetri real-time, overlay navigasi, dan mode berkendara yang dapat disesuaikan tepat pada jarak pandang pengemudi."
       },
-      { 
+      {
         "label": "Material interior premium",
         "description": "Lapisan kulit Alcantara jahitan tangan berpadu dengan aksen serat karbon berkualitas aerospace, memberikan kemewahan taktil dan peredaman bobot."
       },
-      { 
+      {
         "label": "Sistem keselamatan aktif",
         "description": "Pemantauan terus-menerus melalui sensor radar dan optik untuk fitur penghindar tabrakan, penjaga lajur, serta pengereman darurat otomatis."
       },
-      { 
+      {
         "label": "Suspensi adaptif",
         "description": "Sistem peredaman proaktif yang langsung beradaptasi dengan kondisi jalan; menawarkan kestabilan ala sirkuit atau kenyamanan meluncur di jalan tol."
       },
-      { 
+      {
         "label": "Transmisi 7-percepatan",
         "description": "Transmisi kopling ganda super cepat yang memberikan perpindahan gigi dalam hitungan milidetik, menjamin penyaluran tenaga tanpa henti."
       },
-      { 
+      {
         "label": "Rem karbon-keramik",
         "description": "Cakram rem berukuran masif yang dirancang khusus untuk menahan panas ekstrem, menawarkan daya henti seketika dan dapat diprediksi."
       },
-      { 
+      {
         "label": "Aerodinamika aktif",
         "description": "Spoiler yang dapat ditarik dan asupan udara dinamis yang menyesuaikan diri otomatis untuk mengoptimalkan downforce, pendinginan, dan kecepatan."
       },
-      { 
+      {
         "label": "Lampu LED Matrix",
         "description": "Pencahayaan cerdas yang secara dinamis membentuk sorotan cahaya agar tidak menyilaukan lalu lintas berlawanan sambil memaksimalkan jarak pandang."
       }
@@ -137,6 +159,73 @@
     "subtitle": "dari ribuan pelanggan",
     "prev": "Sebelumnya",
     "next": "Berikutnya",
+    "brandsLabel": "Merek terpercaya",
+    "brands": [
+      {
+        "name": "McLaren",
+        "logo": "/images/brands/mclaren.svg"
+      },
+      {
+        "name": "Ferrari",
+        "logo": "/images/brands/ferrari.svg"
+      },
+      {
+        "name": "Lamborghini",
+        "logo": "/images/brands/lamborghini.svg"
+      },
+      {
+        "name": "BMW",
+        "logo": "/images/brands/bmw.svg"
+      },
+      {
+        "name": "Porsche",
+        "logo": "/images/brands/porsche.svg"
+      },
+      {
+        "name": "Audi",
+        "logo": "/images/brands/audi.svg"
+      },
+      {
+        "name": "Bugatti",
+        "logo": "/images/brands/bugatti.svg"
+      },
+      {
+        "name": "Aston Martin",
+        "logo": "/images/brands/astonmartin.svg"
+      },
+      {
+        "name": "Tesla",
+        "logo": "/images/brands/tesla.svg"
+      },
+      {
+        "name": "Honda",
+        "logo": "/images/brands/honda.svg"
+      },
+      {
+        "name": "Jeep",
+        "logo": "/images/brands/jeep.svg"
+      },
+      {
+        "name": "Toyota",
+        "logo": "/images/brands/toyota.svg"
+      },
+      {
+        "name": "Volvo",
+        "logo": "/images/brands/volvo.svg"
+      },
+      {
+        "name": "Nissan",
+        "logo": "/images/brands/nissan.svg"
+      },
+      {
+        "name": "Hyundai",
+        "logo": "/images/brands/hyundai.svg"
+      },
+      {
+        "name": "Volkswagen",
+        "logo": "/images/brands/volkswagen.svg"
+      }
+    ],
     "cards": [
       {
         "quote": "Prosesnya cepat, mobilnya bersih, dan sopirnya sangat profesional. Langganan tiap bulan!",
