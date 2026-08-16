@@ -9,9 +9,10 @@ import { Markdown } from "@/components/ui/markdown";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
-type ChatReply = {
-  status: "ok" | "refused" | "offline" | "error";
-  message?: string;
+type ChatEvent = {
+  type: "status" | "chunk" | "done";
+  status?: "ok" | "refused" | "offline" | "error";
+  text?: string;
 };
 
 export function ChatWidget() {
@@ -91,16 +92,62 @@ export function ChatWidget() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: nextMessages, locale }),
       });
-      const data = (await response.json()) as ChatReply;
-      const reply =
-        data.status === "ok" && data.message
-          ? data.message
-          : data.status === "refused"
-            ? t("refusal")
-            : data.status === "offline"
-              ? t("offline")
-              : t("error");
-      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+      if (!response.body) throw new Error("chat stream unavailable");
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        let boundary: number;
+        while ((boundary = buffer.indexOf("\n")) !== -1) {
+          const line = buffer.slice(0, boundary);
+          buffer = buffer.slice(boundary + 1);
+          if (!line.startsWith("data:")) continue;
+
+          const payload = line.slice(5).trim();
+          if (!payload) continue;
+
+          let event: ChatEvent;
+          try {
+            event = JSON.parse(payload) as ChatEvent;
+          } catch {
+            continue;
+          }
+
+          if (event.type === "status" && event.status !== "ok") {
+            const reply =
+              event.status === "refused"
+                ? t("refusal")
+                : event.status === "offline"
+                  ? t("offline")
+                  : t("error");
+            setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+            return;
+          }
+
+          if (event.type === "chunk" && event.text) {
+            const delta = event.text;
+            setMessages((prev) => {
+              const updated = [...prev];
+              const lastMessage = updated[updated.length - 1];
+              if (lastMessage && lastMessage.role === "assistant") {
+                updated[updated.length - 1] = {
+                  ...lastMessage,
+                  content: lastMessage.content + delta,
+                };
+              } else {
+                updated.push({ role: "assistant", content: delta });
+              }
+              return updated;
+            });
+          }
+        }
+      }
     } catch {
       setMessages((prev) => [
         ...prev,
