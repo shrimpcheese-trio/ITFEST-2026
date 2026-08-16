@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { m, AnimatePresence } from "motion/react";
-import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 import { staggerContainer, fadeUp } from "@/lib/motion/variants";
@@ -125,19 +124,17 @@ export function Collection() {
 
         {/* Main Featured Card */}
         {featuredCar && (
-          <AnimatePresence mode="wait">
-            <m.div
-              key={featuredCar.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="group relative mt-12 block overflow-hidden rounded-xl bg-canvas"
-            >
-              <Link
-                href={`/fleet/${featuredCar.id}`}
-                className="block relative aspect-[16/9] md:aspect-[21/10] overflow-hidden"
+          <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-xl bg-canvas md:aspect-[21/10]">
+            <AnimatePresence initial={false}>
+              <m.div
+                key={featuredCar.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="group absolute inset-0"
               >
+                <div className="relative h-full w-full overflow-hidden">
                 <m.div
                   className="h-full w-full"
                   whileHover={{ scale: 1.05 }}
@@ -169,16 +166,17 @@ export function Collection() {
                   {/* Action Pill anchoring bottom right */}
                   <div className="flex shrink-0 items-center gap-2 rounded-full bg-canvas/95 px-5 py-2.5 shadow-sm backdrop-blur transition-transform duration-500 group-hover:scale-105">
                     <span className="text-xs font-semibold uppercase tracking-[0.1em] text-mute">
-                      From
+                      {t("from")}
                     </span>
                     <span className="text-sm font-bold text-ink">
                       {featuredCar.price}
                     </span>
                   </div>
                 </div>
-              </Link>
+              </div>
             </m.div>
           </AnimatePresence>
+          </div>
         )}
 
         <m.div
@@ -188,15 +186,14 @@ export function Collection() {
           viewport={{ once: true, margin: "-50px" }}
           className="mt-8 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6"
         >
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence initial={false}>
             {thumbs.map((thumb) => (
               <m.div
                 key={thumb.id}
-                layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
               >
                 <button
                   type="button"

@@ -19,7 +19,7 @@ export function ValueProps() {
   return (
     <section
       id="experience"
-      className="scroll-mt-20 bg-canvas py-20 md:py-28 relative"
+      className="scroll-mt-20 bg-canvas py-20 md:py-28 relative overflow-x-clip"
     >
       <div className="mx-auto max-w-2xl px-6 text-center">
         <m.h2

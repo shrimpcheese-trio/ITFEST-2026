@@ -96,12 +96,12 @@ export function Hero() {
             </m.div>
           </m.div>
 
-          <div className="flex flex-col gap-3 md:items-end">
+          <div className="flex-col gap-3 md:items-end hidden xl:flex">
             <m.div
               variants={staggerContainer}
               initial="initial"
               animate="animate"
-              className="flex flex-wrap gap-2.5 md:flex-row md:items-end"
+              className="flex xl:flex-col flex-wrap gap-2.5 md:flex-row md:items-end max-w-3/6"
             >
               {TABS.map((tab) => (
                 <m.button
@@ -116,7 +116,7 @@ export function Hero() {
                   }}
                   whileTap={{ scale: 0.95 }}
                   className={cn(
-                    "rounded-full border px-5 py-2 text-sm font-medium transition-colors",
+                    "rounded-full border px-5 py-2 text-sm font-medium transition-colors w-full",
                     active === tab
                       ? "border-ink bg-ink text-canvas shadow-[0_0_15px_rgba(17,17,17,0.2)]"
                       : "border-hairline bg-canvas text-ink hover:border-ink/40",
