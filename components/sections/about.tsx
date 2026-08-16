@@ -1,57 +1,103 @@
-import Image from "next/image";
-import { getTranslations } from "next-intl/server";
-import { Reveal } from "@/components/ui/reveal";
+"use client";
 
-export async function About() {
-  const t = await getTranslations("about");
+import { useRef } from "react";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { m, useScroll, useTransform } from "motion/react";
+import { staggerContainer, fadeUp, scaleIn } from "@/lib/motion/variants";
+import { useReducedMotion } from "@/lib/motion/hooks";
+
+export function About() {
+  const t = useTranslations("about");
+  const containerRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Left image moves up slightly as we scroll down
+  const yLeft = useTransform(scrollYProgress, [0, 1], ["15%", "-15%"]);
+  // Right image moves down slightly as we scroll down
+  const yRight = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
 
   return (
     <section
       id="about"
-      className="relative scroll-mt-20 bg-canvas py-12 md:py-16"
+      ref={containerRef}
+      className="relative scroll-mt-20 overflow-hidden bg-canvas py-28 md:py-36"
     >
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-2 md:gap-12 md:px-10 lg:gap-16">
-        <Reveal from="left" className="relative hidden pb-8 md:block">
-          <div className="relative aspect-[4/5] w-[78%] overflow-hidden rounded-lg">
-            <Image
-              src="/images/about-left.webp"
-              alt={t("imageLeftAlt")}
-              fill
-              sizes="(max-width: 1024px) 50vw, 40vw"
-              className="object-cover"
-            />
-            {/* <span className="absolute bottom-4 left-4 rounded-full bg-canvas px-4 py-2 text-xs font-medium text-ink ring-1 ring-hairline">
-              {t("imageLeftCaption")}
-            </span> */}
-          </div>
+      <m.div
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, margin: "-100px" }}
+        className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-16 px-6 md:flex-row md:items-start md:px-10"
+      >
+        {/* Left Image (Larger) */}
+        <m.div
+          variants={scaleIn}
+          className="relative w-full max-w-sm md:w-5/12 lg:w-4/12"
+        >
+          <m.div style={prefersReducedMotion ? {} : { y: yLeft }}>
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-soft-cloud">
+              <Image
+                src="/images/about-left.webp"
+                alt={t("imageLeftAlt")}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+          </m.div>
+        </m.div>
 
-          <div className="relative -mt-[16%] ml-auto aspect-[4/5] w-[58%] overflow-hidden rounded-lg">
-            <Image
-              src="/images/about-right.webp"
-              alt={t("imageRightAlt")}
-              fill
-              sizes="(max-width: 1024px) 40vw, 30vw"
-              className="object-cover"
-            />
-            {/* <span className="absolute bottom-4 left-4 rounded-full bg-canvas px-4 py-2 text-xs font-medium text-ink ring-1 ring-hairline">
-              {t("imageRightCaption")}
-            </span> */}
-          </div>
-
-          {/* <div className="absolute -bottom-4 left-0 z-10 rounded-full bg-ink px-6 py-3 text-canvas">
-            <span className="text-sm font-medium">{t("chip")}</span>
-          </div> */}
-        </Reveal>
-
-        <Reveal from="right" delay={0.1} className="text-center md:text-left">
-          <h2 className="font-display text-5xl uppercase leading-[0.9] md:text-7xl">
+        {/* Text Content (Asymmetric, not strictly centered) */}
+        <m.div
+          variants={staggerContainer}
+          className="flex w-full flex-col items-start text-left md:mt-16 md:w-5/12 lg:w-4/12"
+        >
+          <m.h2
+            variants={fadeUp}
+            className="font-display text-5xl uppercase leading-[0.9] md:text-6xl lg:text-7xl"
+          >
             {t("heading1")} <span className="text-stone">{t("heading2")}</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-mute md:text-lg lg:mx-0">
+          </m.h2>
+          <m.p
+            variants={fadeUp}
+            className="mt-6 text-base leading-relaxed text-mute md:text-lg"
+          >
             {t("paragraph")}
-          </p>
-        </Reveal>
-      </div>
+          </m.p>
+          {/* <m.div variants={fadeUp} className="mt-9">
+            <Link
+              href="/about"
+              className="group relative inline-flex items-center pb-1 text-sm font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-ink/70"
+            >
+              {t("cta")}
+              <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-ink transition-transform duration-500 ease-[0.4,0,0.2,1] group-hover:scale-x-100" />
+            </Link>
+          </m.div> */}
+        </m.div>
+
+        {/* Right Image (Smaller, offset) */}
+        <m.div
+          variants={scaleIn}
+          className="hidden relative w-full md:block md:w-3/12 lg:w-3/12 md:mt-32"
+        >
+          <m.div style={prefersReducedMotion ? {} : { y: yRight }}>
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-soft-cloud">
+              <Image
+                src="/images/about-right.webp"
+                alt={t("imageRightAlt")}
+                fill
+                sizes="(max-width: 768px) 0px, 25vw"
+                className="object-cover"
+              />
+            </div>
+          </m.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }
