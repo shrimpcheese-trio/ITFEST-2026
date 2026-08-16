@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useTranslations, useLocale } from "next-intl";
+import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+import { AnimatePresence, motion } from "motion/react";
+import { Menu, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
@@ -29,174 +32,121 @@ const LINKS = [
 
 export function Navbar() {
   const t = useTranslations("nav");
+  const a11y = useTranslations("a11y");
   const locale = useLocale();
   const pathname = usePathname();
+  const otherLocale = locale === "id" ? "en" : "id";
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { scrollY } = useScroll();
-  const smoothScroll = useSpring(scrollY, { stiffness: 300, damping: 40 });
-
-  const backgroundColor = useTransform(
-    smoothScroll,
-    [0, 150],
-    ["rgba(233, 233, 233, 0)", "rgba(233, 233, 233, 0.85)"],
-  );
-
-  const color = useTransform(smoothScroll, [0, 150], ["#1a1a1a", "#1a1a1a"]);
-
-  const borderColor = useTransform(
-    smoothScroll,
-    [0, 150],
-    ["rgba(202, 202, 203, 0.5)", "rgba(255, 255, 255, 0.15)"],
-  );
-
-  const backdropFilter = useTransform(
-    smoothScroll,
-    [0, 150],
-    ["blur(0px)", "blur(12px)"],
-  );
-
-  const headerPaddingTop = useTransform(
-    smoothScroll,
-    [0, 150],
-    ["0px", "12px"],
-  );
-  const headerPaddingX = useTransform(smoothScroll, [0, 150], ["0px", "24px"]);
-  const borderRadius = useTransform(smoothScroll, [0, 150], ["0px", "9999px"]);
-
-  const progress = useTransform(smoothScroll, [0, 150], [0, 1]);
-  const percentSub = useTransform(progress, (p) => p * 100);
-  const pxAdd = useTransform(progress, (p) => p * 1240);
-  const maxWidth = useMotionTemplate`calc(100% - ${percentSub}% + ${pxAdd}px)`;
-
-  const logoStroke = useTransform(scrollY, [0, 100], ["#fafafa", "#fafafa"]);
-  const textColor = useTransform(scrollY, [0, 100], ["#fafafa", "#fafafa"]);
+  useEffect(() => {
+    if (menuOpen) {
+      wasOpenRef.current = true;
+    } else if (wasOpenRef.current) {
+      menuBtnRef.current?.focus();
+      wasOpenRef.current = false;
+    }
+  }, [menuOpen]);
 
   return (
-    <m.header
-      className="fixed inset-x-0 top-0 z-50"
-      initial={{ y: 0 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-      style={{
-        paddingTop: headerPaddingTop,
-        paddingLeft: headerPaddingX,
-        paddingRight: headerPaddingX,
+    <motion.header
+      initial={{ y: -32, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setMenuOpen(false);
       }}
+      className="fixed inset-x-0 top-3 z-50 px-3 md:px-6"
     >
-      <m.div
-        className="mx-auto flex w-full items-center justify-between gap-6 px-4 py-3 transition-colors"
-        style={
-          {
-            backgroundColor,
-            borderColor,
-            borderWidth: 1,
-            borderStyle: "solid",
-            backdropFilter,
-            color,
-            borderRadius,
-            maxWidth,
-            "--logo-stroke": logoStroke,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- motion style accepts custom CSS properties
-          } as any
-        }
-      >
-        <Link
-          href="/"
-          aria-label={siteConfig.name}
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          <Logo />
-        </Link>
-
-        <nav className="hidden items-center gap-7 lg:flex">
-          {LINKS.map((link) => (
-            <Link
-              key={link.key}
-              href={link.href}
-              className="text-sm font-medium opacity-80 transition-opacity hover:opacity-100"
-            >
-              {t(link.key)}
+      <div className="mx-auto max-w-[1240px]">
+        <div className="relative rounded-full border border-hairline bg-canvas/85 backdrop-blur-md">
+          <div className="flex items-center justify-between gap-6 px-4 py-3">
+            <Link href="/" aria-label={siteConfig.name}>
+              <Logo />
             </Link>
-          ))}
-        </nav>
 
-        <div className="flex items-center gap-2 md:gap-3">
-          <m.div
-            className="relative flex items-center rounded-full p-1"
-            style={{
-              borderColor,
-              borderWidth: 1,
-              borderStyle: "solid",
-            }}
-          >
-            {["id", "en"].map((l) => {
-              const isActive = locale === l;
-              return (
-                <Link
-                  key={l}
-                  href={pathname}
-                  locale={l as Locale}
-                  className="relative z-10 flex size-8 items-center justify-center rounded-full text-[11px] font-semibold uppercase tracking-wider"
-                >
-                  {isActive && (
-                    <m.div
-                      layoutId="lang-indicator"
-                      className="absolute inset-0 -z-10 rounded-full"
-                      style={{ backgroundColor: color }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                  <m.span
-                    style={{
-                      color: isActive ? textColor : "inherit",
-                    }}
-                    className={
-                      isActive
-                        ? ""
-                        : "opacity-60 transition-opacity hover:opacity-100"
-                    }
-                  >
-                    {l}
-                  </m.span>
-                </Link>
-              );
-            })}
-          </m.div>
-
-          <ContactDialog>
-            <m.button
-              className="hidden h-10 items-center justify-center rounded-full px-6 text-sm font-medium transition-transform active:scale-95 sm:inline-flex"
-              style={{
-                backgroundColor: color,
-                color: textColor,
-              }}
+            <nav
+              aria-label={a11y("mainNav")}
+              className="hidden items-center gap-7 lg:flex"
             >
-              {t("getInTouch")}
-            </m.button>
-          </ContactDialog>
+              {LINKS.map((link) => (
+                <Link
+                  key={link.key}
+                  href={link.href}
+                  className="text-sm text-ink/80 transition-colors hover:text-ink"
+                >
+                  {t(link.key)}
+                </Link>
+              ))}
+            </nav>
 
-          <m.button
-            type="button"
-            className="flex size-10 items-center justify-center rounded-full lg:hidden"
-            style={{
-              borderColor,
-              borderWidth: 1,
-              borderStyle: "solid",
-            }}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="size-5" />
-            ) : (
-              <Menu className="size-5" />
+            <div className="flex items-center gap-3">
+              <Button
+                asChild
+                variant="outline"
+                size="icon-lg"
+                className="rounded-full text-xs font-semibold uppercase tracking-wider"
+              >
+                <Link
+                  href={pathname}
+                  locale={otherLocale}
+                  aria-label={a11y("langSwitch")}
+                >
+                  {locale === "id" ? "EN" : "ID"}
+                </Link>
+              </Button>
+              <ContactDialog>
+                <Button className="hidden sm:inline-flex">{t("getInTouch")}</Button>
+              </ContactDialog>
+              <button
+                ref={menuBtnRef}
+                type="button"
+                onClick={() => setMenuOpen((prev) => !prev)}
+                aria-expanded={menuOpen}
+                aria-controls="mobile-menu"
+                aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
+                className="flex size-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-soft-cloud focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink lg:hidden"
+              >
+                {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+              </button>
+            </div>
+          </div>
+
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.nav
+                id="mobile-menu"
+                aria-label={a11y("mainNav")}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="overflow-hidden lg:hidden"
+              >
+                <div className="border-t border-hairline-soft px-4 pb-4 pt-2">
+                  {LINKS.map((link) => (
+                    <Link
+                      key={link.key}
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="block py-2.5 text-sm text-ink/80 transition-colors hover:text-ink"
+                    >
+                      {t(link.key)}
+                    </Link>
+                  ))}
+                  <ContactDialog>
+                    <Button
+                      onClick={() => setMenuOpen(false)}
+                      className="mt-3 w-full sm:hidden"
+                    >
+                      {t("getInTouch")}
+                    </Button>
+                  </ContactDialog>
+                </div>
+              </motion.nav>
             )}
-          </m.button>
+          </AnimatePresence>
         </div>
       </m.div>
 

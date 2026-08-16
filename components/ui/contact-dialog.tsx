@@ -54,6 +54,7 @@ function Field({
 
 export function ContactDialog({ children }: { children: React.ReactNode }) {
   const t = useTranslations("contactModal");
+  const a11y = useTranslations("a11y");
   const [submitted, setSubmitted] = useState(false);
   const cities = t.raw("cities") as string[];
   const cars = t.raw("cars") as string[];
@@ -104,7 +105,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
             <Button
               variant="outline"
               size="icon-lg"
-              aria-label="Close"
+              aria-label={a11y("close")}
               className="shrink-0"
             >
               <X className="size-4" />
@@ -141,7 +142,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
                   type="text"
                   required
                   placeholder={t("namePlaceholder")}
-                  className="h-12 rounded-full border-hairline bg-canvas px-5 text-sm text-ink placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15"
+                  className="h-12 rounded-full border-hairline bg-canvas px-5 text-sm text-ink placeholder:text-mute focus-visible:border-stone focus-visible:ring-stone/15"
                 />
               </Field>
               <Field label={t("phoneLabel")} required>
@@ -149,12 +150,12 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
                   type="tel"
                   required
                   placeholder={t("phonePlaceholder")}
-                  className="h-12 rounded-full border-hairline bg-canvas px-5 text-sm text-ink placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15"
+                  className="h-12 rounded-full border-hairline bg-canvas px-5 text-sm text-ink placeholder:text-mute focus-visible:border-stone focus-visible:ring-stone/15"
                 />
               </Field>
               <Field label={t("cityLabel")} required>
                 <Select required>
-                  <SelectTrigger className="h-12 rounded-sm border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
+                  <SelectTrigger className="h-12 rounded-sm border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-mute focus-visible:border-stone focus-visible:ring-stone/15">
                     <SelectValue placeholder={t("cityLabel")} />
                   </SelectTrigger>
                   <SelectContent>
@@ -168,7 +169,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
               </Field>
               <Field label={t("carLabel")}>
                 <Select>
-                  <SelectTrigger className="h-12 rounded-sm border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
+                  <SelectTrigger className="h-12 rounded-sm border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-mute focus-visible:border-stone focus-visible:ring-stone/15">
                     <SelectValue placeholder={t("carPlaceholder")} />
                   </SelectTrigger>
                   <SelectContent>
@@ -185,7 +186,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
                   <Textarea
                     rows={4}
                     placeholder={t("messagePlaceholder")}
-                    className="rounded-lg border-hairline bg-canvas px-5 py-4 text-sm text-ink placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15"
+                    className="rounded-lg border-hairline bg-canvas px-5 py-4 text-sm text-ink placeholder:text-mute focus-visible:border-stone focus-visible:ring-stone/15"
                   />
                 </Field>
               </div>

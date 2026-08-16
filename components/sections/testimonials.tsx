@@ -20,6 +20,7 @@ const AVATARS = [
 
 function TestimonialCarousel() {
   const t = useTranslations("testimonials");
+  const a11y = useTranslations("a11y");
   const cards = t.raw("cards") as {
     quote: string;
     name: string;
@@ -46,7 +47,10 @@ function TestimonialCarousel() {
     requestAnimationFrame(() => requestAnimationFrame(() => setSmooth(true)));
   };
 
-  const handleDragEnd = (e: MouseEvent | TouchEvent | PointerEvent, { offset, velocity }: PanInfo) => {
+  const handleDragEnd = (
+    e: MouseEvent | TouchEvent | PointerEvent,
+    { offset, velocity }: PanInfo,
+  ) => {
     const swipePower = Math.abs(offset.x) * velocity.x;
     if (swipePower < -500 || offset.x < -50) {
       step(1);
@@ -84,10 +88,16 @@ function TestimonialCarousel() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="mb-12 text-center px-4">
-        <m.h2 variants={fadeUp} className="font-display text-5xl md:text-7xl uppercase leading-[0.9] text-ink">
+        <m.h2
+          variants={fadeUp}
+          className="font-display text-5xl md:text-7xl uppercase leading-[0.9] text-ink"
+        >
           {t("title")}
         </m.h2>
-        <m.p variants={fadeUp} className="mt-4 text-mute max-w-lg mx-auto md:text-lg">
+        <m.p
+          variants={fadeUp}
+          className="mt-4 text-mute max-w-lg mx-auto md:text-lg"
+        >
           {t("subtitle")}
         </m.p>
       </div>
@@ -99,7 +109,11 @@ function TestimonialCarousel() {
           dragElastic={0.15}
           onDragEnd={handleDragEnd}
           animate={{ x: `-${index * (100 / perView)}%` }}
-          transition={smooth ? { type: "spring", stiffness: 250, damping: 25 } : { duration: 0 }}
+          transition={
+            smooth
+              ? { type: "spring", stiffness: 250, damping: 25 }
+              : { duration: 0 }
+          }
           className="flex cursor-grab active:cursor-grabbing"
         >
           {track.map((card, slot) => {
@@ -118,9 +132,9 @@ function TestimonialCarousel() {
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   className={cn(
                     "relative h-full flex flex-col justify-between p-8 md:p-10 transition-colors duration-500 rounded-xl border",
-                    isActive 
-                      ? "bg-canvas border-ink shadow-[8px_8px_0_0_rgba(17,17,17,1)]" 
-                      : "bg-canvas border-hairline shadow-none pointer-events-none"
+                    isActive
+                      ? "bg-canvas border-ink shadow-[8px_8px_0_0_rgba(17,17,17,1)]"
+                      : "bg-canvas border-hairline shadow-none pointer-events-none",
                   )}
                 >
                   <div className="relative z-10 flex-1 flex flex-col">
@@ -130,11 +144,14 @@ function TestimonialCarousel() {
                       </span>
                       <div className="flex gap-1">
                         {[0, 1, 2, 3, 4].map((star) => (
-                          <Star key={star} className="size-3.5 fill-ink text-ink" />
+                          <Star
+                            key={star}
+                            className="size-3.5 fill-ink text-ink"
+                          />
                         ))}
                       </div>
                     </div>
-                    
+
                     <blockquote className="text-lg md:text-xl leading-relaxed text-charcoal font-medium">
                       {card.quote}
                     </blockquote>
@@ -167,24 +184,24 @@ function TestimonialCarousel() {
         </m.div>
       </m.div>
 
-        <m.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="mt-6 flex items-center justify-center gap-5"
+      <m.div
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        className="mt-6 flex items-center justify-center gap-5"
+      >
+        <m.button
+          variants={fadeUp}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          type="button"
+          onClick={() => step(-1)}
+          aria-label={t("prev")}
+          className="flex size-10 items-center justify-center rounded-full bg-soft-cloud text-ink transition-colors hover:bg-hairline-soft"
         >
-          <m.button
-            variants={fadeUp}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            type="button"
-            onClick={() => step(-1)}
-            aria-label={t("prev")}
-            className="flex size-10 items-center justify-center rounded-full bg-soft-cloud text-ink transition-colors hover:bg-hairline-soft"
-          >
-            <ChevronLeft className="size-4" />
-          </m.button>
+          <ChevronLeft className="size-4" />
+        </m.button>
 
         <div className="flex items-center gap-2">
           {Array.from({ length: len }).map((_, dot) => {
@@ -197,10 +214,12 @@ function TestimonialCarousel() {
                 aria-label={`Slide ${dot + 1}`}
                 className={cn(
                   "relative flex h-1.5 items-center justify-center rounded-full transition-all duration-300",
-                  active ? "w-6" : "w-1.5"
+                  active ? "w-6" : "w-1.5",
                 )}
               >
-                {!active && <div className="absolute inset-0 rounded-full bg-hairline hover:bg-stone transition-colors" />}
+                {!active && (
+                  <div className="absolute inset-0 rounded-full bg-hairline hover:bg-stone transition-colors" />
+                )}
                 {active && (
                   <m.div
                     layoutId="activeTestimonialDot"
@@ -232,12 +251,12 @@ function TestimonialCarousel() {
 export function Testimonials() {
   const t = useTranslations("testimonials");
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
 
   return (
@@ -247,7 +266,10 @@ export function Testimonials() {
       </div>
 
       <div ref={containerRef} className="relative mt-24 overflow-hidden">
-        <m.div style={{ y }} className="absolute inset-0 -top-[20%] -bottom-[20%]">
+        <m.div
+          style={{ y }}
+          className="absolute inset-0 -top-[20%] -bottom-[20%]"
+        >
           <Image
             src="/images/testimonials-bg.webp"
             alt=""
@@ -258,24 +280,38 @@ export function Testimonials() {
         </m.div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
 
-        <m.div 
+        <m.div
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-100px" }}
           className="relative mx-auto max-w-3xl px-6 pb-36 pt-24 text-center"
         >
-          <m.h2 variants={fadeUp} className="font-display text-5xl uppercase leading-[0.9] text-canvas md:text-7xl">
+          <m.h2
+            variants={fadeUp}
+            className="font-display text-5xl uppercase leading-[0.9] text-canvas md:text-7xl"
+          >
             {t("membershipTitle")}{" "}
             <span className="block text-canvas/50">{t("membershipSub")}</span>
           </m.h2>
-          <m.div variants={fadeUp} className="mt-10 flex flex-wrap justify-center gap-3">
-            <m.div whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }} className="inline-flex rounded-full">
+          <m.div
+            variants={fadeUp}
+            className="mt-10 flex flex-wrap justify-center gap-3"
+          >
+            <m.div
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex rounded-full"
+            >
               <Button asChild>
                 <a href="#contact">{t("ctaPrimary")}</a>
               </Button>
             </m.div>
-            <m.div whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }} className="inline-flex rounded-full">
+            <m.div
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex rounded-full"
+            >
               <Button
                 asChild
                 className="border-canvas/30 bg-transparent text-canvas hover:border-canvas/50 hover:bg-canvas/15"

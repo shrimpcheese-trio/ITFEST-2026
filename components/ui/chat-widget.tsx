@@ -22,11 +22,49 @@ export function ChatWidget() {
   const [draft, setDraft] = useState("");
   const [pending, setPending] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
+  const hasOpenedRef = useRef(false);
 
   useEffect(() => {
     const list = listRef.current;
     if (list) list.scrollTop = list.scrollHeight;
   }, [messages, pending]);
+
+  useEffect(() => {
+    if (open) {
+      hasOpenedRef.current = true;
+      inputRef.current?.focus();
+    } else if (hasOpenedRef.current) {
+      launcherRef.current?.focus();
+    }
+  }, [open]);
+
+  function handlePanelKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "Escape") {
+      setOpen(false);
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const panel = panelRef.current;
+    if (!panel) return;
+    const focusables = Array.from(
+      panel.querySelectorAll<HTMLElement>(
+        "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])",
+      ),
+    ).filter((el) => !el.hasAttribute("disabled") && el.offsetParent !== null);
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
 
   function toggleOpen() {
     if (!open && messages.length === 0) {
@@ -78,12 +116,16 @@ export function ChatWidget() {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={panelRef}
+            id="chat-panel"
             initial={{ opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             role="dialog"
+            aria-modal="true"
             aria-label={t("title", { name: siteConfig.assistantName })}
+            onKeyDown={handlePanelKeyDown}
             className="fixed bottom-24 right-4 z-40 flex h-[min(520px,calc(100svh-7rem))] w-[min(380px,calc(100vw-2rem))] flex-col overflow-hidden rounded-xl bg-canvas shadow-2xl md:right-6"
           >
             <div className="flex items-center justify-between gap-3 bg-ink px-5 py-4 text-canvas">
@@ -102,7 +144,7 @@ export function ChatWidget() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label={t("close")}
-                className="flex size-9 items-center justify-center rounded-full transition-colors hover:bg-canvas/10"
+                className="flex size-9 items-center justify-center rounded-full transition-colors hover:bg-canvas/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-canvas"
               >
                 <X className="size-4" />
               </button>
@@ -110,6 +152,9 @@ export function ChatWidget() {
 
             <div
               ref={listRef}
+              role="log"
+              aria-live="polite"
+              aria-busy={pending}
               className="flex-1 space-y-3 overflow-y-auto bg-soft-cloud/50 px-4 py-4"
             >
               {messages.map((message, index) => (
@@ -150,13 +195,14 @@ export function ChatWidget() {
               </label>
               <input
                 id="chat-input"
+                ref={inputRef}
                 type="text"
                 value={draft}
                 maxLength={500}
                 onChange={(event) => setDraft(event.target.value)}
                 placeholder={t("placeholder")}
                 autoComplete="off"
-                className="h-11 flex-1 rounded-full border border-hairline bg-canvas px-4 text-sm text-ink outline-none transition-colors placeholder:text-stone focus:border-stone"
+                className="h-11 flex-1 rounded-full border border-hairline bg-canvas px-4 text-sm text-ink outline-none transition-colors placeholder:text-mute focus:border-ink focus:ring-2 focus:ring-ink/15"
               />
               <button
                 type="submit"
@@ -172,6 +218,7 @@ export function ChatWidget() {
       </AnimatePresence>
 
       <motion.button
+        ref={launcherRef}
         type="button"
         onClick={toggleOpen}
         initial={{ scale: 0 }}
@@ -182,7 +229,9 @@ export function ChatWidget() {
             ? t("close")
             : t("launcherLabel", { name: siteConfig.assistantName })
         }
-        className="fixed bottom-5 right-4 z-40 flex size-14 items-center justify-center rounded-full bg-ink text-canvas shadow-xl transition-transform hover:scale-105 md:right-6"
+        aria-expanded={open}
+        aria-controls="chat-panel"
+        className="fixed bottom-5 right-4 z-40 flex size-14 items-center justify-center rounded-full bg-ink text-canvas shadow-xl transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 md:right-6"
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.span

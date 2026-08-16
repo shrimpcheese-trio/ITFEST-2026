@@ -12,7 +12,16 @@
     "experience": "Pengalaman",
     "fleet": "Armada",
     "contact": "Kontak",
-    "getInTouch": "Hubungi Kami"
+    "getInTouch": "Hubungi Kami",
+    "openMenu": "Buka menu navigasi",
+    "closeMenu": "Tutup menu navigasi"
+  },
+  "a11y": {
+    "skipToContent": "Langsung ke konten",
+    "langSwitch": "Ganti bahasa",
+    "close": "Tutup",
+    "mainNav": "Navigasi utama",
+    "slide": "Slide {n}"
   },
   "hero": {
     "title": "MCLAREN 720S",

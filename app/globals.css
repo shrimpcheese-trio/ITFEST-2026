@@ -16,7 +16,7 @@
   --color-charcoal: #39393b;
   --color-ash: #4b4b4d;
   --color-mute: #707072;
-  --color-stone: #9e9ea0;
+  --color-stone: #737376;
   --color-hairline: #cacacb;
   --color-hairline-soft: #e5e5e5;
   --color-sale: #d30005;
@@ -139,6 +139,12 @@
     @apply font-sans antialiased;
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 

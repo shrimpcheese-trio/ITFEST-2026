@@ -11,25 +11,25 @@ const STAT_KEYS = ["cars", "cities", "customers", "rating"] as const;
 function Counter({ value }: { value: string }) {
   const nodeRef = useRef<HTMLSpanElement>(null);
   const inView = useInView(nodeRef, { once: true, margin: "-50px" });
-  
+
   useEffect(() => {
     if (!inView || !nodeRef.current) return;
-    
+
     const numMatch = value.match(/[\d.]+/);
     if (!numMatch) {
       nodeRef.current.textContent = value;
       return;
     }
-    
+
     const numStr = numMatch[0];
     const isFloat = numStr.includes(".");
     const num = parseFloat(numStr);
-    
+
     const prefix = value.substring(0, numMatch.index);
     const suffix = value.substring(numMatch.index! + numStr.length);
-    
+
     const node = nodeRef.current;
-    
+
     const controls = animate(0, num, {
       duration: 2.5,
       ease: [0.22, 1, 0.36, 1],
@@ -39,9 +39,9 @@ function Counter({ value }: { value: string }) {
         } else {
           node.textContent = prefix + Math.floor(v) + suffix;
         }
-      }
+      },
     });
-    
+
     return () => controls.stop();
   }, [inView, value]);
 
@@ -53,7 +53,7 @@ export function StatsStrip() {
 
   return (
     <section className="bg-ink py-16 md:py-20 relative overflow-hidden">
-      <m.div 
+      <m.div
         variants={staggerContainer}
         initial="initial"
         whileInView="animate"
@@ -68,17 +68,21 @@ export function StatsStrip() {
             <p className="mt-3 text-xs font-medium uppercase tracking-[0.22em] text-canvas/55">
               {t(`${key}Label`)}
             </p>
-            
+
             {i < STAT_KEYS.length - 1 && (
-              <m.div 
+              <m.div
                 className={cn(
                   "absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-16 bg-white/10 origin-center",
-                  i % 2 === 1 ? "hidden md:block" : "block"
+                  i % 2 === 1 ? "hidden md:block" : "block",
                 )}
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1], delay: 0.3 + i * 0.15 }}
+                transition={{
+                  duration: 0.7,
+                  ease: [0.4, 0, 0.2, 1],
+                  delay: 0.3 + i * 0.15,
+                }}
               />
             )}
           </m.div>

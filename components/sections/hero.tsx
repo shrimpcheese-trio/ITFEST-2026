@@ -130,7 +130,7 @@ export function Hero() {
               key={active}
               className="max-w-[260px] animate-in fade-in duration-500 md:text-right"
             >
-              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-stone">
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-mute">
                 {t("tabKicker")}
               </p>
               <p className="mt-1.5 text-sm leading-relaxed text-mute">
@@ -142,29 +142,55 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 h-[52svh] min-h-[380px] md:h-[58svh]">
-        <LazyCanvas
-          camera={{ position: [-3.4, 1.0, 3.4], fov: 32 }}
-          fallback={
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src="/images/hero-fallback.webp"
-              alt=""
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-          }
-        >
-          <HeroScene tab={active} />
-        </LazyCanvas>
+        <div aria-hidden className="absolute inset-0">
+          <LazyCanvas
+            camera={{ position: [-3.4, 1.0, 3.4], fov: 32 }}
+            fallback={
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src="/images/hero-fallback.webp"
+                alt=""
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            }
+          >
+            <HeroScene tab={active} />
+          </LazyCanvas>
+        </div>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-44 bg-gradient-to-t from-black to-transparent" />
 
-        <div className="absolute bottom-6 right-4 z-20 hidden items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur sm:flex md:right-10">
-          <m.div
-            animate={prefersReducedMotion ? {} : { x: [-4, 4, -4] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          >
-            <RotateCw className="size-3.5 text-canvas/80" />
-          </m.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            ease: [0.22, 0.61, 0.36, 1],
+            delay: 0.35,
+          }}
+          className="absolute bottom-6 left-4 z-20 md:left-10"
+        >
+          <div className="rounded-full border border-hairline/50 bg-canvas/90 px-5 py-2.5 backdrop-blur">
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-mute">
+              {t("priceLabel")}
+            </p>
+            <p className="font-display text-xl leading-none text-ink">
+              {t("price")}
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            ease: [0.22, 0.61, 0.36, 1],
+            delay: 0.45,
+          }}
+          className="absolute bottom-6 right-4 z-20 hidden items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur sm:flex md:right-10"
+        >
+          <RotateCw className="size-3.5 text-canvas/80" />
           <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-canvas/80">
             {t("dragHint")}
           </span>

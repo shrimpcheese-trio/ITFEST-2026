@@ -17,7 +17,10 @@ export function ValueProps() {
   const [selectedSpec, setSelectedSpec] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="scroll-mt-20 bg-canvas py-20 md:py-28 relative">
+    <section
+      id="experience"
+      className="scroll-mt-20 bg-canvas py-20 md:py-28 relative"
+    >
       <div className="mx-auto max-w-2xl px-6 text-center">
         <m.h2
           initial="initial"
@@ -38,17 +41,17 @@ export function ValueProps() {
           {t("subtitle")}
         </m.p>
       </div>
-      
+
       <div className="mx-auto mt-12 h-[460px] max-w-6xl overflow-visible rounded-none px-0 md:h-[600px] md:px-6">
         <LazyCanvas
           orthographic
           frameloop="demand"
           camera={{ position: [0, 10, 0], zoom: 56, near: 0.1, far: 100 }}
         >
-          <ValuePropsScene 
-            labels={labels} 
-            activeMarker={activeMarker} 
-            setActiveMarker={setActiveMarker} 
+          <ValuePropsScene
+            labels={labels}
+            activeMarker={activeMarker}
+            setActiveMarker={setActiveMarker}
             onClickMarker={setSelectedSpec}
           />
         </LazyCanvas>
@@ -72,23 +75,25 @@ export function ValueProps() {
               onClick={() => setSelectedSpec(index)}
               className={cn(
                 "group flex flex-col gap-1 transition-all duration-300 cursor-pointer",
-                isActive ? "opacity-100" : "opacity-70"
+                isActive ? "opacity-100" : "opacity-70",
               )}
             >
               <span className="text-[10px] font-bold text-ink/40 tracking-wider">
                 0{index + 1}
               </span>
               <div className="relative w-fit">
-                <span className={cn(
-                  "text-xs font-semibold uppercase tracking-[0.1em] transition-colors",
-                  isActive ? "text-ink" : "text-mute group-hover:text-ink/70"
-                )}>
+                <span
+                  className={cn(
+                    "text-xs font-semibold uppercase tracking-[0.1em] transition-colors",
+                    isActive ? "text-ink" : "text-mute group-hover:text-ink/70",
+                  )}
+                >
                   {label}
                 </span>
-                <span 
+                <span
                   className={cn(
                     "absolute -bottom-1 left-0 h-[1px] bg-ink transition-all duration-500 ease-out",
-                    isActive ? "w-full" : "w-0 group-hover:w-1/2"
+                    isActive ? "w-full" : "w-0 group-hover:w-1/2",
                   )}
                 />
               </div>
@@ -106,11 +111,11 @@ export function ValueProps() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div 
-              className="absolute inset-0 bg-black/30 backdrop-blur-md transition-opacity" 
-              onClick={() => setSelectedSpec(null)} 
+            <div
+              className="absolute inset-0 bg-black/30 backdrop-blur-md transition-opacity"
+              onClick={() => setSelectedSpec(null)}
             />
-            
+
             <m.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -118,16 +123,23 @@ export function ValueProps() {
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="relative w-full max-w-md bg-canvas p-8 md:p-10 shadow-2xl"
             >
-              <button 
+              <button
                 onClick={() => setSelectedSpec(null)}
                 className="absolute top-4 right-4 p-2 text-mute hover:text-ink transition-colors"
                 aria-label="Close"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
-              
+
               <p className="text-[10px] font-bold text-ink/40 tracking-widest uppercase mb-4">
                 Spec 0{selectedSpec + 1}
               </p>

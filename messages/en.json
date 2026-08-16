@@ -12,7 +12,16 @@
     "experience": "Experience",
     "fleet": "Fleet",
     "contact": "Contact",
-    "getInTouch": "Get in touch"
+    "getInTouch": "Get in touch",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "langSwitch": "Switch language",
+    "close": "Close",
+    "mainNav": "Main navigation",
+    "slide": "Slide {n}"
   },
   "hero": {
     "title": "MCLAREN 720S",

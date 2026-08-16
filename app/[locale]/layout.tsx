@@ -7,6 +7,7 @@ import { getTranslations, getMessages } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { routing, type Locale } from "@/i18n/routing";
 import { MotionProvider } from "@/lib/motion/provider";
+import { SkipLink } from "@/components/ui/skip-link";
 import { ChatWidget } from "@/components/ui/chat-widget";
 import "../globals.css";
 
@@ -70,6 +71,7 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col bg-canvas text-ink overflow-x-hidden">
         <NextIntlClientProvider messages={messages}>
           <MotionProvider>
+            <SkipLink />
             {children}
             <ChatWidget />
           </MotionProvider>
