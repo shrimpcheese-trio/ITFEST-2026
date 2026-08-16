@@ -80,14 +80,38 @@
     "title": "The vehicle, understood",
     "subtitle": "Every detail is engineered for comfort and total control.",
     "markers": [
-      { "label": "Digital instrument cluster" },
-      { "label": "Premium cabin materials" },
-      { "label": "Active safety systems" },
-      { "label": "Adaptive suspension" },
-      { "label": "7-speed gearbox" },
-      { "label": "Carbon-ceramic brakes" },
-      { "label": "Active aerodynamics" },
-      { "label": "LED Matrix headlights" }
+      { 
+        "label": "Digital instrument cluster",
+        "description": "A high-resolution active display providing real-time telemetry, advanced navigation overlays, and customizable driving modes directly in your line of sight."
+      },
+      { 
+        "label": "Premium cabin materials",
+        "description": "Hand-stitched Alcantara leather and aerospace-grade carbon fiber trim offer unmatched tactile luxury and weight reduction."
+      },
+      { 
+        "label": "Active safety systems",
+        "description": "Continuous monitoring via radar and optical sensors to enable collision avoidance, lane keeping, and automated emergency braking."
+      },
+      { 
+        "label": "Adaptive suspension",
+        "description": "Proactive damping systems that instantly adjust to road conditions, delivering track-level stiffness or highway comfort at the push of a button."
+      },
+      { 
+        "label": "7-speed gearbox",
+        "description": "A lightning-fast dual-clutch transmission providing seamless gear changes in milliseconds, ensuring uninterrupted power delivery."
+      },
+      { 
+        "label": "Carbon-ceramic brakes",
+        "description": "Massive rotors designed to resist heat fade under extreme conditions, offering immediate and predictable stopping power."
+      },
+      { 
+        "label": "Active aerodynamics",
+        "description": "Deployable spoilers and dynamic air intakes that adjust automatically to optimize downforce, cooling, and straight-line speed."
+      },
+      { 
+        "label": "LED Matrix headlights",
+        "description": "Intelligent illumination that dynamically shapes the light beam to avoid dazzling oncoming traffic while maximizing visibility."
+      }
     ]
   },
   "showcase": {
@@ -278,6 +302,7 @@
     "newsletterPlaceholder": "Email address",
     "newsletterButton": "Send",
     "newsletterHint": "Get exclusive monthly offers.",
+    "newsletterSuccess": "Subscribed successfully!",
     "links": {
       "home": "Home",
       "fleet": "Fleet",

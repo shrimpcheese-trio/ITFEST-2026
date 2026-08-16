@@ -6,7 +6,7 @@ import { Inter, Bebas_Neue } from "next/font/google";
 import { getTranslations, getMessages } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { routing, type Locale } from "@/i18n/routing";
-import { MotionProvider } from "@/components/ui/motion-provider";
+import { MotionProvider } from "@/lib/motion/provider";
 import "../globals.css";
 
 const inter = Inter({
@@ -30,7 +30,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale: locale as Locale, namespace: "meta" });
+  const t = await getTranslations({
+    locale: locale as Locale,
+    namespace: "meta",
+  });
 
   return {
     title: t("title"),
@@ -56,7 +59,12 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={cn("h-full antialiased", inter.variable, bebas.variable, "font-sans")}
+      className={cn(
+        "h-full antialiased",
+        inter.variable,
+        bebas.variable,
+        "font-sans",
+      )}
     >
       <body className="min-h-full flex flex-col bg-canvas text-ink">
         <NextIntlClientProvider messages={messages}>

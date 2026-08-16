@@ -1,8 +1,9 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import { Html, Line, OrthographicCamera } from "@react-three/drei";
+import { Html, OrthographicCamera } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { CarModel, type CarAnchor } from "./car-model";
 import { ModelLoader } from "./model-loader";
@@ -24,61 +25,172 @@ function TopDownCamera() {
   );
 }
 
-function Marker({
+function SvgOverlay({ 
+  anchors, 
+  activeMarker,
+  onClickMarker
+}: { 
+  anchors: CarAnchor[]; 
+  activeMarker: number | null;
+  onClickMarker: (idx: number) => void;
+}) {
+  const { camera, size } = useThree();
+
+  if (!anchors || anchors.length === 0) return null;
+
+  return (
+    <Html
+      position={[0, 0, 0]}
+      center
+      transform={false}
+      zIndexRange={[10, 0]}
+      className="pointer-events-none"
+    >
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <svg
+          width={size.width}
+          height={size.height}
+          viewBox={`-${size.width / 2} -${size.height / 2} ${size.width} ${size.height}`}
+          style={{ overflow: "visible" }}
+        >
+          {anchors.map((anchor, i) => {
+            // Project 3D coordinate to 2D
+            const p1 = anchor.point.clone().project(camera);
+            const p2 = anchor.anchor.clone().project(camera);
+
+            const x1 = (p1.x * size.width) / 2;
+            const y1 = -(p1.y * size.height) / 2;
+            const x2 = (p2.x * size.width) / 2;
+            const y2 = -(p2.y * size.height) / 2;
+
+            const isActive = activeMarker === i;
+            const isDimmed = activeMarker !== null && !isActive;
+
+            return (
+              <g key={i}>
+                {/* SVG stroke-dashoffset path draw animation */}
+                <motion.line
+                  x1={x1}
+                  y1={y1}
+                  x2={x2}
+                  y2={y2}
+                  stroke={isActive ? "#111111" : "#9e9ea0"}
+                  strokeWidth={isActive ? 1.5 : 1}
+                  strokeDasharray={isActive ? "none" : "4 4"}
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: isDimmed ? 0.2 : 0.6 }}
+                  transition={{ delay: 0.1 * i, duration: 0.8, ease: "easeOut" }}
+                />
+                
+                {/* Dot on the car */}
+                <motion.circle
+                  cx={x1}
+                  cy={y1}
+                  r={isActive ? 4 : 2}
+                  fill={isActive ? "#111111" : "#9e9ea0"}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1, opacity: isDimmed ? 0.2 : 1 }}
+                  transition={{ delay: 0.1 * i + 0.3, type: "spring", stiffness: 300, damping: 20 }}
+                />
+                
+                {/* Glow ring (Sonar Pulse) when active */}
+                <motion.circle
+                  cx={x1}
+                  cy={y1}
+                  r={20}
+                  fill="#111111"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={isActive ? { scale: [0, 1], opacity: [0.3, 0] } : { scale: 0, opacity: 0 }}
+                  transition={isActive ? { repeat: Infinity, duration: 1.5, ease: "easeOut" } : { duration: 0.2 }}
+                  className="cursor-pointer pointer-events-auto"
+                  onClick={() => onClickMarker(i)}
+                />
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+    </Html>
+  );
+}
+
+function MarkerLabel({
   anchor,
   label,
   index,
   side,
+  isActive,
+  isDimmed,
+  onHover,
+  onClick,
 }: {
   anchor: CarAnchor;
   label: string;
   index: number;
   side: "left" | "right";
+  isActive: boolean;
+  isDimmed: boolean;
+  onHover: (active: boolean) => void;
+  onClick: () => void;
 }) {
   return (
-    <>
-      <Line
-        points={[anchor.point, anchor.anchor]}
-        color="#9e9ea0"
-        lineWidth={1}
-        transparent
-        opacity={0.75}
-        dashed
-        dashSize={0.12}
-        gapSize={0.07}
-      />
-      <Html
-        position={anchor.anchor}
-        center
-        transform={false}
-        zIndexRange={[30, 0]}
+    <Html position={anchor.anchor} center transform={false} zIndexRange={[30, 0]}>
+      <motion.div
+        onMouseEnter={() => onHover(true)}
+        onMouseLeave={() => onHover(false)}
+        onClick={onClick}
+        initial={{ opacity: 0, x: side === "left" ? "calc(-50% - 20px)" : "calc(50% + 20px)" }}
+        animate={{ opacity: 1, x: side === "left" ? "-50%" : "50%" }}
+        transition={{ delay: 0.1 * index + 0.2, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        className={cn(
+          "group relative flex items-center gap-3 cursor-pointer transition-all duration-300",
+          isDimmed ? "opacity-30" : "opacity-100",
+          side === "left" ? "pr-2" : "pl-2"
+        )}
       >
-        <div className="flex items-center gap-2.5">
-          {side === "right" && <Badge index={index} />}
-          <span className="hidden whitespace-nowrap text-sm font-medium text-mute md:inline">
+        {/* Number Indicator - Editorial Style */}
+        {side === "right" && (
+          <span className="text-[10px] font-bold text-ink/40 tracking-wider">0{index}</span>
+        )}
+        
+        {/* Label with animated underline */}
+        <div className="relative">
+          <span
+            className={cn(
+              "whitespace-nowrap text-xs font-semibold uppercase tracking-[0.15em] transition-colors md:inline",
+              isActive ? "text-ink" : "text-mute group-hover:text-ink/70"
+            )}
+          >
             {label}
           </span>
-          {side === "left" && <Badge index={index} />}
+          <span 
+            className={cn(
+              "absolute -bottom-1 left-0 h-[1px] bg-ink transition-all duration-500 ease-out",
+              isActive ? "w-full" : "w-0 group-hover:w-1/2"
+            )}
+            style={{ transformOrigin: side === "left" ? "right" : "left" }}
+          />
         </div>
-      </Html>
-    </>
+
+        {side === "left" && (
+          <span className="text-[10px] font-bold text-ink/40 tracking-wider">0{index}</span>
+        )}
+      </motion.div>
+    </Html>
   );
 }
 
-function Badge({ index }: { index: number }) {
-  return (
-    <span
-      className={cn(
-        "flex size-8 shrink-0 items-center justify-center rounded-full",
-        "border border-ink/20 bg-canvas font-display text-base text-ink",
-      )}
-    >
-      {index}
-    </span>
-  );
-}
-
-export function ValuePropsScene({ labels }: { labels: string[] }) {
+export function ValuePropsScene({ 
+  labels,
+  activeMarker,
+  setActiveMarker,
+  onClickMarker
+}: { 
+  labels: string[];
+  activeMarker: number | null;
+  setActiveMarker: (idx: number | null) => void;
+  onClickMarker: (idx: number) => void;
+}) {
   const [anchors, setAnchors] = useState<CarAnchor[] | null>(null);
 
   return (
@@ -87,16 +199,27 @@ export function ValuePropsScene({ labels }: { labels: string[] }) {
       <ambientLight intensity={0.5} />
       <directionalLight position={[0, 8, 2]} intensity={1.4} color="#ffffff" />
       <TopDownCamera />
+      
       <Suspense fallback={<ModelLoader />}>
         <CarModel targetLength={3.1} onReady={setAnchors} />
+        
+        {/* The blueprint lines are drawn via SVG overlay mapped to 3D coordinates */}
+        {anchors && (
+          <SvgOverlay anchors={anchors} activeMarker={activeMarker} onClickMarker={onClickMarker} />
+        )}
+        
         {anchors &&
           labels.map((label, i) => (
-            <Marker
+            <MarkerLabel
               key={i}
               anchor={anchors[i]}
               label={label}
               index={i + 1}
               side={i < 4 ? "left" : "right"}
+              isActive={activeMarker === i}
+              isDimmed={activeMarker !== null && activeMarker !== i}
+              onHover={(active) => setActiveMarker(active ? i : null)}
+              onClick={() => onClickMarker(i)}
             />
           ))}
       </Suspense>

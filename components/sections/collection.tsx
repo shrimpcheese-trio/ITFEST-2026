@@ -3,138 +3,262 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import {
+  m,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  useSpring,
+} from "motion/react";
+import { Link } from "@/i18n/navigation";
+import { useRef } from "react";
 import { cn } from "@/lib/utils";
-import { Card } from "@/components/ui/card";
-import { Reveal } from "@/components/ui/reveal";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const ITEMS = [
-  { category: 1, image: "/images/collection-supercar.webp" },
-  { category: 1, image: "/images/collection-supercar.webp" },
-  { category: 2, image: "/images/collection-suv.webp" },
-  { category: 3, image: "/images/collection-sedan.webp" },
-  { category: 4, image: "/images/collection-minibus.webp" },
-];
+import { staggerContainer, fadeUp } from "@/lib/motion/variants";
+import { useReducedMotion } from "@/lib/motion/hooks";
+
+type CarItem = {
+  id: string;
+  category: string;
+  name: string;
+  price: string;
+  image: string;
+};
 
 export function Collection() {
   const t = useTranslations("collection");
   const tabs = t.raw("tabs") as string[];
-  const items = t.raw("items") as { name: string; price: string }[];
+  const featuredRaw = t.raw("featured") as Omit<CarItem, "id" | "image">;
+  const itemsRaw = t.raw("items") as Omit<CarItem, "id" | "image">[];
+
+  const allCars: CarItem[] = [
+    {
+      ...featuredRaw,
+      id: "mclaren-720s",
+      image: "/images/collection-supercar.webp",
+    },
+    {
+      ...itemsRaw[0],
+      id: "lamborghini-huracan",
+      image: "/images/collection-supercar.webp",
+    },
+    {
+      ...itemsRaw[1],
+      id: "range-rover-sport",
+      image: "/images/collection-suv.webp",
+    },
+    { ...itemsRaw[2], id: "bmw-530i", image: "/images/collection-sedan.webp" },
+    {
+      ...itemsRaw[3],
+      id: "toyota-hiace-premio",
+      image: "/images/collection-minibus.webp",
+    },
+  ];
 
   const [activeTab, setActiveTab] = useState(0);
-  const featuredIndex =
+  const [selectedCarId, setSelectedCarId] = useState<string | null>(null);
+
+  const containerRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  // Ghost text moves left to right as we scroll down
+  const watermarkX = useTransform(smoothScroll, [0, 1], ["-10%", "5%"]);
+  const watermarkOpacity = useTransform(smoothScroll, [0.5, 1], [1, 0]);
+
+  // Filter dataset based on selected tab
+  const filteredCars =
     activeTab === 0
-      ? 0
-      : ITEMS.findIndex((item) => item.category === activeTab);
-  const featured = ITEMS[featuredIndex];
-  const featuredMeta =
-    featuredIndex === 0 ? t.raw("featured") : items[featuredIndex - 1];
-  const thumbs = ITEMS.slice(1);
+      ? allCars
+      : allCars.filter((car) => car.category === tabs[activeTab]);
+
+  // Determine which car is featured vs thumbnails
+  const featuredCar =
+    filteredCars.find((c) => c.id === selectedCarId) || filteredCars[0];
+  const thumbs = filteredCars.filter((c) => c.id !== featuredCar?.id);
 
   return (
     <section
       id="fleet"
-      className="relative scroll-mt-20 overflow-hidden bg-canvas py-12 md:py-16"
+      className="relative scroll-mt-20 overflow-hidden bg-canvas pb-32 pt-28 md:pt-36"
     >
       <div className="mx-auto max-w-6xl px-6 md:px-10">
-        <Reveal className="text-center">
-          <h2 className="font-display text-5xl uppercase leading-[0.9] md:text-7xl">
+        <m.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center"
+        >
+          <m.h2 variants={fadeUp} className="font-display text-5xl uppercase leading-[0.9] md:text-7xl">
             {t("title")}
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-mute">{t("subtitle")}</p>
-        </Reveal>
+          </m.h2>
+          <m.p variants={fadeUp} className="mx-auto mt-4 max-w-xl text-mute">
+            {t("subtitle")}
+          </m.p>
+        </m.div>
 
-        <Reveal delay={0.05} className="mt-10 flex justify-center items-center">
-          <Tabs
-            value={String(activeTab)}
-            onValueChange={(value) => setActiveTab(Number(value))}
-            className="flex justify-center items-center"
-          >
-            <TabsList className="h-auto flex-wrap gap-2.5 rounded-full bg-transparent p-0">
-              {tabs.map((tab, index) => (
-                <TabsTrigger
-                  key={tab}
-                  value={String(index)}
-                  className="h-auto flex-none rounded-full border border-hairline bg-canvas px-5 py-2 text-sm font-medium text-ink transition-colors hover:border-ink/40 data-active:border-ink data-active:bg-ink data-active:text-canvas"
-                >
-                  {tab}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
-        </Reveal>
-
-        <Reveal delay={0.1} className="mt-12">
-          <Card className="group relative overflow-hidden rounded-lg ring-0 [--card-spacing:0px]">
-            <div className="relative aspect-[16/9] md:aspect-[21/10]">
-              <Image
-                src={featured.image}
-                alt={featuredMeta.name}
-                fill
-                priority
-                sizes="(max-width: 1152px) 100vw, 1152px"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/70 to-transparent p-6 md:p-8">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-canvas/70">
-                    {featuredMeta.category}
-                  </p>
-                  <p className="mt-1 font-display text-3xl uppercase leading-none text-canvas md:text-5xl">
-                    {featuredMeta.name}
-                  </p>
-                </div>
-                <p className="shrink-0 rounded-full bg-canvas px-4 py-2 text-sm font-semibold text-ink">
-                  {featuredMeta.price}
-                </p>
-              </div>
-            </div>
-          </Card>
-        </Reveal>
-
-        <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
-          {thumbs.map((thumb, index) => {
-            const meta = items[index];
-            const active = activeTab === ITEMS[index + 1].category;
+        <m.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+          className="mt-10 flex flex-wrap justify-center gap-2.5"
+        >
+          {tabs.map((tab, index) => {
+            const isActive = activeTab === index;
             return (
-              <Reveal
-                key={meta.name}
-                delay={0.15 + index * 0.07}
-                className="text-left"
+              <m.button
+                variants={fadeUp}
+                key={tab}
+                type="button"
+                onClick={() => {
+                  setActiveTab(index);
+                  setSelectedCarId(null);
+                }}
+                className={cn(
+                  "relative rounded-full px-5 py-2 text-sm font-medium transition-colors",
+                  isActive ? "text-canvas" : "text-ink hover:text-ink/60"
+                )}
+              >
+                {isActive && (
+                  <m.span
+                    layoutId="active-collection-tab"
+                    className="absolute inset-0 z-0 rounded-full bg-ink"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                {!isActive && (
+                  <span className="absolute inset-0 z-0 rounded-full border border-hairline" />
+                )}
+                <span className="relative z-10">{tab}</span>
+              </m.button>
+            );
+          })}
+        </m.div>
+
+        {/* Main Featured Card */}
+        {featuredCar && (
+          <AnimatePresence mode="wait">
+            <m.div
+              key={featuredCar.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="group relative mt-12 block overflow-hidden bg-canvas"
+            >
+              <Link href={`/fleet/${featuredCar.id}`} className="block relative aspect-[16/9] md:aspect-[21/10] overflow-hidden">
+                <m.div
+                  className="h-full w-full"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  <Image
+                    src={featuredCar.image}
+                    alt={featuredCar.name}
+                    fill
+                    priority
+                    sizes="(max-width: 1152px) 100vw, 1152px"
+                    className="object-cover"
+                  />
+                </m.div>
+                
+                {/* Editorial-style overlay with sharp pill */}
+                <div className="absolute inset-0 bg-black/15 transition-opacity duration-500 group-hover:bg-black/30" />
+                
+                <div className="absolute inset-x-0 bottom-0 flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-end md:p-10">
+                  <div className="translate-y-2 opacity-0 transition-all duration-700 ease-[0.25,0.1,0.25,1] group-hover:translate-y-0 group-hover:opacity-100">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-canvas">
+                      {featuredCar.category}
+                    </p>
+                    <p className="mt-1.5 font-display text-4xl uppercase leading-none text-canvas md:text-6xl">
+                      {featuredCar.name}
+                    </p>
+                  </div>
+                  
+                  {/* Action Pill anchoring bottom right */}
+                  <div className="flex shrink-0 items-center gap-2 rounded-full bg-canvas/95 px-5 py-2.5 shadow-sm backdrop-blur transition-transform duration-500 group-hover:scale-105">
+                    <span className="text-xs font-semibold uppercase tracking-[0.1em] text-mute">From</span>
+                    <span className="text-sm font-bold text-ink">{featuredCar.price}</span>
+                  </div>
+                </div>
+              </Link>
+            </m.div>
+          </AnimatePresence>
+        )}
+
+        <m.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-8 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {thumbs.map((thumb) => (
+              <m.div
+                key={thumb.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
               >
                 <button
                   type="button"
-                  onClick={() => setActiveTab(ITEMS[index + 1].category)}
-                  className={cn(
-                    "group relative block w-full overflow-hidden rounded-lg text-left transition-opacity",
-                    active ? "ring-2 ring-ink" : "opacity-80 hover:opacity-100",
-                  )}
+                  onClick={() => setSelectedCarId(thumb.id)}
+                  className="group relative flex w-full flex-col text-left focus:outline-none"
                 >
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={thumb.image}
-                      alt={meta.name}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-soft-cloud">
+                    <m.div
+                      className="h-full w-full"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                    >
+                      <Image
+                        src={thumb.image}
+                        alt={thumb.name}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover"
+                      />
+                    </m.div>
                   </div>
-                  <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-3 pb-2 pt-6 text-sm font-medium text-canvas">
-                    {meta.name}
-                  </span>
+                  {/* Editorial metadata row below image */}
+                  <div className="mt-4 flex flex-col gap-1">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-mute">
+                      {thumb.category}
+                    </span>
+                    <span className="text-sm font-bold text-ink">
+                      {thumb.name}
+                    </span>
+                    <span className="mt-1 text-sm text-ink/70">
+                      {thumb.price}
+                    </span>
+                  </div>
                 </button>
-              </Reveal>
-            );
-          })}
-        </div>
+              </m.div>
+            ))}
+          </AnimatePresence>
+        </m.div>
       </div>
 
-      {/* <div
+      <m.div
         aria-hidden
+        style={
+          prefersReducedMotion
+            ? {}
+            : { x: watermarkX, opacity: watermarkOpacity }
+        }
         className="text-watermark pointer-events-none relative -mb-[4vw] mt-10 text-center font-display text-[19vw] leading-[0.75] md:text-[16vw]"
       >
         {t("title")}
-      </div> */}
+      </m.div>
     </section>
   );
 }

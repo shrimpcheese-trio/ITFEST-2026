@@ -80,14 +80,38 @@
     "title": "Kendaraan, dipahami",
     "subtitle": "Setiap detail dirancang untuk kenyamanan dan kendali penuh.",
     "markers": [
-      { "label": "Panel instrumen digital" },
-      { "label": "Material interior premium" },
-      { "label": "Sistem keselamatan aktif" },
-      { "label": "Suspensi adaptif" },
-      { "label": "Transmisi 7-percepatan" },
-      { "label": "Rem karbon-keramik" },
-      { "label": "Aerodinamika aktif" },
-      { "label": "Lampu LED Matrix" }
+      { 
+        "label": "Panel instrumen digital",
+        "description": "Layar aktif beresolusi tinggi yang menyajikan telemetri real-time, overlay navigasi, dan mode berkendara yang dapat disesuaikan tepat pada jarak pandang pengemudi."
+      },
+      { 
+        "label": "Material interior premium",
+        "description": "Lapisan kulit Alcantara jahitan tangan berpadu dengan aksen serat karbon berkualitas aerospace, memberikan kemewahan taktil dan peredaman bobot."
+      },
+      { 
+        "label": "Sistem keselamatan aktif",
+        "description": "Pemantauan terus-menerus melalui sensor radar dan optik untuk fitur penghindar tabrakan, penjaga lajur, serta pengereman darurat otomatis."
+      },
+      { 
+        "label": "Suspensi adaptif",
+        "description": "Sistem peredaman proaktif yang langsung beradaptasi dengan kondisi jalan; menawarkan kestabilan ala sirkuit atau kenyamanan meluncur di jalan tol."
+      },
+      { 
+        "label": "Transmisi 7-percepatan",
+        "description": "Transmisi kopling ganda super cepat yang memberikan perpindahan gigi dalam hitungan milidetik, menjamin penyaluran tenaga tanpa henti."
+      },
+      { 
+        "label": "Rem karbon-keramik",
+        "description": "Cakram rem berukuran masif yang dirancang khusus untuk menahan panas ekstrem, menawarkan daya henti seketika dan dapat diprediksi."
+      },
+      { 
+        "label": "Aerodinamika aktif",
+        "description": "Spoiler yang dapat ditarik dan asupan udara dinamis yang menyesuaikan diri otomatis untuk mengoptimalkan downforce, pendinginan, dan kecepatan."
+      },
+      { 
+        "label": "Lampu LED Matrix",
+        "description": "Pencahayaan cerdas yang secara dinamis membentuk sorotan cahaya agar tidak menyilaukan lalu lintas berlawanan sambil memaksimalkan jarak pandang."
+      }
     ]
   },
   "showcase": {
@@ -278,6 +302,7 @@
     "newsletterPlaceholder": "Alamat email",
     "newsletterButton": "Kirim",
     "newsletterHint": "Dapatkan penawaran eksklusif bulanan.",
+    "newsletterSuccess": "Berhasil berlangganan!",
     "links": {
       "home": "Beranda",
       "fleet": "Armada",
