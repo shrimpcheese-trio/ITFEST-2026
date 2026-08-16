@@ -70,8 +70,8 @@
       "price": "IDR 4,500,000/day"
     },
     "items": [
-      { "category": "Supercar", "name": "Lamborghini Huracán", "price": "IDR 5,200,000/day" },
-      { "category": "SUV", "name": "Range Rover Sport", "price": "IDR 2,800,000/day" },
+      { "category": "Supercar", "name": "Ferrari 488 GTB", "price": "IDR 5,200,000/day" },
+      { "category": "SUV", "name": "Range Rover", "price": "IDR 2,800,000/day" },
       { "category": "Sedan", "name": "BMW 530i", "price": "IDR 1,750,000/day" },
       { "category": "Minibus", "name": "Toyota Hiace Premio", "price": "IDR 1,200,000/day" }
     ]
@@ -91,7 +91,7 @@
     ]
   },
   "showcase": {
-    "modelName": "SU-18",
+    "modelName": "McLaren 720s",
     "tagline": "Your dream supercar, ready for daily driving.",
     "price": "From IDR 4,500,000/day",
     "ctaPrimary": "Rent Now",

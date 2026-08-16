@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { RotateCw } from "lucide-react";
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
 import { HeroScene, type HeroTab } from "@/components/3d/hero-scene";
@@ -35,14 +35,19 @@ export function Hero() {
 
       <div className="relative z-20 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-between gap-8 px-6 pb-6 pt-28 md:px-10 md:pt-32">
         <div className="flex flex-wrap items-start justify-between gap-10">
-          <div className="max-w-md">
-            <Badge
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] }}
+            className="max-w-md"
+          >
+            {/* <Badge
               variant="outline"
               className="h-auto gap-2 rounded-full border-hairline px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-mute"
             >
               <span className="size-1.5 rounded-full bg-sale" />
               {t("badge")}
-            </Badge>
+            </Badge> */}
             <h1 className="mt-5 font-display text-[17vw] uppercase leading-[0.82] md:text-8xl lg:text-9xl">
               {t("title")}
             </h1>
@@ -57,9 +62,19 @@ export function Hero() {
                 <a href="#fleet">{t("ctaSecondary")}</a>
               </Button>
             </div>
-          </div>
+          </motion.div>
 
-          <Tabs
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.7,
+              ease: [0.22, 0.61, 0.36, 1],
+              delay: 0.15,
+            }}
+            className="flex flex-col gap-3 md:items-end"
+          >
+            <Tabs
             value={active}
             onValueChange={(value) => setActive(value as HeroTab)}
             className="flex flex-col gap-3 md:items-end"
@@ -87,6 +102,7 @@ export function Hero() {
               </p>
             </TabsContent>
           </Tabs>
+          </motion.div>
         </div>
       </div>
 
@@ -107,7 +123,16 @@ export function Hero() {
         </LazyCanvas>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-44 bg-gradient-to-t from-black to-transparent" />
 
-        <div className="absolute bottom-6 left-4 z-20 md:left-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            ease: [0.22, 0.61, 0.36, 1],
+            delay: 0.35,
+          }}
+          className="absolute bottom-6 left-4 z-20 md:left-10"
+        >
           <div className="rounded-full border border-hairline/50 bg-canvas/90 px-5 py-2.5 backdrop-blur">
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-stone">
               {t("priceLabel")}
@@ -116,14 +141,23 @@ export function Hero() {
               {t("price")}
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="absolute bottom-6 right-4 z-20 hidden items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur sm:flex md:right-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            ease: [0.22, 0.61, 0.36, 1],
+            delay: 0.45,
+          }}
+          className="absolute bottom-6 right-4 z-20 hidden items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur sm:flex md:right-10"
+        >
           <RotateCw className="size-3.5 text-canvas/80" />
           <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-canvas/80">
             {t("dragHint")}
           </span>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

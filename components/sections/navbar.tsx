@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
+import { motion } from "motion/react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
@@ -22,7 +23,12 @@ export function Navbar() {
   const otherLocale = locale === "id" ? "en" : "id";
 
   return (
-    <header className="fixed inset-x-0 top-3 z-50 px-3 md:px-6">
+    <motion.header
+      initial={{ y: -32, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed inset-x-0 top-3 z-50 px-3 md:px-6"
+    >
       <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-6 rounded-full border border-hairline bg-canvas/85 px-4 backdrop-blur-md py-3">
         <Link href="/" aria-label="Ventura Auto">
           <Logo />
@@ -67,6 +73,6 @@ export function Navbar() {
           </ContactDialog>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

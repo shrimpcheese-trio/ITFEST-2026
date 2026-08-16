@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 
 type FaqItem = { q: string; a: string };
 
@@ -16,15 +16,18 @@ export function Faq() {
   return (
     <section id="faq" className="scroll-mt-20 bg-canvas py-24 md:py-32">
       <div className="mx-auto max-w-3xl px-6 md:px-10">
+        <Reveal>
         <h2 className="text-center font-display text-5xl uppercase leading-[0.9] md:text-7xl">
           {t("title")} <span className="text-stone">{t("titleAccent")}</span>
         </h2>
+        </Reveal>
 
         <div className="mt-14 border-t border-hairline">
           {items.map((item, index) => {
             const expanded = open === index;
             return (
-              <div key={item.q} className="border-b border-hairline">
+              <Reveal key={item.q} delay={index * 0.05}>
+              <div className="border-b border-hairline">
                 <button
                   type="button"
                   onClick={() => setOpen(expanded ? null : index)}
@@ -56,16 +59,17 @@ export function Faq() {
                   </div>
                 </div>
               </div>
+              </Reveal>
             );
           })}
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-4 text-center">
+        {/* <div className="mt-12 flex flex-col items-center gap-4 text-center">
           <p className="font-display text-2xl uppercase md:text-3xl">{t("moreTitle")}</p>
           <Button asChild variant="secondary">
             <a href="#contact">{t("moreCta")}</a>
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

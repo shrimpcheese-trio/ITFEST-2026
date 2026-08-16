@@ -2,7 +2,15 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Clock, Mail, MapPin, MessageCircle, Phone, X } from "lucide-react";
+import {
+  Check,
+  Clock,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -56,7 +64,12 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
   const cars = t.raw("cars") as string[];
 
   const info = [
-    { icon: Mail, label: t("emailLabel"), value: EMAIL, href: `mailto:${EMAIL}` },
+    {
+      icon: Mail,
+      label: t("emailLabel"),
+      value: EMAIL,
+      href: `mailto:${EMAIL}`,
+    },
     { icon: Phone, label: t("phoneLabelInfo"), value: PHONE, href: PHONE_TEL },
     {
       icon: MessageCircle,
@@ -74,7 +87,10 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
       }}
     >
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="max-h-[90svh] overflow-y-auto rounded-lg border-hairline bg-canvas p-6 text-ink md:max-w-3xl md:p-10" showCloseButton={false}>
+      <DialogContent
+        className="max-h-[90svh] overflow-y-auto rounded-lg border-hairline bg-canvas p-6 text-ink md:max-w-3xl md:p-10"
+        showCloseButton={false}
+      >
         <div className="flex items-start justify-between gap-4">
           <div>
             <DialogTitle className="font-display text-4xl uppercase leading-none md:text-5xl">
@@ -101,8 +117,12 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
             <span className="flex size-16 items-center justify-center rounded-full bg-success/10">
               <Check className="size-8 text-success" />
             </span>
-            <p className="mt-6 font-display text-3xl uppercase">{t("successTitle")}</p>
-            <p className="mt-2 max-w-sm text-sm text-mute">{t("successBody")}</p>
+            <p className="mt-6 font-display text-3xl uppercase">
+              {t("successTitle")}
+            </p>
+            <p className="mt-2 max-w-sm text-sm text-mute">
+              {t("successBody")}
+            </p>
             <DialogClose asChild>
               <Button className="mt-8">{t("successCta")}</Button>
             </DialogClose>
@@ -134,7 +154,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
               </Field>
               <Field label={t("cityLabel")} required>
                 <Select required>
-                  <SelectTrigger className="h-12 rounded-full border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
+                  <SelectTrigger className="h-12 rounded-lg border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
                     <SelectValue placeholder={t("cityLabel")} />
                   </SelectTrigger>
                   <SelectContent>
@@ -148,7 +168,7 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
               </Field>
               <Field label={t("carLabel")}>
                 <Select>
-                  <SelectTrigger className="h-12 rounded-full border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
+                  <SelectTrigger className="h-12 rounded-lg border-hairline bg-canvas px-5 text-sm text-ink data-placeholder:text-stone focus-visible:border-stone focus-visible:ring-stone/15">
                     <SelectValue placeholder={t("carPlaceholder")} />
                   </SelectTrigger>
                   <SelectContent>
@@ -192,8 +212,14 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
                     {item.href ? (
                       <a
                         href={item.href}
-                        target={item.href.startsWith("http") ? "_blank" : undefined}
-                        rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                        target={
+                          item.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          item.href.startsWith("http")
+                            ? "noreferrer"
+                            : undefined
+                        }
                         className="flex items-center gap-3 transition-opacity hover:opacity-70"
                       >
                         {inner}

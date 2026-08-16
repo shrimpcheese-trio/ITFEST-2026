@@ -70,8 +70,8 @@
       "price": "Rp 4.500.000/hari"
     },
     "items": [
-      { "category": "Supercar", "name": "Lamborghini Huracán", "price": "Rp 5.200.000/hari" },
-      { "category": "SUV", "name": "Range Rover Sport", "price": "Rp 2.800.000/hari" },
+      { "category": "Supercar", "name": "Ferrari 488 GTB", "price": "Rp 5.200.000/hari" },
+      { "category": "SUV", "name": "Range Rover", "price": "Rp 2.800.000/hari" },
       { "category": "Sedan", "name": "BMW 530i", "price": "Rp 1.750.000/hari" },
       { "category": "Minibus", "name": "Toyota Hiace Premio", "price": "Rp 1.200.000/hari" }
     ]
@@ -91,7 +91,7 @@
     ]
   },
   "showcase": {
-    "modelName": "SU-18",
+    "modelName": "Mclaren 720s",
     "tagline": "Supercar impian, siap dipakai harian.",
     "price": "Mulai Rp 4.500.000/hari",
     "ctaPrimary": "Sewa Sekarang",

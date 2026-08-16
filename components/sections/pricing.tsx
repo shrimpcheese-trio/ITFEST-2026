@@ -5,6 +5,7 @@ import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ContactDialog } from "@/components/ui/contact-dialog";
+import { Reveal } from "@/components/ui/reveal";
 
 type Plan = {
   name: string;
@@ -21,26 +22,26 @@ export function Pricing() {
   return (
     <section id="pricing" className="scroll-mt-20 bg-canvas py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6 md:px-10">
-        <div className="text-center">
+        <Reveal className="text-center">
           <h2 className="font-display text-5xl uppercase leading-[0.9] md:text-7xl">
             {t("title")} <span className="text-stone">{t("titleAccent")}</span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-mute">{t("subtitle")}</p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {plans.map((plan) => {
+          {plans.map((plan, index) => {
             const featured = Boolean(plan.popular);
             return (
-              <div
-                key={plan.name}
-                className={cn(
-                  "relative flex flex-col rounded-lg p-8 ring-1",
-                  featured
-                    ? "bg-ink text-canvas ring-hairline-soft"
-                    : "bg-canvas text-ink ring-hairline",
-                )}
-              >
+              <Reveal key={plan.name} delay={index * 0.08} className="h-full">
+                <div
+                  className={cn(
+                    "relative flex h-full flex-col rounded-lg p-8 ring-1",
+                    featured
+                      ? "bg-ink text-canvas ring-hairline-soft"
+                      : "bg-canvas text-ink ring-hairline",
+                  )}
+                >
                 {featured && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-canvas px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink ring-1 ring-hairline">
                     {t("popular")}
@@ -95,12 +96,13 @@ export function Pricing() {
                 >
                   <a href="#contact">{t("bookCta")}</a>
                 </Button>
-              </div>
+                </div>
+              </Reveal>
             );
           })}
         </div>
 
-        <div className="mt-14 flex flex-col items-center gap-5 rounded-lg bg-soft-cloud px-6 py-10 text-center md:flex-row md:justify-between md:px-12 md:text-left">
+        <Reveal delay={0.15} className="mt-14 flex flex-col items-center gap-5 rounded-lg bg-soft-cloud px-6 py-10 text-center md:flex-row md:justify-between md:px-12 md:text-left">
           <div>
             <p className="font-display text-2xl uppercase leading-tight md:text-3xl">
               {t("quoteTitle")}
@@ -110,7 +112,7 @@ export function Pricing() {
           <ContactDialog>
             <Button className="shrink-0">{t("quoteCta")}</Button>
           </ContactDialog>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

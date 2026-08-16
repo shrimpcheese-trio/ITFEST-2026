@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 import { NewsletterForm } from "./newsletter-form";
 
 const NAV_LINKS = [
@@ -44,7 +45,7 @@ export async function Footer() {
   return (
     <footer id="contact" className="scroll-mt-20 bg-ink text-canvas">
       <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-20">
-        <div className="flex flex-wrap items-start justify-between gap-8 border-b border-canvas/10 pb-12">
+        <Reveal className="flex flex-wrap items-start justify-between gap-8 border-b border-canvas/10 pb-12">
           <div>
             <Logo className="text-canvas" />
             <p className="mt-4 max-w-xs text-canvas/60">{t("tagline")}</p>
@@ -55,9 +56,9 @@ export async function Footer() {
           >
             {t("email")}
           </a>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.4fr]">
+        <Reveal delay={0.1} className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.4fr]">
           <div>
             <p className="text-sm text-canvas/45">{t("learnMoreDesc")}</p>
             <Link
@@ -112,9 +113,9 @@ export async function Footer() {
               <NewsletterForm />
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 flex flex-wrap items-center justify-between gap-6 border-t border-canvas/10 pt-8">
+        <Reveal delay={0.2} className="mt-14 flex flex-wrap items-center justify-between gap-6 border-t border-canvas/10 pt-8">
           <p className="text-sm text-canvas/50">{t("copyright")}</p>
           <div className="flex items-center gap-3">
             <a
@@ -141,7 +142,7 @@ export async function Footer() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );

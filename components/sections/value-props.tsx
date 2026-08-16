@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
+import { Reveal } from "@/components/ui/reveal";
 import { ValuePropsScene } from "@/components/3d/value-props-scene";
 
 export function ValueProps() {
@@ -12,13 +13,13 @@ export function ValueProps() {
 
   return (
     <section id="experience" className="scroll-mt-20 bg-canvas py-20 md:py-28">
-      <div className="mx-auto max-w-2xl px-6 text-center">
+      <Reveal className="mx-auto max-w-2xl px-6 text-center">
         <h2 className="font-display text-5xl uppercase leading-[0.9] md:text-7xl">
           {t("title")}
         </h2>
         <p className="mx-auto mt-5 max-w-lg text-mute">{t("subtitle")}</p>
-      </div>
-      <div className="mx-auto mt-12 h-[460px] max-w-6xl overflow-hidden rounded-lg px-0 md:h-[560px] md:px-6">
+      </Reveal>
+      <Reveal delay={0.1} className="mx-auto mt-12 h-[460px] max-w-6xl overflow-hidden rounded-lg px-0 md:h-[560px] md:px-6">
         <LazyCanvas
           orthographic
           frameloop="demand"
@@ -26,7 +27,7 @@ export function ValueProps() {
         >
           <ValuePropsScene labels={labels} />
         </LazyCanvas>
-      </div>
+      </Reveal>
 
       <div className="mx-auto mt-8 grid max-w-6xl grid-cols-2 gap-x-6 gap-y-3 px-6 sm:grid-cols-4 md:hidden">
         {labels.map((label, index) => (

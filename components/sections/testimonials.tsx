@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
+import { Reveal } from "@/components/ui/reveal";
 
 import "swiper/css";
 
@@ -35,7 +36,7 @@ function TestimonialCarousel() {
   const [realIndex, setRealIndex] = useState(0);
 
   return (
-    <div className="mx-auto max-w-5xl px-0">
+    <Reveal className="mx-auto max-w-5xl px-0">
       <Swiper
         modules={[Autoplay]}
         loop
@@ -125,7 +126,7 @@ function TestimonialCarousel() {
           <ChevronRight className="size-4" />
         </Button>
       </div>
-    </div>
+    </Reveal>
   );
 }
 
@@ -138,7 +139,7 @@ export function Testimonials() {
         <TestimonialCarousel />
       </div>
 
-      <div className="relative mt-16 overflow-hidden">
+      <Reveal className="relative mt-16 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/testimonials-bg.jpg"
@@ -167,7 +168,7 @@ export function Testimonials() {
             </Button>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

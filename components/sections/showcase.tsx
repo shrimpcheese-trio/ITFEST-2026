@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Toggle } from "@/components/ui/toggle";
 import { ContactDialog } from "@/components/ui/contact-dialog";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
+import { Reveal } from "@/components/ui/reveal";
 import { ShowcaseScene } from "@/components/3d/showcase-scene";
 
 export function Showcase() {
@@ -14,11 +15,13 @@ export function Showcase() {
 
   return (
     <section id="configure" className="scroll-mt-20 bg-canvas pb-24 pt-20 md:pb-32 md:pt-28">
+      <Reveal>
       <h2 className="text-center font-display text-[26vw] uppercase leading-[0.78] text-ink md:text-[15rem]">
         {t("modelName")}
       </h2>
+      </Reveal>
 
-      <div className="relative mx-auto mt-2 max-w-6xl px-4 md:px-10">
+      <Reveal delay={0.1} className="relative mx-auto mt-2 max-w-6xl px-4 md:px-10">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-soft-cloud sm:aspect-[16/10]">
           <LazyCanvas
             camera={{ position: [0, 1.7, 6.4], fov: 34 }}
@@ -45,9 +48,9 @@ export function Showcase() {
         >
           360°
         </Toggle>
-      </div>
+      </Reveal>
 
-      <div className="mx-auto mt-10 max-w-xl px-6 text-center">
+      <Reveal delay={0.15} className="mx-auto mt-10 max-w-xl px-6 text-center">
         <p className="text-xl font-semibold text-ink">{t("tagline")}</p>
         <p className="mt-2 text-sm text-mute">{t("price")}</p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
@@ -58,7 +61,7 @@ export function Showcase() {
             <Button variant="outline">{t("ctaSecondary")}</Button>
           </ContactDialog>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

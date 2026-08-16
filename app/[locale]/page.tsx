@@ -35,8 +35,8 @@ export default async function HomePage({
         <ValueProps />
         <Showcase />
         <Pricing />
-        <Testimonials />
         <Faq />
+        <Testimonials />
       </main>
       <Footer />
     </>
