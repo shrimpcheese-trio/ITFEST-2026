@@ -8,7 +8,7 @@ export async function About() {
   return (
     <section
       id="about"
-      className="relative scroll-mt-20 bg-canvas py-28 md:py-36"
+      className="relative scroll-mt-20 bg-canvas py-12 md:py-16"
     >
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-2 md:gap-12 md:px-10 lg:gap-16">
         <Reveal from="left" className="relative hidden pb-8 md:block">

@@ -7,7 +7,7 @@ export async function StatsStrip() {
   const t = await getTranslations("stats");
 
   return (
-    <section className="bg-ink py-16 md:py-20">
+    <section className="bg-ink py-12 md:py-16">
       <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-y-12 px-6 md:grid-cols-4 md:px-10">
         {STAT_KEYS.map((key, index) => (
           <Reveal key={key} delay={index * 0.08} className="text-center">

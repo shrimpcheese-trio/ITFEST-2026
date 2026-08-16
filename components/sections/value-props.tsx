@@ -12,7 +12,7 @@ export function ValueProps() {
   );
 
   return (
-    <section id="experience" className="scroll-mt-20 bg-canvas py-20 md:py-28">
+    <section id="experience" className="scroll-mt-20 bg-canvas py-12 md:py-16">
       <Reveal className="mx-auto max-w-2xl px-6 text-center">
         <h2 className="font-display text-5xl uppercase leading-[0.9] md:text-7xl">
           {t("title")}

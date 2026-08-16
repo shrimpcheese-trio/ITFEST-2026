@@ -135,7 +135,7 @@ export function Testimonials() {
 
   return (
     <section id="purchase" className="scroll-mt-20 bg-canvas">
-      <div className="px-6 pt-24 md:px-10">
+      <div className="px-6 pt-12 md:px-10">
         <TestimonialCarousel />
       </div>
 

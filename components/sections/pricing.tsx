@@ -20,7 +20,7 @@ export function Pricing() {
   const plans = t.raw("plans") as Plan[];
 
   return (
-    <section id="pricing" className="scroll-mt-20 bg-canvas py-24 md:py-32">
+    <section id="pricing" className="scroll-mt-20 bg-canvas py-12 md:py-16">
       <div className="mx-auto max-w-6xl px-6 md:px-10">
         <Reveal className="text-center">
           <h2 className="font-display text-5xl uppercase leading-[0.9] md:text-7xl">

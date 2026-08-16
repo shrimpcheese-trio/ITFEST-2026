@@ -14,7 +14,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="scroll-mt-20 bg-canvas py-24 md:py-32">
+    <section id="faq" className="scroll-mt-20 bg-canvas py-12 md:py-16">
       <div className="mx-auto max-w-3xl px-6 md:px-10">
         <Reveal>
         <h2 className="text-center font-display text-5xl uppercase leading-[0.9] md:text-7xl">

@@ -14,7 +14,7 @@ export function Showcase() {
   const [spinning, setSpinning] = useState(true);
 
   return (
-    <section id="configure" className="scroll-mt-20 bg-canvas pb-24 pt-20 md:pb-32 md:pt-28">
+    <section id="configure" className="scroll-mt-20 bg-canvas py-12 md:py-16">
       <Reveal>
       <h2 className="text-center font-display text-[26vw] uppercase leading-[0.78] text-ink md:text-[15rem]">
         {t("modelName")}
