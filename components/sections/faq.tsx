@@ -30,9 +30,11 @@ export function Faq() {
               <div className="border-b border-hairline">
                 <button
                   type="button"
+                  id={`faq-button-${index}`}
                   onClick={() => setOpen(expanded ? null : index)}
                   aria-expanded={expanded}
-                  className="flex w-full items-center justify-between gap-6 py-6 text-left"
+                  aria-controls={`faq-panel-${index}`}
+                  className="flex w-full items-center justify-between gap-6 py-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
                 >
                   <span className="text-base font-medium text-ink md:text-lg">
                     {item.q}
@@ -45,6 +47,11 @@ export function Faq() {
                   />
                 </button>
                 <div
+                  id={`faq-panel-${index}`}
+                  role="region"
+                  aria-labelledby={`faq-button-${index}`}
+                  aria-hidden={!expanded}
+                  inert={!expanded}
                   className={cn(
                     "grid transition-all duration-300 ease-out",
                     expanded

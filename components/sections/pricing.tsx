@@ -38,71 +38,81 @@ export function Pricing() {
                   className={cn(
                     "relative flex h-full flex-col rounded-xl p-8 ring-1",
                     featured
-                      ? "bg-ink text-canvas ring-hairline-soft"
+                      ? "bg-ink text-canvas ring-hairline-soft scale-105"
                       : "bg-canvas text-ink ring-hairline",
                   )}
                 >
-                {featured && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-canvas px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink ring-1 ring-hairline">
-                    {t("popular")}
-                  </span>
-                )}
-
-                <p
-                  className={cn(
-                    "text-xs font-semibold uppercase tracking-[0.22em]",
-                    featured ? "text-canvas/60" : "text-mute",
+                  {featured && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-canvas px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink ring-1 ring-hairline">
+                      {t("popular")}
+                    </span>
                   )}
-                >
-                  {plan.name}
-                </p>
-                <p className="mt-4 font-display text-4xl leading-none md:text-5xl">
-                  {plan.price}
-                  <span
+
+                  <p
                     className={cn(
-                      "ml-1 text-sm font-medium",
+                      "text-xs font-semibold uppercase tracking-[0.22em]",
                       featured ? "text-canvas/60" : "text-mute",
                     )}
                   >
-                    {plan.period}
-                  </span>
-                </p>
+                    {plan.name}
+                  </p>
+                  <p className="mt-4 font-display text-4xl leading-none md:text-5xl">
+                    {plan.price}
+                    <span
+                      className={cn(
+                        "ml-1 text-sm font-medium",
+                        featured ? "text-canvas/60" : "text-mute",
+                      )}
+                    >
+                      {plan.period}
+                    </span>
+                  </p>
 
-                <ul
-                  className={cn(
-                    "mt-8 space-y-3 border-t pt-7",
-                    featured ? "border-canvas/15" : "border-hairline",
-                  )}
-                >
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-sm">
-                      <Check
-                        className={cn(
-                          "mt-0.5 size-4 shrink-0",
-                          featured ? "text-success-bright" : "text-success",
-                        )}
-                      />
-                      <span className={featured ? "text-canvas/85" : "text-charcoal"}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                  <ul
+                    className={cn(
+                      "mt-8 space-y-3 border-t pt-7",
+                      featured ? "border-canvas/15" : "border-hairline",
+                    )}
+                  >
+                    {plan.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-start gap-3 text-sm"
+                      >
+                        <Check
+                          className={cn(
+                            "mt-0.5 size-4 shrink-0",
+                            featured ? "text-success-bright" : "text-success",
+                          )}
+                        />
+                        <span
+                          className={
+                            featured ? "text-canvas/85" : "text-charcoal"
+                          }
+                        >
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <Button
-                  asChild
-                  variant={featured ? "outline" : "default"}
-                  className="mt-8 w-full"
-                >
-                  <a href="#contact">{t("bookCta")}</a>
-                </Button>
+                  <Button
+                    asChild
+                    variant={featured ? "outline" : "default"}
+                    className="mt-8 w-full"
+                  >
+                    <a href="#contact">{t("bookCta")}</a>
+                  </Button>
                 </div>
               </Reveal>
             );
           })}
         </div>
 
-        <Reveal delay={0.15} className="mt-14 flex flex-col items-center gap-5 rounded-xl bg-soft-cloud px-6 py-10 text-center md:flex-row md:justify-between md:px-12 md:text-left">
+        <Reveal
+          delay={0.15}
+          className="mt-14 flex flex-col items-center gap-5 rounded-lg bg-soft-cloud px-6 py-10 text-center md:flex-row md:justify-between md:px-12 md:text-left"
+        >
           <div>
             <p className="font-display text-2xl uppercase leading-tight md:text-3xl">
               {t("quoteTitle")}

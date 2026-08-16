@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
@@ -23,16 +23,20 @@ const LINKS = [
   { key: "home", href: "/#home" },
   { key: "services", href: "/#about" },
   { key: "experience", href: "/#experience" },
-  { key: "fleet", href: "/fleet" },
+  { key: "fleet", href: "/#fleet" },
   { key: "contact", href: "/#contact" },
 ] as const;
 
 export function Navbar() {
   const t = useTranslations("nav");
+  const a11y = useTranslations("a11y");
   const locale = useLocale();
   const pathname = usePathname();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
+
   const { scrollY } = useScroll();
   const smoothScroll = useSpring(scrollY, { stiffness: 300, damping: 40 });
 
@@ -72,12 +76,24 @@ export function Navbar() {
   const logoStroke = useTransform(scrollY, [0, 100], ["#fafafa", "#fafafa"]);
   const textColor = useTransform(scrollY, [0, 100], ["#fafafa", "#fafafa"]);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      wasOpenRef.current = true;
+    } else if (wasOpenRef.current) {
+      menuBtnRef.current?.focus();
+      wasOpenRef.current = false;
+    }
+  }, [mobileMenuOpen]);
+
   return (
     <m.header
       className="fixed inset-x-0 top-0 z-50"
       initial={{ y: 0 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setMobileMenuOpen(false);
+      }}
       style={{
         paddingTop: headerPaddingTop,
         paddingLeft: headerPaddingX,
@@ -109,7 +125,10 @@ export function Navbar() {
           <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav
+          aria-label={a11y("mainNav")}
+          className="hidden items-center gap-7 lg:flex"
+        >
           {LINKS.map((link) => (
             <Link
               key={link.key}
@@ -123,6 +142,8 @@ export function Navbar() {
 
         <div className="flex items-center gap-2 md:gap-3">
           <m.div
+            role="group"
+            aria-label={a11y("langSwitch")}
             className="relative flex items-center rounded-full p-1"
             style={{
               borderColor,
@@ -181,6 +202,7 @@ export function Navbar() {
           </ContactDialog>
 
           <m.button
+            ref={menuBtnRef}
             type="button"
             className="flex size-10 items-center justify-center rounded-full lg:hidden"
             style={{
@@ -189,7 +211,9 @@ export function Navbar() {
               borderStyle: "solid",
             }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? t("closeMenu") : t("openMenu")}
           >
             {mobileMenuOpen ? (
               <X className="size-5" />
@@ -210,6 +234,8 @@ export function Navbar() {
             className="absolute inset-x-3 top-full mt-2 rounded-xl border border-hairline bg-canvas p-6 shadow-2xl lg:hidden text-ink"
           >
             <m.nav
+              id="mobile-menu"
+              aria-label={a11y("mainNav")}
               variants={staggerContainer}
               initial="initial"
               animate="animate"

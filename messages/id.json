@@ -12,7 +12,16 @@
     "experience": "Pengalaman",
     "fleet": "Armada",
     "contact": "Kontak",
-    "getInTouch": "Hubungi Kami"
+    "getInTouch": "Hubungi Kami",
+    "openMenu": "Buka menu navigasi",
+    "closeMenu": "Tutup menu navigasi"
+  },
+  "a11y": {
+    "skipToContent": "Langsung ke konten",
+    "langSwitch": "Ganti bahasa",
+    "close": "Tutup",
+    "mainNav": "Navigasi utama",
+    "slide": "Slide {n}"
   },
   "hero": {
     "title": "MCLAREN 720S",
@@ -63,14 +72,15 @@
   "collection": {
     "title": "Koleksi Unggulan",
     "subtitle": "Jelajahi armada pilihan yang paling banyak dirental di bulan ini.",
+    "from": "Mulai dari",
     "tabs": ["Semua", "Supercar", "SUV", "Sedan", "Minibus"],
     "featured": {
       "category": "Supercar",
-      "name": "Ferrari 488 GTB",
+      "name": "McLaren 720S",
       "price": "Rp 4.500.000/hari"
     },
     "items": [
-      { "category": "Supercar", "name": "Ferrari 488 GTB", "price": "Rp 5.200.000/hari" },
+      { "category": "Supercar", "name": "Lamborghini Huracán", "price": "Rp 5.200.000/hari" },
       { "category": "SUV", "name": "Range Rover", "price": "Rp 2.800.000/hari" },
       { "category": "Sedan", "name": "BMW 530i", "price": "Rp 1.750.000/hari" },
       { "category": "Minibus", "name": "Toyota Hiace", "price": "Rp 1.200.000/hari" }
@@ -291,6 +301,19 @@
       "BMW 530i",
       "Toyota Hiace"
     ]
+  },
+  "chat": {
+    "launcherLabel": "Chat dengan {name}",
+    "title": "Asisten {name}",
+    "subtitle": "Online 24 jam · Balas cepat",
+    "placeholder": "Tulis pertanyaanmu…",
+    "send": "Kirim",
+    "close": "Tutup",
+    "greeting": "Halo! Saya asisten Ventura Auto. Tanya apa saja seputar sewa mobil, armada, harga, atau syarat sewa, ya.",
+    "refusal": "Maaf, saya hanya bisa membantu pertanyaan seputar layanan sewa mobil Ventura Auto.",
+    "offline": "Asisten sedang tidak tersedia saat ini. Silakan hubungi kami via WhatsApp — tim kami siap membantu.",
+    "error": "Ups, ada kendala teknis. Coba lagi sebentar, atau hubungi kami via WhatsApp.",
+    "typing": "Mengetik…"
   },
   "footer": {
     "tagline": "Mobilitas premium, pengalaman tanpa batas.",

@@ -16,12 +16,7 @@ const NAV_LINKS = [
   { key: "contact", href: "#contact" },
 ] as const;
 
-const ABOUT_LINKS = [
-  "story",
-  "team",
-  "careers",
-  "press",
-] as const;
+const ABOUT_LINKS = ["story", "team", "careers", "press"] as const;
 
 const SOCIALS: { label: string; path: string }[] = [
   {
@@ -46,7 +41,10 @@ export function Footer() {
   const t = useTranslations("footer");
 
   return (
-    <footer id="contact" className="scroll-mt-20 bg-ink text-canvas overflow-hidden">
+    <footer
+      id="contact"
+      className="scroll-mt-20 bg-ink text-canvas overflow-hidden"
+    >
       <m.div
         variants={staggerContainer}
         initial="initial"
@@ -55,7 +53,10 @@ export function Footer() {
         className="mx-auto w-full px-6 pt-16 md:px-10 md:pt-24"
       >
         <div className="grid gap-x-10 gap-y-16 md:grid-cols-2 lg:grid-cols-12 pb-20 border-b border-canvas/10">
-          <m.div variants={fadeUp} className="lg:col-span-4 flex flex-col justify-between">
+          <m.div
+            variants={fadeUp}
+            className="lg:col-span-4 flex flex-col justify-between"
+          >
             <div>
               <Logo className="text-canvas mb-6" />
               <p className="text-sm text-canvas/50 leading-relaxed max-w-sm">
@@ -70,7 +71,11 @@ export function Footer() {
             </a>
           </m.div>
 
-          <m.nav variants={fadeUp} className="lg:col-span-2" aria-label={t("navTitle")}>
+          <m.nav
+            variants={fadeUp}
+            className="lg:col-span-2"
+            aria-label={t("navTitle")}
+          >
             <h3 className="text-xs font-bold uppercase tracking-widest text-canvas/40 mb-8">
               {t("navTitle")}
             </h3>
@@ -88,7 +93,11 @@ export function Footer() {
             </ul>
           </m.nav>
 
-          <m.nav variants={fadeUp} className="lg:col-span-2" aria-label={t("aboutTitle")}>
+          <m.nav
+            variants={fadeUp}
+            className="lg:col-span-2"
+            aria-label={t("aboutTitle")}
+          >
             <h3 className="text-xs font-bold uppercase tracking-widest text-canvas/40 mb-8">
               {t("aboutTitle")}
             </h3>
@@ -114,7 +123,10 @@ export function Footer() {
           </m.div>
         </div>
 
-        <m.div variants={fadeUp} className="flex flex-wrap items-center justify-between gap-6 py-8">
+        <m.div
+          variants={fadeUp}
+          className="flex flex-wrap items-center justify-between gap-6 py-8"
+        >
           <p className="text-xs text-canvas/40 uppercase tracking-widest">
             {t("copyright")}
           </p>
@@ -135,7 +147,11 @@ export function Footer() {
                   aria-label={social.label}
                   className="text-canvas/40 transition-colors hover:text-canvas"
                 >
-                  <svg viewBox="0 0 24 24" className="size-5 fill-current" aria-hidden>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="size-5 fill-current"
+                    aria-hidden
+                  >
                     <path d={social.path} />
                   </svg>
                 </m.a>
@@ -145,8 +161,8 @@ export function Footer() {
         </m.div>
 
         {/* Massive Watermark */}
-        <m.div 
-          variants={fadeUp} 
+        <m.div
+          variants={fadeUp}
           className="w-full flex justify-center items-end select-none mt-10 overflow-hidden"
         >
           <span className="font-display text-[18vw] leading-[0.75] uppercase tracking-tighter text-canvas whitespace-nowrap opacity-[0.98]">

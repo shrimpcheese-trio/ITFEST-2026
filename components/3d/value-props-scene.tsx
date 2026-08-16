@@ -10,7 +10,9 @@ import { ModelLoader } from "./model-loader";
 
 function TopDownCamera() {
   const { width, height } = useThree((s) => s.size);
-  const zoom = Math.min(height / 4.0, width / 6.2);
+  // Narrow screens hide the marker labels, so the car can fill more of the frame
+  const divisor = width < 768 ? 4.8 : 6.2;
+  const zoom = Math.min(height / 4.0, width / divisor);
 
   return (
     <OrthographicCamera
@@ -46,7 +48,7 @@ function SvgOverlay({
       zIndexRange={[10, 0]}
       className="pointer-events-none"
     >
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-md:hidden">
         <svg
           width={size.width}
           height={size.height}
@@ -143,7 +145,7 @@ function MarkerLabel({
         animate={{ opacity: 1, x: side === "left" ? "-50%" : "50%" }}
         transition={{ delay: 0.1 * index + 0.2, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         className={cn(
-          "group relative flex items-center gap-3 cursor-pointer transition-all duration-300",
+          "group relative flex items-center gap-3 cursor-pointer transition-all duration-300 max-md:hidden",
           isDimmed ? "opacity-30" : "opacity-100",
           side === "left" ? "pr-2" : "pl-2"
         )}

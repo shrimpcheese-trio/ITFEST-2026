@@ -12,7 +12,16 @@
     "experience": "Experience",
     "fleet": "Fleet",
     "contact": "Contact",
-    "getInTouch": "Get in touch"
+    "getInTouch": "Get in touch",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "langSwitch": "Switch language",
+    "close": "Close",
+    "mainNav": "Main navigation",
+    "slide": "Slide {n}"
   },
   "hero": {
     "title": "MCLAREN 720S",
@@ -63,14 +72,15 @@
   "collection": {
     "title": "Featured Collection",
     "subtitle": "Explore the hand-picked fleet most rented this month.",
+    "from": "From",
     "tabs": ["All", "Supercar", "SUV", "Sedan", "Minibus"],
     "featured": {
       "category": "Supercar",
-      "name": "Ferrari 488 GTB",
+      "name": "McLaren 720S",
       "price": "IDR 4,500,000/day"
     },
     "items": [
-      { "category": "Supercar", "name": "Ferrari 488 GTB", "price": "IDR 5,200,000/day" },
+      { "category": "Supercar", "name": "Lamborghini Huracán", "price": "IDR 5,200,000/day" },
       { "category": "SUV", "name": "Range Rover", "price": "IDR 2,800,000/day" },
       { "category": "Sedan", "name": "BMW 530i", "price": "IDR 1,750,000/day" },
       { "category": "Minibus", "name": "Toyota Hiace", "price": "IDR 1,200,000/day" }
@@ -291,6 +301,19 @@
       "BMW 530i",
       "Toyota Hiace"
     ]
+  },
+  "chat": {
+    "launcherLabel": "Chat with {name}",
+    "title": "{name} Assistant",
+    "subtitle": "Online 24/7 · Fast replies",
+    "placeholder": "Type your question…",
+    "send": "Send",
+    "close": "Close",
+    "greeting": "Hi! I'm the Ventura Auto assistant. Ask me anything about car rental, our fleet, pricing, or rental requirements.",
+    "refusal": "Sorry, I can only help with questions about Ventura Auto's car rental services.",
+    "offline": "The assistant is unavailable right now. Please reach out via WhatsApp — our team is happy to help.",
+    "error": "Oops, something went wrong. Please try again shortly, or contact us via WhatsApp.",
+    "typing": "Typing…"
   },
   "footer": {
     "tagline": "Premium mobility, boundless experience.",

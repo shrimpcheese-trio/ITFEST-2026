@@ -246,6 +246,8 @@ function FloorDynamics({ tab }: { tab: HeroTab }) {
 }
 
 export function HeroScene({ tab }: { tab: HeroTab }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <>
       <color attach="background" args={["#ffffff"]} />
@@ -261,7 +263,7 @@ export function HeroScene({ tab }: { tab: HeroTab }) {
         makeDefault
         enableZoom={false}
         enablePan={false}
-        autoRotate
+        autoRotate={!reduceMotion}
         autoRotateSpeed={0.9}
         minPolarAngle={Math.PI / 2 - 0.38}
         maxPolarAngle={Math.PI / 2 + 0.05}
