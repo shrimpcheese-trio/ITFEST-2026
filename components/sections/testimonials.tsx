@@ -211,7 +211,7 @@ function TestimonialCarousel() {
                 key={dot}
                 type="button"
                 onClick={() => setIndex(dot)}
-                aria-label={`Slide ${dot + 1}`}
+                aria-label={a11y("slide", { n: dot + 1 })}
                 className={cn(
                   "relative flex h-1.5 items-center justify-center rounded-full transition-all duration-300",
                   active ? "w-6" : "w-1.5",

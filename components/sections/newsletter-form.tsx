@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { m, AnimatePresence } from "motion/react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 
 export function NewsletterForm() {
   const t = useTranslations("footer");

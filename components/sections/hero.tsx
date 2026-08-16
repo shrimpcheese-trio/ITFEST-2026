@@ -160,7 +160,7 @@ export function Hero() {
         </div>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-44 bg-gradient-to-t from-black to-transparent" />
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -178,9 +178,9 @@ export function Hero() {
               {t("price")}
             </p>
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -194,7 +194,7 @@ export function Hero() {
           <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-canvas/80">
             {t("dragHint")}
           </span>
-        </div>
+        </m.div>
       </div>
     </section>
   );
