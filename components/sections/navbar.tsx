@@ -60,7 +60,7 @@ export function Navbar() {
       className="fixed inset-x-0 top-3 z-50 px-3 md:px-6"
     >
       <div className="mx-auto max-w-[1240px]">
-        <div className="relative rounded-full border border-hairline bg-canvas/85 backdrop-blur-md">
+        <div className="relative rounded-lg xl:rounded-full border border-hairline bg-canvas/85 backdrop-blur-md">
           <div className="flex items-center justify-between gap-6 px-4 py-3">
             <Link href="/" aria-label={siteConfig.name}>
               <Logo />
@@ -97,7 +97,9 @@ export function Navbar() {
                 </Link>
               </Button>
               <ContactDialog>
-                <Button className="hidden sm:inline-flex">{t("getInTouch")}</Button>
+                <Button className="hidden sm:inline-flex">
+                  {t("getInTouch")}
+                </Button>
               </ContactDialog>
               <button
                 ref={menuBtnRef}
@@ -108,7 +110,11 @@ export function Navbar() {
                 aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
                 className="flex size-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-soft-cloud focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink lg:hidden"
               >
-                {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+                {menuOpen ? (
+                  <X className="size-5" />
+                ) : (
+                  <Menu className="size-5" />
+                )}
               </button>
             </div>
           </div>
