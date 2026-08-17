@@ -4,7 +4,8 @@
     "description": "Sewa mobil premium dengan armada pilihan, layanan 24 jam, dan pengalaman mengemudi terbaik di Indonesia."
   },
   "common": {
-    "loading": "Memuat model…"
+    "loading": "Memuat model…",
+    "loadingPage": "Memuat halaman…"
   },
   "nav": {
     "home": "Beranda",

@@ -4,7 +4,8 @@
     "description": "Premium car rental with a hand-picked fleet, 24/7 support, and the finest driving experience in Indonesia."
   },
   "common": {
-    "loading": "Loading model…"
+    "loading": "Loading model…",
+    "loadingPage": "Loading page…"
   },
   "nav": {
     "home": "Home",
