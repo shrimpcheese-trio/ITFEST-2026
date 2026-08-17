@@ -293,8 +293,8 @@
     "id": "mustang-shelby-gt500",
     "category": "supercar",
     "modelUrl": "/models/mustang-shelby-gt500.glb",
-    "heroFallback": "/images/collection-supercar.webp",
-    "showcaseFallback": "/images/collection-supercar.webp",
+    "heroFallback": "/images/mustang-gt500.webp",
+    "showcaseFallback": "/images/mustang-gt500.webp",
     "heroCamera": {
       "position": [
         -3.4,

@@ -9,6 +9,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { MotionProvider } from "@/lib/motion/provider";
 import { SkipLink } from "@/components/ui/skip-link";
 import { ChatWidget } from "@/components/ui/chat-widget";
+import { PageTransition } from "@/components/ui/page-transition";
 import "../globals.css";
 
 const inter = Inter({
@@ -74,6 +75,7 @@ export default async function LocaleLayout({
             <SkipLink />
             {children}
             <ChatWidget />
+            <PageTransition />
           </MotionProvider>
         </NextIntlClientProvider>
       </body>

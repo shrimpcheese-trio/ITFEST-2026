@@ -9,14 +9,19 @@ import { NewsletterForm } from "./newsletter-form";
 import { siteConfig } from "@/lib/config/site";
 
 const NAV_LINKS = [
-  { key: "home", href: "#home" },
-  { key: "fleet", href: "#fleet" },
-  { key: "services", href: "#about" },
-  { key: "experience", href: "#experience" },
-  { key: "contact", href: "#contact" },
+  { key: "home", href: "/#home" },
+  { key: "fleet", href: "/#fleet" },
+  { key: "services", href: "/#about" },
+  { key: "experience", href: "/#experience" },
+  { key: "contact", href: "/#contact" },
 ] as const;
 
-const ABOUT_LINKS = ["story", "team", "careers", "press"] as const;
+const ABOUT_LINKS = [
+  { key: "story", href: "/about/story" },
+  { key: "team", href: "/about/team" },
+  { key: "careers", href: "/about/careers" },
+  { key: "press", href: "/about/press" },
+] as const;
 
 const SOCIALS: { label: string; path: string }[] = [
   {
@@ -103,13 +108,13 @@ export function Footer() {
             </h3>
             <ul className="space-y-4">
               {ABOUT_LINKS.map((link) => (
-                <li key={link}>
-                  <a
-                    href="#about"
+                <li key={link.key}>
+                  <Link
+                    href={link.href}
                     className="text-sm text-canvas/80 transition-colors hover:text-canvas hover:underline underline-offset-4"
                   >
-                    {t(`aboutLinks.${link}`)}
-                  </a>
+                    {t(`aboutLinks.${link.key}`)}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -131,12 +136,18 @@ export function Footer() {
             {t("copyright")}
           </p>
           <div className="flex items-center gap-6">
-            <a
-              href="#about"
+            <Link
+              href="/privacy"
               className="text-xs text-canvas/40 uppercase tracking-widest transition-colors hover:text-canvas"
             >
               {t("privacy")}
-            </a>
+            </Link>
+            <Link
+              href="/terms"
+              className="text-xs text-canvas/40 uppercase tracking-widest transition-colors hover:text-canvas"
+            >
+              {t("terms")}
+            </Link>
             <div className="flex gap-4">
               {SOCIALS.map((social) => (
                 <m.a

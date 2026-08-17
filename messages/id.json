@@ -4,7 +4,9 @@
     "description": "Sewa mobil premium dengan armada pilihan, layanan 24 jam, dan pengalaman mengemudi terbaik di Indonesia."
   },
   "common": {
-    "loading": "Memuat model…"
+    "loading": "Memuat model…",
+    "loadingPage": "Memuat halaman…",
+    "nextModel": "Rotasi model berikutnya"
   },
   "nav": {
     "home": "Beranda",
@@ -144,7 +146,10 @@
   },
   "valueProps": {
     "title": "Kendaraan, dipahami",
-    "subtitle": "Setiap detail dirancang untuk kenyamanan dan kendali penuh."
+    "subtitle": "Setiap detail dirancang untuk kenyamanan dan kendali penuh.",
+    "hoverHint": "Arahkan kursor atau sentuh penanda untuk melihat setiap detail.",
+    "spec": "Spesifikasi {n}",
+    "close": "Tutup"
   },
   "showcase": {
     "ctaPrimary": "Sewa Sekarang",
@@ -397,9 +402,279 @@
     "close": "Tutup",
     "greeting": "Halo! Saya asisten Ventura Auto. Tanya apa saja seputar sewa mobil, armada, harga, atau syarat sewa, ya.",
     "refusal": "Maaf, saya hanya bisa membantu pertanyaan seputar layanan sewa mobil Ventura Auto.",
-    "offline": "Asisten sedang tidak tersedia saat ini. Silakan hubungi kami via WhatsApp — tim kami siap membantu.",
+    "offline": "Asisten sedang tidak tersedia saat ini. Silakan hubungi kami via WhatsApp, tim kami siap membantu.",
     "error": "Ups, ada kendala teknis. Coba lagi sebentar, atau hubungi kami via WhatsApp.",
     "typing": "Mengetik…"
+  },
+  "legal": {
+    "privacy": {
+      "metaTitle": "Kebijakan Privasi",
+      "metaDescription": "Cara Ventura Auto mengumpulkan, menggunakan, dan melindungi data pribadi Anda.",
+      "kicker": "Hukum",
+      "title": "Kebijakan Privasi",
+      "updated": "Terakhir diperbarui: 1 Agustus 2026",
+      "intro": "Ventura Auto menghormati privasi Anda. Kebijakan ini menjelaskan informasi yang kami kumpulkan saat Anda menggunakan situs web atau menyewa kendaraan, cara kami menggunakannya, serta pilihan yang Anda miliki.",
+      "sections": [
+        {
+          "heading": "Informasi yang Kami Kumpulkan",
+          "body": "Saat Anda menjelajahi situs web atau melakukan pemesanan sewa, kami dapat mengumpulkan nama, nomor telepon, alamat email, alamat rumah, detail SIM, informasi pembayaran, dan riwayat penyewaan Anda. Kami juga mengumpulkan data teknis dasar seperti jenis peramban, perangkat, dan halaman yang Anda kunjungi."
+        },
+        {
+          "heading": "Cara Kami Menggunakan Informasi Anda",
+          "body": "Kami menggunakan informasi Anda untuk memproses pemesanan, memverifikasi identitas dan kelayakan mengemudi Anda, mengelola pembayaran dan deposit, memberikan dukungan pelanggan, mengirim konfirmasi pemesanan dan pembaruan layanan, serta meningkatkan situs web dan layanan kami."
+        },
+        {
+          "heading": "Dasar Hukum Pemrosesan",
+          "body": "Kami memproses data pribadi Anda untuk melaksanakan perjanjian sewa dengan Anda, mematuhi kewajiban hukum seperti pelaporan pajak dan asuransi, serta mengejar kepentingan sah kami dalam menjalankan dan mengembangkan bisnis."
+        },
+        {
+          "heading": "Berbagi Informasi Anda",
+          "body": "Kami tidak menjual data pribadi Anda. Kami hanya membagikannya kepada penyedia layanan yang membantu operasional kami, seperti pemroses pembayaran dan mitra asuransi, serta kepada instansi pemerintah bila diwajibkan oleh hukum Indonesia."
+        },
+        {
+          "heading": "Keamanan Data",
+          "body": "Kami menerapkan langkah-langkah teknis dan organisasional yang wajar untuk melindungi data pribadi Anda dari akses, kehilangan, atau penyalahgunaan yang tidak sah. Pembayaran diproses melalui penyedia berlisensi dengan enkripsi standar industri."
+        },
+        {
+          "heading": "Penyimpanan Data",
+          "body": "Kami menyimpan data pribadi Anda hanya selama diperlukan untuk tujuan yang dijelaskan dalam kebijakan ini atau sebagaimana diwajibkan oleh hukum yang berlaku, setelah itu data dihapus atau dianonimkan secara aman."
+        },
+        {
+          "heading": "Hak Anda",
+          "body": "Anda dapat meminta akses, perbaikan, atau penghapusan data pribadi Anda, serta menolak atau membatasi pemrosesan tertentu. Untuk menggunakan hak-hak ini, hubungi kami melalui detail di bawah. Anda juga dapat mengajukan pengaduan kepada otoritas pelindungan data Indonesia."
+        },
+        {
+          "heading": "Cookie",
+          "body": "Situs web kami menggunakan cookie dan teknologi serupa untuk mengingat preferensi Anda, memahami cara Anda menggunakan situs, dan meningkatkan pengalaman Anda. Anda dapat mengontrol cookie melalui pengaturan peramban."
+        },
+        {
+          "heading": "Perubahan Kebijakan Ini",
+          "body": "Kami dapat memperbarui kebijakan ini sewaktu-waktu. Saat kami melakukannya, kami akan memperbarui tanggal 'terakhir diperbarui' di bagian atas halaman ini. Perubahan penting akan diumumkan di situs web kami."
+        }
+      ],
+      "contactHeading": "Hubungi Kami",
+      "contactIntro": "Jika Anda memiliki pertanyaan tentang kebijakan ini atau data pribadi Anda, hubungi kami di:"
+    },
+    "terms": {
+      "metaTitle": "Syarat & Ketentuan",
+      "metaDescription": "Syarat dan ketentuan menyewa kendaraan dari Ventura Auto.",
+      "kicker": "Hukum",
+      "title": "Syarat & Ketentuan",
+      "updated": "Terakhir diperbarui: 1 Agustus 2026",
+      "intro": "Ketentuan ini mengatur penggunaan situs web Ventura Auto dan penyewaan kendaraan kami. Dengan menyewa kendaraan atau menggunakan layanan kami, Anda menyetujui ketentuan ini.",
+      "sections": [
+        {
+          "heading": "Tentang Layanan Kami",
+          "body": "Ventura Auto adalah penyedia rental mobil premium yang beroperasi di Indonesia. Kami menyewakan kendaraan untuk keperluan pribadi dan bisnis, tergantung ketersediaan dan ketentuan di bawah ini."
+        },
+        {
+          "heading": "Persyaratan Penyewaan",
+          "body": "Untuk menyewa kendaraan, Anda harus berusia minimal 21 tahun dan memiliki SIM yang berlaku minimal satu tahun. Kartu identitas resmi dan deposit jaminan yang dapat dikembalikan diperlukan saat pengambilan kendaraan."
+        },
+        {
+          "heading": "Pemesanan dan Pembayaran",
+          "body": "Pemesanan dikonfirmasi setelah pembayaran diterima. Kami menerima pembayaran dengan kartu kredit, kartu debit, dan transfer bank. Tarif sewa mencakup periode sewa yang disepakati dan jarak tempuh standar; biaya tambahan dapat berlaku untuk ekstra, bahan bakar, atau pengemudi tambahan."
+        },
+        {
+          "heading": "Deposit",
+          "body": "Deposit jaminan ditahan di awal masa sewa dan dikembalikan setelah kendaraan dikembalikan dalam kondisi baik. Kami dapat memotong deposit untuk kerusakan, keterlambatan pengembalian, denda lalu lintas, atau tagihan yang belum dibayar."
+        },
+        {
+          "heading": "Kebijakan Pembatalan",
+          "body": "Anda dapat membatalkan pemesanan hingga 24 jam sebelum pengambilan untuk pengembalian dana penuh. Pembatalan dalam 24 jam sebelum pengambilan dikenakan biaya sebesar tarif sewa satu hari. Ketidakhadiran tanpa pemberitahuan tidak mendapatkan pengembalian dana."
+        },
+        {
+          "heading": "Tanggung Jawab Pengemudi",
+          "body": "Anda harus mengemudi dengan aman dan mematuhi semua peraturan lalu lintas. Kendaraan hanya boleh dikemudikan oleh pengemudi yang tercantum dalam perjanjian sewa. Anda bertanggung jawab atas kendaraan selama berada dalam pengawasan Anda, termasuk kerusakan, kehilangan, atau pencurian."
+        },
+        {
+          "heading": "Penggunaan yang Dilarang",
+          "body": "Anda tidak boleh menggunakan kendaraan untuk kegiatan ilegal, balapan, berkendara di luar jalan raya, membawa bahan berbahaya, atau menyewakan kembali. Merokok dan membawa hewan peliharaan tidak diizinkan kecuali disepakati sebelumnya."
+        },
+        {
+          "heading": "Asuransi",
+          "body": "Tarif sewa kami sudah termasuk asuransi dasar. Tergantung paket Anda, Anda dapat membeli perlindungan tambahan untuk mengurangi tanggung jawab. Asuransi tidak menanggung kerusakan akibat kelalaian pengemudi atau pelanggaran ketentuan ini."
+        },
+        {
+          "heading": "Kerusakan dan Kecelakaan",
+          "body": "Jika kendaraan mogok atau mengalami kecelakaan, berhentilah mengemudi, pastikan semua orang aman, dan segera hubungi layanan bantuan 24/7 kami. Jangan membuat pengakuan tanggung jawab atau menyelesaikan klaim tanpa persetujuan kami."
+        },
+        {
+          "heading": "Batasan Tanggung Jawab",
+          "body": "Sejauh diizinkan oleh hukum, Ventura Auto tidak bertanggung jawab atas kerugian tidak langsung yang timbul dari penyewaan Anda, termasuk kehilangan keuntungan atau peluang bisnis. Tidak ada ketentuan ini yang membatasi tanggung jawab yang tidak dapat dibatasi oleh hukum."
+        },
+        {
+          "heading": "Hukum yang Berlaku",
+          "body": "Ketentuan ini diatur oleh hukum Republik Indonesia. Sengketa akan diselesaikan oleh pengadilan yang berwenang di Indonesia."
+        },
+        {
+          "heading": "Perubahan Ketentuan",
+          "body": "Kami dapat merevisi ketentuan ini dari waktu ke waktu. Ketentuan yang direvisi berlaku untuk pemesanan yang dilakukan setelah perubahan tersebut berlaku."
+        }
+      ],
+      "contactHeading": "Hubungi Kami",
+      "contactIntro": "Jika Anda memiliki pertanyaan tentang ketentuan ini, hubungi kami di:"
+    }
+  },
+  "aboutPages": {
+    "story": {
+      "metaTitle": "Cerita Kami | Ventura Auto",
+      "metaDescription": "Bagaimana Ventura Auto tumbuh dari satu sedan di Denpasar pada 2015 menjadi armada premium di 12 kota di Indonesia.",
+      "kicker": "Tentang Kami",
+      "title": "Cerita Kami",
+      "intro": "Ventura Auto bermula pada 2015 dengan satu sedan di Denpasar dan keyakinan sederhana: sewa mobil harus terasa premium, dari klik pertama hingga kunci kembali.",
+      "paragraphs": [
+        "Semuanya berawal dari satu sedan sewaan dan janji sederhana: mobil bersih, harga jujur, dan sopir yang memperlakukan setiap perjalanan seperti miliknya sendiri. Pendiri kami menghabiskan malam di tempat cuci mobil dan paginya di balik kemudi, mempelajari setiap rute di Denpasar sebelum matahari terbit.",
+        "Cerita itu menyebar. Perjalanan bisnis menjadi akun perusahaan, pernikahan menjadi sebuah armada. Kini Ventura Auto beroperasi di 12 kota di Indonesia, dari Denpasar hingga Bandung, Surabaya, dan Jakarta, dengan armada pilihan mulai dari sedan eksekutif hingga supercar.",
+        "Yang tidak berubah adalah standarnya. Setiap unit masih melewati inspeksi 120 poin sebelum disewa, setiap sopir masih dilatih melalui akademi yang sama, dan setiap pemesanan tetap disertai dukungan 24/7. Kami bertumbuh dari penumpang yang kembali menyewa bersama kami."
+      ],
+      "milestonesTitle": "Perjalanan",
+      "milestones": [
+        {
+          "year": "2015",
+          "title": "Sedan pertama di Denpasar",
+          "body": "Ventura Auto dibuka dengan satu kendaraan dan janji utama: layanan sopir yang prima."
+        },
+        {
+          "year": "2017",
+          "title": "Armada menembus 50 unit",
+          "body": "Akun korporat dan antar-jemput bandara mendorong ekspansi di Bali."
+        },
+        {
+          "year": "2019",
+          "title": "Sepuluh kota, 1.000+ perjalanan",
+          "body": "Operasional menjangkau Bandung, Semarang, Yogyakarta, Surabaya, dan lainnya."
+        },
+        {
+          "year": "2022",
+          "title": "Divisi supercar diluncurkan",
+          "body": "Mobil sport dan eksotis bergabung dengan armada, lengkap dengan sopir terlatih."
+        },
+        {
+          "year": "2025",
+          "title": "Dua belas kota, 15.000 pelanggan",
+          "body": "Rating 4.9/5 dari 15.000+ wisatawan menjadikan Ventura Auto nama yang dikenal."
+        }
+      ]
+    },
+    "team": {
+      "metaTitle": "Tim Kami | Ventura Auto",
+      "metaDescription": "Kenali orang-orang di balik Ventura Auto, para pendiri, spesialis armada, dan kru layanan yang menjaga setiap sewa tetap premium.",
+      "kicker": "Tentang Kami",
+      "title": "Tim Kami",
+      "intro": "Di balik setiap sewa yang mulus ada kru yang teliti pada detail, dari mekanik yang menjalankan inspeksi 120 poin hingga sopir yang menghafal rute Anda.",
+      "members": [
+        {
+          "name": "Dimas Anggara",
+          "role": "Pendiri & CEO",
+          "bio": "Memulai Ventura Auto dengan satu sedan pada 2015. Masih menjawab WhatsApp di akhir pekan.",
+          "avatar": "/images/avatar-1.webp"
+        },
+        {
+          "name": "Ratna Paramita",
+          "role": "Pendiri & Direktur Operasional",
+          "bio": "Membangun sistem inspeksi 120 poin dan akademi pelatihan sopir profesional.",
+          "avatar": "/images/avatar-2.webp"
+        },
+        {
+          "name": "Fajar Ramadhan",
+          "role": "Manajer Armada",
+          "bio": "Memilih sendiri setiap mobil dalam koleksi dan hafal nomor VIN masing-masing.",
+          "avatar": "/images/avatar-3.webp"
+        },
+        {
+          "name": "Nadia Kusuma",
+          "role": "Pimpinan Pengalaman Pelanggan",
+          "bio": "Memimpin kru dukungan 24/7 melalui WhatsApp, telepon, dan chat dalam aplikasi.",
+          "avatar": "/images/avatar-4.webp"
+        },
+        {
+          "name": "Bima Saputra",
+          "role": "Kepala Pelatihan Sopir",
+          "bio": "Mantan pembalap yang mengubah sopir profesional menjadi ahli rute dan keselamatan.",
+          "avatar": "/images/avatar-5.webp"
+        },
+        {
+          "name": "Salsabila Putri",
+          "role": "Pemasaran & Kemitraan",
+          "bio": "Menghubungkan Ventura Auto dengan hotel, korporat, dan penyelenggara acara di Indonesia.",
+          "avatar": "/images/avatar-6.webp"
+        }
+      ]
+    },
+    "careers": {
+      "metaTitle": "Karier | Ventura Auto",
+      "metaDescription": "Bergabung dengan Ventura Auto, lowongan sopir, mekanik, dan spesialis pengalaman pelanggan di seluruh Indonesia.",
+      "kicker": "Karier",
+      "title": "Bergabung dengan Tim",
+      "intro": "Kami selalu mencari orang yang peduli pada detail, orang yang lebih memilih mengilapkan velg daripada sekadar mengunggah fotonya.",
+      "perksTitle": "Yang kami tawarkan",
+      "perks": [
+        "Gaji kompetitif dengan insentif kinerja",
+        "Akademi pelatihan sopir dan keselamatan gratis",
+        "Tunjangan kesehatan dan kendaraan",
+        "Jalur karier dari pengemudi hingga pimpinan kota",
+        "Akses armada di hari libur Anda"
+      ],
+      "openingsTitle": "Lowongan",
+      "openings": [
+        {
+          "title": "Sopir Profesional",
+          "location": "Jakarta · Penuh waktu",
+          "description": "Mengemudikan armada premium dengan standar prima. Diperlukan SIM A dan rekam jejak mengemudi yang bersih."
+        },
+        {
+          "title": "Mekanik Armada",
+          "location": "Bandung · Penuh waktu",
+          "description": "Menjaga setiap unit pada standar 120 poin. Pengalaman mesin diesel dan EV menjadi nilai tambah."
+        },
+        {
+          "title": "Spesialis Pengalaman Pelanggan",
+          "location": "Remote / Hybrid · Penuh waktu",
+          "description": "Menangani pemesanan, pertanyaan, dan dukungan 24/7 melalui WhatsApp, telepon, dan chat."
+        },
+        {
+          "title": "Intern Operasional Kota",
+          "location": "Surabaya · Magang",
+          "description": "Pelajari bisnis rental dari hulu ke hilir sambil membantu tim operasional berjalan lancar."
+        }
+      ],
+      "applyCta": "Lamar via email"
+    },
+    "press": {
+      "metaTitle": "Pers & Media | Ventura Auto",
+      "metaDescription": "Siaran pers dan kit media untuk Ventura Auto, rental mobil premium di Indonesia sejak 2015.",
+      "kicker": "Pers",
+      "title": "Ruang Media",
+      "intro": "Siaran pers, liputan media, dan sumber daya untuk jurnalis yang meliput Ventura Auto.",
+      "releasesTitle": "Siaran pers",
+      "releases": [
+        {
+          "date": "Maret 2026",
+          "title": "Ventura Auto meluas ke 12 kota Indonesia",
+          "body": "Perusahaan rental premium kini melayani Jakarta, Bandung, Semarang, Yogyakarta, Surabaya, Denpasar, dan enam kota lain dengan armada pilihan lebih dari 200 unit."
+        },
+        {
+          "date": "November 2025",
+          "title": "Ventura Auto luncurkan divisi supercar",
+          "body": "Mobil eksotis dan sport bergabung dengan armada, masing-masing disertai sopir terlatih untuk pengalaman berkendara premium."
+        },
+        {
+          "date": "Juni 2025",
+          "title": "Ventura Auto jadi finalis Indonesia Travel Awards",
+          "body": "Perusahaan diakui atas standar inspeksi 120 poin dan dukungan pelanggan 24/7 di seluruh Indonesia."
+        },
+        {
+          "date": "Januari 2025",
+          "title": "Pelanggan ke-15.000 disambut",
+          "body": "Satu dekade operasional dan rating rata-rata 4.9/5 menandai pencapaian ini saat Ventura Auto menyambut pelancongnya yang ke-15.000."
+        }
+      ],
+      "mediaKitTitle": "Kit media",
+      "mediaKitBody": "Aset logo dan foto tersedia untuk diunduh bagi jurnalis terakreditasi atas permintaan.",
+      "contactTitle": "Kontak media",
+      "contactBody": "Untuk pertanyaan pers dan permintaan wawancara, hubungi tim media kami di:"
+    }
   },
   "footer": {
     "tagline": "Mobilitas premium, pengalaman tanpa batas.",
@@ -426,6 +701,7 @@
       "press": "Media"
     },
     "copyright": "© 2026 Ventura Auto. Seluruh hak cipta.",
-    "privacy": "Kebijakan Privasi"
+    "privacy": "Kebijakan Privasi",
+    "terms": "Syarat & Ketentuan"
   }
 }

@@ -4,7 +4,9 @@
     "description": "Premium car rental with a hand-picked fleet, 24/7 support, and the finest driving experience in Indonesia."
   },
   "common": {
-    "loading": "Loading model…"
+    "loading": "Loading model…",
+    "loadingPage": "Loading page…",
+    "nextModel": "Next model rotation"
   },
   "nav": {
     "home": "Home",
@@ -144,7 +146,10 @@
   },
   "valueProps": {
     "title": "The vehicle, understood",
-    "subtitle": "Every detail is engineered for comfort and total control."
+    "subtitle": "Every detail is engineered for comfort and total control.",
+    "hoverHint": "Hover or tap a marker to explore each detail.",
+    "spec": "Spec {n}",
+    "close": "Close"
   },
   "showcase": {
     "ctaPrimary": "Rent Now",
@@ -397,9 +402,279 @@
     "close": "Close",
     "greeting": "Hi! I'm the Ventura Auto assistant. Ask me anything about car rental, our fleet, pricing, or rental requirements.",
     "refusal": "Sorry, I can only help with questions about Ventura Auto's car rental services.",
-    "offline": "The assistant is unavailable right now. Please reach out via WhatsApp — our team is happy to help.",
+    "offline": "The assistant is unavailable right now. Please reach out via WhatsApp, our team is happy to help.",
     "error": "Oops, something went wrong. Please try again shortly, or contact us via WhatsApp.",
     "typing": "Typing…"
+  },
+  "legal": {
+    "privacy": {
+      "metaTitle": "Privacy Policy",
+      "metaDescription": "How Ventura Auto collects, uses, and protects your personal data.",
+      "kicker": "Legal",
+      "title": "Privacy Policy",
+      "updated": "Last updated: 1 August 2026",
+      "intro": "Ventura Auto respects your privacy. This policy explains what information we collect when you use our website or rent a vehicle, how we use it, and the choices you have.",
+      "sections": [
+        {
+          "heading": "Information We Collect",
+          "body": "When you browse our website or make a rental booking, we may collect your name, phone number, email address, home address, driver's licence details, payment information, and rental history. We also collect basic technical data such as your browser type, device, and the pages you visit."
+        },
+        {
+          "heading": "How We Use Your Information",
+          "body": "We use your information to process bookings, verify your identity and driving eligibility, manage payments and deposits, provide customer support, send booking confirmations and service updates, and improve our website and services."
+        },
+        {
+          "heading": "Legal Basis for Processing",
+          "body": "We process your personal data to perform our rental agreement with you, to comply with legal obligations such as tax and insurance reporting, and to pursue our legitimate interests in operating and improving our business."
+        },
+        {
+          "heading": "Sharing Your Information",
+          "body": "We do not sell your personal data. We share it only with service providers who help us operate, such as payment processors and insurance partners, and with government authorities when required by Indonesian law."
+        },
+        {
+          "heading": "Data Security",
+          "body": "We apply reasonable technical and organisational measures to protect your personal data from unauthorised access, loss, or misuse. Payments are processed through certified payment providers using industry-standard encryption."
+        },
+        {
+          "heading": "Data Retention",
+          "body": "We keep your personal data only as long as necessary for the purposes described in this policy or as required by applicable law, after which it is securely deleted or anonymised."
+        },
+        {
+          "heading": "Your Rights",
+          "body": "You may request access to, correction of, or deletion of your personal data, and you may object to or restrict certain processing. To exercise any of these rights, contact us using the details below. You may also lodge a complaint with the Indonesian data protection authority."
+        },
+        {
+          "heading": "Cookies",
+          "body": "Our website uses cookies and similar technologies to remember your preferences, understand how you use the site, and improve your experience. You can control cookies through your browser settings."
+        },
+        {
+          "heading": "Changes to This Policy",
+          "body": "We may update this policy from time to time. When we do, we will revise the 'last updated' date at the top of this page. Significant changes will be announced on our website."
+        }
+      ],
+      "contactHeading": "Contact Us",
+      "contactIntro": "If you have questions about this policy or your personal data, reach us at:"
+    },
+    "terms": {
+      "metaTitle": "Terms of Service",
+      "metaDescription": "Terms and conditions for renting a vehicle from Ventura Auto.",
+      "kicker": "Legal",
+      "title": "Terms of Service",
+      "updated": "Last updated: 1 August 2026",
+      "intro": "These terms govern your use of the Ventura Auto website and the rental of our vehicles. By renting a vehicle or using our services, you agree to these terms.",
+      "sections": [
+        {
+          "heading": "About Our Service",
+          "body": "Ventura Auto is a premium car rental provider operating in Indonesia. We rent vehicles for personal and business use, subject to availability and the terms below."
+        },
+        {
+          "heading": "Rental Requirements",
+          "body": "To rent a vehicle, you must be at least 21 years old and hold a driver's licence that has been valid for at least one year. A valid government-issued ID and a refundable security deposit are required at pick-up."
+        },
+        {
+          "heading": "Bookings and Payment",
+          "body": "Bookings are confirmed once payment is received. We accept payment by credit card, debit card, and bank transfer. Rental rates cover the agreed rental period and standard mileage; additional charges may apply for extras, fuel, or additional drivers."
+        },
+        {
+          "heading": "Deposits",
+          "body": "A security deposit is held at the start of your rental and released after the vehicle is returned in good condition. We may deduct from the deposit for damage, late return, traffic fines, or unpaid charges."
+        },
+        {
+          "heading": "Cancellation Policy",
+          "body": "You may cancel a booking up to 24 hours before pick-up for a full refund. Cancellations within 24 hours of pick-up are subject to a charge of one day's rental rate. No-shows are not refunded."
+        },
+        {
+          "heading": "Driver Responsibilities",
+          "body": "You must drive responsibly and comply with all traffic laws. The vehicle may only be driven by drivers listed on the rental agreement. You are responsible for the vehicle while it is in your care, including any damage, loss, or theft."
+        },
+        {
+          "heading": "Prohibited Uses",
+          "body": "You may not use the vehicle for illegal activities, racing, off-road driving, carrying hazardous materials, or subleasing. Smoking and carrying pets are not permitted unless agreed in advance."
+        },
+        {
+          "heading": "Insurance",
+          "body": "Our rental rates include basic insurance. Depending on your package, you may purchase additional coverage for reduced excess. Insurance does not cover damage caused by driver negligence or breach of these terms."
+        },
+        {
+          "heading": "Breakdowns and Accidents",
+          "body": "If the vehicle breaks down or is involved in an accident, stop driving, make sure everyone is safe, and contact our 24/7 support line immediately. Do not make any admission of liability or settle claims without our approval."
+        },
+        {
+          "heading": "Limitation of Liability",
+          "body": "To the fullest extent permitted by law, Ventura Auto is not liable for indirect or consequential losses arising from your rental, including loss of profits or business opportunities. Nothing in these terms limits liability that cannot be limited by law."
+        },
+        {
+          "heading": "Governing Law",
+          "body": "These terms are governed by the laws of the Republic of Indonesia. Any disputes shall be resolved by the competent courts of Indonesia."
+        },
+        {
+          "heading": "Changes to These Terms",
+          "body": "We may revise these terms from time to time. Revised terms apply to bookings made after the change takes effect."
+        }
+      ],
+      "contactHeading": "Contact Us",
+      "contactIntro": "If you have questions about these terms, reach us at:"
+    }
+  },
+  "aboutPages": {
+    "story": {
+      "metaTitle": "Our Story | Ventura Auto",
+      "metaDescription": "How Ventura Auto grew from a single sedan in Denpasar in 2015 to a premium fleet across 12 Indonesian cities.",
+      "kicker": "About Us",
+      "title": "Our Story",
+      "intro": "Ventura Auto began in 2015 with one sedan in Denpasar and a simple belief: a car rental should feel premium from the first click to the final drop-off.",
+      "paragraphs": [
+        "It started with a single rented sedan and a handshake promise: clean cars, honest pricing, and drivers who treat every trip as if it were their own. Our founder spent his evenings at the car wash and his mornings behind the wheel, learning every route in Denpasar before the sun was fully up.",
+        "Word travelled. A business trip became a company account, a wedding became a fleet. Today Ventura Auto operates across 12 cities in Indonesia, from Denpasar to Bandung, Surabaya, and Jakarta, with a hand-picked fleet that ranges from executive sedans to full supercars.",
+        "What has not changed is the standard. Every unit still passes a 120-point inspection before each rental, every chauffeur still trains through the same academy, and every booking still comes with 24/7 support. We grow by the number of passengers who ride with us again."
+      ],
+      "milestonesTitle": "Milestones",
+      "milestones": [
+        {
+          "year": "2015",
+          "title": "First sedan in Denpasar",
+          "body": "Ventura Auto opens with a single vehicle and a chauffeur-first promise."
+        },
+        {
+          "year": "2017",
+          "title": "Fleet crosses 50 units",
+          "body": "Business accounts and airport transfers drive expansion across Bali."
+        },
+        {
+          "year": "2019",
+          "title": "Ten cities, 1,000+ trips",
+          "body": "Operations reach Bandung, Semarang, Yogyakarta, Surabaya, and beyond."
+        },
+        {
+          "year": "2022",
+          "title": "Supercar division launches",
+          "body": "Exotic and sports cars join the fleet with trained chauffeurs and premium handling."
+        },
+        {
+          "year": "2025",
+          "title": "Twelve cities, 15,000 customers",
+          "body": "A 4.9/5 rating across 15,000+ travellers makes Ventura Auto a household name."
+        }
+      ]
+    },
+    "team": {
+      "metaTitle": "Our Team | Ventura Auto",
+      "metaDescription": "Meet the people behind Ventura Auto, the founders, fleet specialists, and service crew who keep every rental premium.",
+      "kicker": "About Us",
+      "title": "Our Team",
+      "intro": "Behind every seamless rental is a crew obsessed with the details, from the mechanics running 120-point inspections to the chauffeurs who memorise your route.",
+      "members": [
+        {
+          "name": "Dimas Anggara",
+          "role": "Co-Founder & CEO",
+          "bio": "Started Ventura Auto with one sedan in 2015. Still answers the WhatsApp line on weekends.",
+          "avatar": "/images/avatar-1.webp"
+        },
+        {
+          "name": "Ratna Paramita",
+          "role": "Co-Founder & Operations Director",
+          "bio": "Built the 120-point inspection system and the academy that trains every chauffeur.",
+          "avatar": "/images/avatar-2.webp"
+        },
+        {
+          "name": "Fajar Ramadhan",
+          "role": "Fleet Manager",
+          "bio": "Hand-picks every car in the collection and knows each VIN by heart.",
+          "avatar": "/images/avatar-3.webp"
+        },
+        {
+          "name": "Nadia Kusuma",
+          "role": "Customer Experience Lead",
+          "bio": "Leads the 24/7 support crew across WhatsApp, phone, and in-app chat.",
+          "avatar": "/images/avatar-4.webp"
+        },
+        {
+          "name": "Bima Saputra",
+          "role": "Head of Chauffeur Training",
+          "bio": "Ex-race driver who turns professional chauffeurs into route and safety experts.",
+          "avatar": "/images/avatar-5.webp"
+        },
+        {
+          "name": "Salsabila Putri",
+          "role": "Marketing & Partnerships",
+          "bio": "Connects Ventura Auto with hotels, corporates, and event organisers across Indonesia.",
+          "avatar": "/images/avatar-6.webp"
+        }
+      ]
+    },
+    "careers": {
+      "metaTitle": "Careers | Ventura Auto",
+      "metaDescription": "Join Ventura Auto, open roles for chauffeurs, mechanics, and customer experience specialists across Indonesia.",
+      "kicker": "Careers",
+      "title": "Join the Crew",
+      "intro": "We are always looking for people who care about the details, people who would rather polish a wheel arch than post about it.",
+      "perksTitle": "What we offer",
+      "perks": [
+        "Competitive pay with performance incentives",
+        "Paid chauffeur and safety training academy",
+        "Healthcare and vehicle allowance",
+        "Growth paths from driver to city lead",
+        "A fleet you get to drive on your days off"
+      ],
+      "openingsTitle": "Open roles",
+      "openings": [
+        {
+          "title": "Professional Chauffeur",
+          "location": "Jakarta · Full-time",
+          "description": "Drive our premium fleet with a chauffeur-first standard. Valid SIM A and a clean driving record required."
+        },
+        {
+          "title": "Fleet Mechanic",
+          "location": "Bandung · Full-time",
+          "description": "Keep every unit at 120-point standard. Diesel and EV experience is a plus."
+        },
+        {
+          "title": "Customer Experience Specialist",
+          "location": "Remote / Hybrid · Full-time",
+          "description": "Handle bookings, questions, and 24/7 support across WhatsApp, phone, and chat."
+        },
+        {
+          "title": "City Operations Intern",
+          "location": "Surabaya · Internship",
+          "description": "Learn the rental business end to end while helping our operations team run smoothly."
+        }
+      ],
+      "applyCta": "Apply via email"
+    },
+    "press": {
+      "metaTitle": "Press & Media | Ventura Auto",
+      "metaDescription": "Press releases and media kit for Ventura Auto, premium car rental across Indonesia since 2015.",
+      "kicker": "Press",
+      "title": "Newsroom",
+      "intro": "Press releases, media mentions, and resources for journalists covering Ventura Auto.",
+      "releasesTitle": "Press releases",
+      "releases": [
+        {
+          "date": "March 2026",
+          "title": "Ventura Auto expands to 12 Indonesian cities",
+          "body": "The premium rental company now serves Jakarta, Bandung, Semarang, Yogyakarta, Surabaya, Denpasar, and six more cities with a hand-picked fleet of over 200 units."
+        },
+        {
+          "date": "November 2025",
+          "title": "Ventura Auto launches supercar division",
+          "body": "Exotic and sports cars join the fleet, each paired with a professionally trained chauffeur for a premium handling experience."
+        },
+        {
+          "date": "June 2025",
+          "title": "Ventura Auto named finalist at Indonesia Travel Awards",
+          "body": "The company is recognised for its 120-point inspection standard and 24/7 customer support across Indonesia."
+        },
+        {
+          "date": "January 2025",
+          "title": "15,000th customer welcomed",
+          "body": "A decade of operations and a 4.9/5 average rating mark the milestone as Ventura Auto welcomes its 15,000th traveller."
+        }
+      ],
+      "mediaKitTitle": "Media kit",
+      "mediaKitBody": "Downloadable logo assets and photography are available on request for accredited journalists.",
+      "contactTitle": "Media contact",
+      "contactBody": "For press inquiries and interview requests, reach our media team at:"
+    }
   },
   "footer": {
     "tagline": "Premium mobility, boundless experience.",
@@ -426,6 +701,7 @@
       "press": "Press"
     },
     "copyright": "© 2026 Ventura Auto. All rights reserved.",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   }
 }

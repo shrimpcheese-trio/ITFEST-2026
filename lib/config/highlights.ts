@@ -11,59 +11,59 @@ export type ModelHighlight = {
 export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
   "mclaren-720s": [
     {
-      label: { en: "Digital instrument cluster", id: "Panel instrumen digital" },
+      label: { en: "Twin-turbo V8", id: "V8 twin-turbo" },
       description: {
-        en: "A high-resolution active display providing real-time telemetry, advanced navigation overlays, and customizable driving modes directly in your line of sight.",
-        id: "Layar aktif beresolusi tinggi yang menyajikan telemetri real-time, overlay navigasi, dan mode berkendara yang dapat disesuaikan tepat pada jarak pandang pengemudi.",
+        en: "A mid-mounted 4.0-litre twin-turbo V8 producing 710 hp and 770 Nm, sprinting from 0-100 km/h in 2.8 seconds.",
+        id: "V8 twin-turbo 4,0 liter di tengah sasis dengan tenaga 710 hp dan torsi 770 Nm, melesat 0-100 km/jam hanya dalam 2,8 detik.",
       },
     },
     {
-      label: { en: "Premium cabin materials", id: "Material interior premium" },
+      label: { en: "Folding instrument display", id: "Panel instrumen lipat" },
       description: {
-        en: "Hand-stitched Alcantara leather and aerospace-grade carbon fiber trim offer unmatched tactile luxury and weight reduction.",
-        id: "Lapisan kulit Alcantara jahitan tangan berpadu dengan aksen serat karbon berkualitas aerospace, memberikan kemewahan taktil dan peredaman bobot.",
+        en: "A retractable digital display that folds into a thin strip in Track mode, keeping the revs in view and your eyes on the road.",
+        id: "Layar digital yang dapat ditarik dan mereduksi menjadi strip tipis di mode Track, menjaga putaran mesin terlihat dan fokus pengemudi pada jalan.",
       },
     },
     {
-      label: { en: "Active safety systems", id: "Sistem keselamatan aktif" },
+      label: { en: "Proactive Chassis Control II", id: "Suspensi Proactive Chassis Control II" },
       description: {
-        en: "Continuous monitoring via radar and optical sensors to enable collision avoidance, lane keeping, and automated emergency braking.",
-        id: "Pemantauan terus-menerus melalui sensor radar dan optik untuk fitur penghindar tabrakan, penjaga lajur, serta pengereman darurat otomatis.",
+        en: "Adaptive dampers that read the road in real time, delivering track-level composure or cruising comfort at the push of a button.",
+        id: "Peredam adaptif yang membaca kondisi jalan secara real-time, menghadirkan kestabilan ala sirkuit atau kenyamanan meluncur cukup dengan satu sentuhan tombol.",
       },
     },
     {
-      label: { en: "Adaptive suspension", id: "Suspensi adaptif" },
+      label: { en: "Active rear aerodynamics", id: "Aerodinamika belakang aktif" },
       description: {
-        en: "Proactive damping systems that instantly adjust to road conditions, delivering track-level stiffness or highway comfort at the push of a button.",
-        id: "Sistem peredaman proaktif yang langsung beradaptasi dengan kondisi jalan; menawarkan kestabilan ala sirkuit atau kenyamanan meluncur di jalan tol.",
-      },
-    },
-    {
-      label: { en: "7-speed gearbox", id: "Transmisi 7-percepatan" },
-      description: {
-        en: "A lightning-fast dual-clutch transmission providing seamless gear changes in milliseconds, ensuring uninterrupted power delivery.",
-        id: "Transmisi kopling ganda super cepat yang memberikan perpindahan gigi dalam hitungan milidetik, menjamin penyaluran tenaga tanpa henti.",
+        en: "A deployable rear wing that optimises downforce and drag on the fly for rock-solid high-speed stability.",
+        id: "Spoiler belakang yang dapat digerakkan untuk mengoptimalkan downforce dan hambatan udara demi kestabilan kecepatan tinggi yang mantap.",
       },
     },
     {
       label: { en: "Carbon-ceramic brakes", id: "Rem karbon-keramik" },
       description: {
-        en: "Massive rotors designed to resist heat fade under extreme conditions, offering immediate and predictable stopping power.",
-        id: "Cakram rem berukuran masif yang dirancang khusus untuk menahan panas ekstrem, menawarkan daya henti seketika dan dapat diprediksi.",
+        en: "Six-piston front and four-piston rear calipers on carbon-ceramic discs for fade-free, instantaneous stopping.",
+        id: "Kaliper enam piston di depan dan empat piston di belakang pada cakram karbon-keramik untuk daya henti instan tanpa luntur.",
       },
     },
     {
-      label: { en: "Active aerodynamics", id: "Aerodinamika aktif" },
+      label: { en: "7-speed SSG gearbox", id: "Transmisi SSG 7-percepatan" },
       description: {
-        en: "Deployable spoilers and dynamic air intakes that adjust automatically to optimize downforce, cooling, and straight-line speed.",
-        id: "Spoiler yang dapat ditarik dan asupan udara dinamis yang menyesuaikan diri otomatis untuk mengoptimalkan downforce, pendinginan, dan kecepatan.",
+        en: "A seamless-shift dual-clutch gearbox that swaps cogs in milliseconds with no interruption in power delivery.",
+        id: "Transmisi kopling ganda seamless-shift yang berpindah gigi dalam hitungan milidetik tanpa putusnya penyaluran tenaga.",
       },
     },
     {
-      label: { en: "LED Matrix headlights", id: "Lampu LED Matrix" },
+      label: { en: "Carbon-fibre monocoque", id: "Monokok serat karbon" },
       description: {
-        en: "Intelligent illumination that dynamically shapes the light beam to avoid dazzling oncoming traffic while maximizing visibility.",
-        id: "Pencahayaan cerdas yang secara dinamis membentuk sorotan cahaya agar tidak menyilaukan lalu lintas berlawanan sambil memaksimalkan jarak pandang.",
+        en: "A MonoCage II carbon tub with signature dihedral doors that slice upward to reveal the cockpit.",
+        id: "Monokok karbon MonoCage II dengan pintu dihedral khas yang membuka ke atas memperlihatkan kokpit.",
+      },
+    },
+    {
+      label: { en: "Premium Alcantara cabin", id: "Kabin Alcantara premium" },
+      description: {
+        en: "Alcantara and leather upholstery with carbon-fibre trim, wrapped around a pure driver-focused cockpit.",
+        id: "Balutan Alcantara dan kulit dengan aksen serat karbon, membungkus kokpit yang murni berfokus pada pengemudi.",
       },
     },
   ],
@@ -71,54 +71,54 @@ export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
     {
       label: { en: "Twin-turbo V8", id: "V8 twin-turbo" },
       description: {
-        en: "A 3.9-liter powerplant producing 660 horsepower with near-zero turbo lag, sprinting to 100 km/h in just 3.0 seconds.",
-        id: "Mesin 3,9 liter berdaya 660 tenaga kuda dengan turbo lag hampir nol, melesat ke 100 km/jam hanya dalam 3,0 detik.",
+        en: "A 3.9-litre twin-turbo V8 delivering 660 hp at 8,000 rpm with near-zero turbo lag, hitting 0-100 km/h in 3.0 seconds.",
+        id: "V8 twin-turbo 3,9 liter berdaya 660 hp di 8.000 rpm dengan turbo lag hampir nol, 0-100 km/jam dalam 3,0 detik.",
       },
     },
     {
-      label: { en: "Racing-grade aero", id: "Aerodinamika kelas balap" },
+      label: { en: "Racing-grade aerodynamics", id: "Aerodinamika kelas balap" },
       description: {
-        en: "Front splitter, side air intakes, and rear diffuser engineered to pin the car to the road at high speed.",
-        id: "Splitter depan, asupan udara samping, dan diffuser belakang yang dirancang untuk menempelkan mobil ke jalan pada kecepatan tinggi.",
+        en: "A blown rear spoiler and active diffuser channel air to pin the car to the road at speed.",
+        id: "Spoiler belakang blown-spoiler dan diffuser aktif menyalurkan udara untuk menekan mobil ke jalan saat melaju kencang.",
       },
     },
     {
       label: { en: "Carbon-ceramic brakes", id: "Rem karbon-keramik" },
       description: {
-        en: "Huge drilled rotors and six-piston calipers deliver fade-free stopping power lap after lap.",
-        id: "Cakram borir besar dan kaliper enam piston menghadirkan daya henti tanpa paham meski dipacu terus.",
+        en: "Brembo carbon-ceramic discs with extreme-design calipers cut stopping distances by 9% over the 458.",
+        id: "Cakram karbon-keramik Brembo dengan kaliper berdesain ekstrem memangkas jarak pengereman 9% dibanding 458.",
       },
     },
     {
-      label: { en: "Electronic differential", id: "Diferensial elektronik" },
+      label: { en: "Side-slip control (SSC2)", id: "Kontrol side-slip (SSC2)" },
       description: {
-        en: "Torque vectoring that keeps the chassis planted and sharp through every corner.",
-        id: "Pengarah torsi yang menjaga sasis tetap stabil dan presisi di setiap tikungan.",
+        en: "Ferrari's second-generation electronics blend F1-Trac and E-Diff to keep the chassis planted and sharp through corners.",
+        id: "Elektronik generasi kedua Ferrari memadukan F1-Trac dan E-Diff agar sasis tetap stabil dan presisi di setiap tikungan.",
+      },
+    },
+    {
+      label: { en: "Magnetorheological dampers", id: "Peredam magnetorheological" },
+      description: {
+        en: "SCM3 fluid-based dampers adjust in milliseconds for a flat, confidence-inspiring ride.",
+        id: "Peredam SCM3 berbasis fluida yang menyesuaikan dalam milidetik untuk berkendara stabil nan percaya diri.",
+      },
+    },
+    {
+      label: { en: "Manettino drive modes", id: "Mode berkendara Manettino" },
+      description: {
+        en: "A steering-wheel dial switches between Wet, Sport, Race and CT Off to reshape the car's behaviour instantly.",
+        id: "Dial di setir memilih mode Wet, Sport, Race, hingga CT Off untuk mengubah perilaku mobil seketika.",
       },
     },
     {
       label: { en: "Racing seats", id: "Jok balap" },
       description: {
-        en: "Lightweight bucket seats wrapped in hand-stitched leather with firm lateral support.",
-        id: "Jok bucket ringan berbalut kulit jahitan tangan dengan penyangga samping yang kokoh.",
+        en: "Lightweight bucket seats in leather and Alcantara with firm lateral support.",
+        id: "Jok bucket ringan berbalut kulit dan Alcantara dengan penyangga samping yang kokoh.",
       },
     },
     {
-      label: { en: "Driver telemetry", id: "Telemetri pengemudi" },
-      description: {
-        en: "An 8.4-inch display showing lap times, g-forces, and real-time engine telemetry.",
-        id: "Layar 8,4 inci yang menampilkan waktu putaran, gaya-g, dan telemetri mesin real-time.",
-      },
-    },
-    {
-      label: { en: "Bose sound system", id: "Sistem audio Bose" },
-      description: {
-        en: "A tuned eight-speaker setup that complements the V8 soundtrack with studio clarity.",
-        id: "Konfigurasi delapan speaker yang melengkapi suara V8 dengan kejernihan studio.",
-      },
-    },
-    {
-      label: { en: "Dual-zone climate", id: "AC dua zona" },
+      label: { en: "Dual-zone climate control", id: "AC dua zona" },
       description: {
         en: "Independent temperature zones keep driver and passenger perfectly comfortable.",
         id: "Zona suhu independen menjaga kenyamanan pengemudi dan penumpang secara terpisah.",
@@ -129,28 +129,28 @@ export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
     {
       label: { en: "High-revving V8", id: "V8 putaran tinggi" },
       description: {
-        en: "A 4.0-liter naturally aspirated V8 that revs to 8,300 rpm and sings at every gear change.",
-        id: "V8 4,0 liter tanpa turbo yang berputar hingga 8.300 rpm dan berbunyi merdu di setiap pergantian gigi.",
+        en: "A 4.0-litre naturally aspirated V8 producing 414 hp at 8,300 rpm, with a soundtrack to match.",
+        id: "V8 4,0 liter tanpa turbo berdaya 414 hp di 8.300 rpm, dengan suara mesin yang menggoda.",
       },
     },
     {
-      label: { en: "Carbon-fiber roof", id: "Atap serat karbon" },
+      label: { en: "Carbon-fibre roof", id: "Atap serat karbon" },
       description: {
-        en: "A lightweight carbon roof lowers the center of gravity and sharpens turn-in response.",
+        en: "A lightweight carbon roof lowers the centre of gravity and sharpens turn-in response.",
         id: "Atap karbon ringan menurunkan titik gravitasi dan mempertajam respons belok.",
       },
     },
     {
-      label: { en: "Torque-vectoring diff", id: "Diferensial pengarah torsi" },
+      label: { en: "Active M differential", id: "Diferensial M aktif" },
       description: {
-        en: "An active M differential distributes power precisely to keep the tail composed.",
-        id: "Diferensial M aktif menyalurkan tenaga secara presisi agar bagian belakang tetap stabil.",
+        en: "An electronically controlled differential routes torque precisely to keep the tail composed.",
+        id: "Diferensial elektronik menyalurkan torsi secara presisi agar bagian belakang tetap stabil.",
       },
     },
     {
       label: { en: "Six airbags", id: "Enam airbag" },
       description: {
-        en: "Front, side, and curtain airbags, plus adaptive braking for all-road confidence.",
+        en: "Front, side and curtain airbags, plus adaptive braking for all-road confidence.",
         id: "Airbag depan, samping, dan tirai, plus pengereman adaptif untuk kepercayaan diri di semua jalan.",
       },
     },
@@ -179,7 +179,7 @@ export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
       label: { en: "Adaptive M suspension", id: "Suspensi M adaptif" },
       description: {
         en: "Electronically controlled dampers switch between comfort and track modes instantly.",
-        id: "Peredam yang dikendalikan elektronik berpindah antara mode nyaman dan sirkuit seketika.",
+        id: "Peredam elektronik berpindah antara mode nyaman dan sirkuit seketika.",
       },
     },
   ],
@@ -187,57 +187,57 @@ export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
     {
       label: { en: "Supercharged V8", id: "V8 supercharged" },
       description: {
-        en: "A 5.8-liter supercharged V8 producing a tire-shredding 662 horsepower.",
-        id: "V8 supercharged 5,8 liter yang menghasilkan 662 tenaga kuda yang menggigit aspal.",
+        en: "A 5.8-litre supercharged V8 producing 662 hp and 855 Nm of tyre-shredding torque.",
+        id: "V8 supercharged 5,8 liter yang menghasilkan 662 hp dan 855 Nm torsi yang menggigit aspal.",
       },
     },
     {
       label: { en: "Racing stripes", id: "Stripping balap" },
       description: {
-        en: "Iconic Shelby stripes and a vented hood that signals the muscle underneath.",
+        en: "Iconic Shelby stripes and a vented hood that signal the muscle underneath.",
         id: "Stripping Shelby ikonik dan kap berventilasi yang mengisyaratkan kekuatan mesin di baliknya.",
       },
     },
     {
       label: { en: "Brembo brakes", id: "Rem Brembo" },
       description: {
-        en: "Six-piston front calipers with large vented rotors for confident high-speed braking.",
-        id: "Kaliper depan enam piston dengan cakram berongga besar untuk pengereman kecepatan tinggi yang mantap.",
+        en: "Six-piston front calipers with larger vented rotors for confident high-speed braking.",
+        id: "Kaliper depan enam piston dengan cakram berongga lebih besar untuk pengereman kecepatan tinggi yang mantap.",
       },
     },
     {
       label: { en: "Launch control", id: "Launch control" },
       description: {
-        en: "Optimized clutch and throttle mapping for repeatable full-throttle starts.",
-        id: "Pemetaan kopling dan gas yang dioptimalkan untuk start gas penuh yang konsisten.",
+        en: "An RPM-adjustable launch system for repeatable, full-throttle off-the-line starts.",
+        id: "Sistem launch dengan RPM yang dapat diatur untuk start gas penuh yang konsisten.",
+      },
+    },
+    {
+      label: { en: "Track Apps", id: "Track Apps" },
+      description: {
+        en: "Instrument-cluster performance tools including a Christmas-tree timer and g-meter readout.",
+        id: "Perangkat performa di panel instrumen, termasuk timer lampu start dan pembaca gaya-g.",
       },
     },
     {
       label: { en: "Recaro leather seats", id: "Jok kulit Recaro" },
       description: {
-        en: "Sport bucket seats with contrast stitching and embossed Shelby logos.",
-        id: "Jok bucket sport dengan jahitan kontras dan logo Shelby timbul.",
+        en: "Sport bucket seats with contrast stitching and an embossed Shelby Cobra logo.",
+        id: "Jok bucket sport dengan jahitan kontras dan logo Shelby Cobra timbul.",
       },
     },
     {
-      label: { en: "Apple CarPlay", id: "Apple CarPlay" },
+      label: { en: "SYNC infotainment", id: "Infotainment SYNC" },
       description: {
-        en: "Touchscreen infotainment with seamless smartphone mirroring and navigation.",
-        id: "Infotainment layar sentuh dengan mirroring ponsel dan navigasi yang mulus.",
-      },
-    },
-    {
-      label: { en: "12-speaker audio", id: "Audio 12-speaker" },
-      description: {
-        en: "A punchy 12-speaker system that keeps up with the V8 soundtrack.",
-        id: "Sistem 12 speaker bertenaga yang mengimbangi suara V8.",
+        en: "Ford SYNC with voice control, Bluetooth and hands-free calling built around the driver.",
+        id: "Ford SYNC dengan kendali suara, Bluetooth, dan panggilan hands-free yang berpusat pada pengemudi.",
       },
     },
     {
       label: { en: "Track-ready cooling", id: "Pendinginan siap sirkuit" },
       description: {
-        en: "Dedicated transmission and differential coolers for sustained high-speed driving.",
-        id: "Pendingin transmisi dan diferensial khusus untuk berkendara kecepatan tinggi yang berkelanjutan.",
+        en: "Dedicated transmission, differential and engine-oil coolers for sustained high-speed driving.",
+        id: "Pendingin transmisi, diferensial, dan oli mesin khusus untuk berkendara kecepatan tinggi yang berkelanjutan.",
       },
     },
   ],
@@ -245,7 +245,7 @@ export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
     {
       label: { en: "Terrain Response", id: "Terrain Response" },
       description: {
-        en: "Selectable driving modes adapt to grass, gravel, snow, and mud with one touch.",
+        en: "Selectable driving modes adapt to grass, gravel, snow and mud with one touch.",
         id: "Mode berkendara yang dapat dipilih menyesuaikan medan rumput, kerikil, salju, dan lumpur dengan sekali sentuh.",
       },
     },
@@ -264,10 +264,10 @@ export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
       },
     },
     {
-      label: { en: "Collision assist", id: "Bantuan tabrakan" },
+      label: { en: "Surround camera system", id: "Kamera 360 derajat" },
       description: {
-        en: "Radar-based autonomous emergency braking and lane departure warnings.",
-        id: "Pengereman darurat otomatis berbasis radar dan peringatan keluar lajur.",
+        en: "A five-camera surround view makes tight parking and urban manoeuvres effortless.",
+        id: "Lima kamera 360 derajat membuat parkir di ruang sempit dan manuver perkotaan terasa mudah.",
       },
     },
     {
@@ -280,8 +280,8 @@ export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
     {
       label: { en: "Meridian sound", id: "Audio Meridian" },
       description: {
-        en: "A surround-sound system with rich, room-filling clarity.",
-        id: "Sistem surround dengan kejernihan kaya yang memenuhi ruang kabin.",
+        en: "An 11-speaker Meridian surround system with rich, room-filling clarity.",
+        id: "Sistem surround Meridian 11 speaker dengan kejernihan kaya yang memenuhi ruang kabin.",
       },
     },
     {
@@ -294,7 +294,7 @@ export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
     {
       label: { en: "Slim LED lighting", id: "Lampu LED ramping" },
       description: {
-        en: "Signature slim LED headlights and tail lights give a sharp modern face.",
+        en: "Signature slim LED headlights and tail lights give a sharp, modern face.",
         id: "Lampu LED depan-belakang ramping khas memberi tampilan modern yang tajam.",
       },
     },

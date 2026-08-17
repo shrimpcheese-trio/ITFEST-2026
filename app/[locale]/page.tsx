@@ -1,6 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import { ModelProvider } from "@/lib/model-provider";
 import { Navbar } from "@/components/sections/navbar";
+import { ModelRotationIndicator } from "@/components/ui/model-rotation-indicator";
 import { Hero } from "@/components/sections/hero";
 import { StatsStrip } from "@/components/sections/stats-strip";
 import { About } from "@/components/sections/about";
@@ -39,6 +40,7 @@ export default async function HomePage({
           <Pricing />
           <Faq />
           <Testimonials />
+          <ModelRotationIndicator />
         </ModelProvider>
       </main>
       <Footer />

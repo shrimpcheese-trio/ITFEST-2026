@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useState, type RefObject } from "react";
 import { Html, OrthographicCamera } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { CarModel, type CarAnchor } from "./car-model";
 import { ModelLoader } from "./model-loader";
@@ -31,11 +31,13 @@ function TopDownCamera() {
 function SvgOverlay({ 
   anchors, 
   activeMarker,
-  onClickMarker
+  onClickMarker,
+  portalRef
 }: { 
   anchors: CarAnchor[]; 
   activeMarker: number | null;
   onClickMarker: (idx: number) => void;
+  portalRef: RefObject<HTMLElement>;
 }) {
   const { camera, size } = useThree();
 
@@ -47,6 +49,7 @@ function SvgOverlay({
       center
       transform={false}
       zIndexRange={[10, 0]}
+      portal={portalRef}
       className="pointer-events-none"
     >
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-md:hidden">
@@ -78,10 +81,10 @@ function SvgOverlay({
                   x2={x2}
                   y2={y2}
                   stroke={isActive ? "#111111" : "#9e9ea0"}
-                  strokeWidth={isActive ? 1.5 : 1}
+                  strokeWidth={isActive ? 2 : 1.2}
                   strokeDasharray={isActive ? "none" : "4 4"}
                   initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: isDimmed ? 0.2 : 0.6 }}
+                  animate={{ pathLength: 1, opacity: isDimmed ? 0.2 : isActive ? 1 : 0.85 }}
                   transition={{ delay: 0.1 * i, duration: 0.8, ease: "easeOut" }}
                 />
                 
@@ -89,10 +92,12 @@ function SvgOverlay({
                 <motion.circle
                   cx={x1}
                   cy={y1}
-                  r={isActive ? 4 : 2}
-                  fill={isActive ? "#111111" : "#9e9ea0"}
+                  r={isActive ? 6 : 4}
+                  fill="#111111"
+                  stroke="#ffffff"
+                  strokeWidth={isActive ? 2 : 1.5}
                   initial={{ scale: 0 }}
-                  animate={{ scale: 1, opacity: isDimmed ? 0.2 : 1 }}
+                  animate={{ scale: 1, opacity: isDimmed ? 0.25 : 1 }}
                   transition={{ delay: 0.1 * i + 0.3, type: "spring", stiffness: 300, damping: 20 }}
                 />
                 
@@ -120,24 +125,39 @@ function SvgOverlay({
 function MarkerLabel({
   anchor,
   label,
+  description,
   index,
   side,
   isActive,
   isDimmed,
   onHover,
   onClick,
+  portalRef,
 }: {
   anchor: CarAnchor;
   label: string;
+  description: string;
   index: number;
   side: "left" | "right";
   isActive: boolean;
   isDimmed: boolean;
   onHover: (active: boolean) => void;
   onClick: () => void;
+  portalRef: RefObject<HTMLElement>;
 }) {
+  const { camera, size } = useThree();
+
+  const projected = anchor.anchor.clone().project(camera);
+  const tooltipAbove = -(projected.y * size.height) / 2 > size.height / 2;
+
   return (
-    <Html position={anchor.anchor} center transform={false} zIndexRange={[30, 0]}>
+    <Html
+      position={anchor.anchor}
+      center
+      transform={false}
+      zIndexRange={[30, 0]}
+      portal={portalRef}
+    >
       <motion.div
         onMouseEnter={() => onHover(true)}
         onMouseLeave={() => onHover(false)}
@@ -146,38 +166,69 @@ function MarkerLabel({
         animate={{ opacity: 1, x: side === "left" ? "-50%" : "50%" }}
         transition={{ delay: 0.1 * index + 0.2, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         className={cn(
-          "group relative flex items-center gap-3 cursor-pointer transition-all duration-300 max-md:hidden",
+          "group relative flex items-center gap-2.5 cursor-pointer transition-all duration-300 max-md:hidden",
           isDimmed ? "opacity-30" : "opacity-100",
           side === "left" ? "pr-2" : "pl-2"
         )}
       >
-        {/* Number Indicator - Editorial Style */}
         {side === "right" && (
-          <span className="text-[10px] font-bold text-ink/40 tracking-wider">0{index}</span>
-        )}
-        
-        {/* Label with animated underline */}
-        <div className="relative">
           <span
             className={cn(
-              "whitespace-nowrap text-xs font-semibold uppercase tracking-[0.15em] transition-colors md:inline",
-              isActive ? "text-ink" : "text-mute group-hover:text-ink/70"
+              "flex size-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold leading-none transition-colors duration-300",
+              isActive
+                ? "bg-ink text-canvas"
+                : "border border-hairline bg-canvas text-ink/60 group-hover:border-ink/40 group-hover:text-ink",
             )}
           >
-            {label}
+            {index < 10 ? `0${index}` : index}
           </span>
-          <span 
-            className={cn(
-              "absolute -bottom-1 left-0 h-[1px] bg-ink transition-all duration-500 ease-out",
-              isActive ? "w-full" : "w-0 group-hover:w-1/2"
-            )}
-            style={{ transformOrigin: side === "left" ? "right" : "left" }}
-          />
-        </div>
+        )}
+
+        <span
+          className={cn(
+            "max-w-[220px] truncate rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-colors duration-300",
+            isActive
+              ? "border-ink bg-ink text-canvas"
+              : "border-hairline bg-canvas/90 text-ink group-hover:border-ink/40",
+          )}
+        >
+          {label}
+        </span>
 
         {side === "left" && (
-          <span className="text-[10px] font-bold text-ink/40 tracking-wider">0{index}</span>
+          <span
+            className={cn(
+              "flex size-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold leading-none transition-colors duration-300",
+              isActive
+                ? "bg-ink text-canvas"
+                : "border border-hairline bg-canvas text-ink/60 group-hover:border-ink/40 group-hover:text-ink",
+            )}
+          >
+            {index < 10 ? `0${index}` : index}
+          </span>
         )}
+
+        <div
+          className={cn(
+            "pointer-events-none absolute left-1/2 z-50 -translate-x-1/2",
+            tooltipAbove ? "bottom-full mb-3" : "top-full mt-3",
+          )}
+        >
+          <AnimatePresence>
+            {isActive && (
+              <motion.div
+                initial={{ opacity: 0, y: tooltipAbove ? 8 : -8, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: tooltipAbove ? 8 : -8, scale: 0.95 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+                className="w-max max-w-[280px] rounded-lg border border-hairline bg-canvas p-4 shadow-lg"
+              >
+                <p className="font-display text-base uppercase leading-tight text-ink">{label}</p>
+                <p className="mt-1 text-xs leading-relaxed text-mute">{description}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </motion.div>
     </Html>
   );
@@ -186,15 +237,19 @@ function MarkerLabel({
 export function ValuePropsScene({ 
   modelId,
   labels,
+  descriptions,
   activeMarker,
   setActiveMarker,
-  onClickMarker
+  onClickMarker,
+  portalRef
 }: { 
   modelId: string;
   labels: string[];
+  descriptions: string[];
   activeMarker: number | null;
   setActiveMarker: (idx: number | null) => void;
   onClickMarker: (idx: number) => void;
+  portalRef: RefObject<HTMLElement>;
 }) {
   const [anchors, setAnchors] = useState<CarAnchor[] | null>(null);
   const model = getCarModel(modelId);
@@ -215,7 +270,7 @@ export function ValuePropsScene({
         
         {/* The blueprint lines are drawn via SVG overlay mapped to 3D coordinates */}
         {anchors && (
-          <SvgOverlay anchors={anchors} activeMarker={activeMarker} onClickMarker={onClickMarker} />
+          <SvgOverlay anchors={anchors} activeMarker={activeMarker} onClickMarker={onClickMarker} portalRef={portalRef} />
         )}
         
         {anchors &&
@@ -224,12 +279,14 @@ export function ValuePropsScene({
               key={i}
               anchor={anchors[i]}
               label={label}
+              description={descriptions[i]}
               index={i + 1}
               side={i < 4 ? "left" : "right"}
               isActive={activeMarker === i}
               isDimmed={activeMarker !== null && activeMarker !== i}
               onHover={(active) => setActiveMarker(active ? i : null)}
               onClick={() => onClickMarker(i)}
+              portalRef={portalRef}
             />
           ))}
       </Suspense>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
 import { ValuePropsScene } from "@/components/3d/value-props-scene";
@@ -19,6 +19,9 @@ export function ValueProps() {
     description: highlight.description[locale],
   }));
   const labels = markers.map((marker) => marker.label);
+  const descriptions = markers.map((marker) => marker.description);
+
+  const canvasWrap = useRef<HTMLDivElement>(null!);
 
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
   const [selectedSpec, setSelectedSpec] = useState<number | null>(null);
@@ -50,19 +53,23 @@ export function ValueProps() {
       </div>
 
       <div className="mx-auto mt-12 h-[460px] max-w-6xl overflow-visible rounded-none px-0 md:h-[600px] md:px-6">
-        <LazyCanvas
-          orthographic
-          frameloop="demand"
-          camera={{ position: [0, 10, 0], zoom: 56, near: 0.1, far: 100 }}
-        >
-          <ValuePropsScene
-            modelId={modelId}
-            labels={labels}
-            activeMarker={activeMarker}
-            setActiveMarker={setActiveMarker}
-            onClickMarker={setSelectedSpec}
-          />
-        </LazyCanvas>
+        <div ref={canvasWrap} className="relative h-full w-full">
+          <LazyCanvas
+            orthographic
+            frameloop="demand"
+            camera={{ position: [0, 10, 0], zoom: 56, near: 0.1, far: 100 }}
+          >
+            <ValuePropsScene
+              modelId={modelId}
+              labels={labels}
+              descriptions={descriptions}
+              activeMarker={activeMarker}
+              setActiveMarker={setActiveMarker}
+              onClickMarker={setSelectedSpec}
+              portalRef={canvasWrap}
+            />
+          </LazyCanvas>
+        </div>
       </div>
 
       <m.div
@@ -86,14 +93,21 @@ export function ValueProps() {
                 isActive ? "opacity-100" : "opacity-70",
               )}
             >
-              <span className="text-[10px] font-bold text-ink/40 tracking-wider">
-                0{index + 1}
+              <span
+                className={cn(
+                  "flex size-6 items-center justify-center rounded-full text-[10px] font-bold leading-none transition-colors",
+                  isActive
+                    ? "bg-ink text-canvas"
+                    : "border border-hairline bg-canvas text-ink/60 group-hover:border-ink/40",
+                )}
+              >
+                {index + 1 < 10 ? `0${index + 1}` : index + 1}
               </span>
               <div className="relative w-fit">
                 <span
                   className={cn(
                     "text-xs font-semibold uppercase tracking-[0.1em] transition-colors",
-                    isActive ? "text-ink" : "text-mute group-hover:text-ink/70",
+                    isActive ? "text-ink" : "text-ink/70 group-hover:text-ink",
                   )}
                 >
                   {label}
@@ -109,6 +123,12 @@ export function ValueProps() {
           );
         })}
       </m.div>
+
+      <div className="mx-auto mt-8 max-w-6xl px-6">
+        <p className="border-t border-hairline pt-6 text-sm text-mute">
+          {t("hoverHint")}
+        </p>
+      </div>
 
       {/* Info Modal */}
       <AnimatePresence>
@@ -129,12 +149,12 @@ export function ValueProps() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="relative w-full max-w-md bg-canvas p-8 md:p-10 shadow-2xl"
+              className="relative w-full max-w-md bg-canvas p-8 md:p-10 shadow-2xl rounded-xl"
             >
               <button
                 onClick={() => setSelectedSpec(null)}
                 className="absolute top-4 right-4 p-2 text-mute hover:text-ink transition-colors"
-                aria-label="Close"
+                aria-label={t("close")}
               >
                 <svg
                   width="24"
@@ -149,7 +169,7 @@ export function ValueProps() {
               </button>
 
               <p className="text-[10px] font-bold text-ink/40 tracking-widest uppercase mb-4">
-                Spec 0{selectedSpec + 1}
+                {t("spec", { n: selectedSpec + 1 })}
               </p>
               <h3 className="font-display text-2xl uppercase leading-tight mb-4 text-ink">
                 {markers[selectedSpec].label}
