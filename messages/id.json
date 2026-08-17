@@ -402,7 +402,7 @@
     "close": "Tutup",
     "greeting": "Halo! Saya asisten Ventura Auto. Tanya apa saja seputar sewa mobil, armada, harga, atau syarat sewa, ya.",
     "refusal": "Maaf, saya hanya bisa membantu pertanyaan seputar layanan sewa mobil Ventura Auto.",
-    "offline": "Asisten sedang tidak tersedia saat ini. Silakan hubungi kami via WhatsApp — tim kami siap membantu.",
+    "offline": "Asisten sedang tidak tersedia saat ini. Silakan hubungi kami via WhatsApp, tim kami siap membantu.",
     "error": "Ups, ada kendala teknis. Coba lagi sebentar, atau hubungi kami via WhatsApp.",
     "typing": "Mengetik…"
   },
@@ -519,26 +519,26 @@
   "aboutPages": {
     "story": {
       "metaTitle": "Cerita Kami | Ventura Auto",
-      "metaDescription": "Bagaimana Ventura Auto tumbuh dari satu sedan di Jakarta pada 2015 menjadi armada premium di 12 kota di Indonesia.",
+      "metaDescription": "Bagaimana Ventura Auto tumbuh dari satu sedan di Denpasar pada 2015 menjadi armada premium di 12 kota di Indonesia.",
       "kicker": "Tentang Kami",
       "title": "Cerita Kami",
-      "intro": "Ventura Auto bermula pada 2015 dengan satu sedan di Jakarta dan keyakinan sederhana: sewa mobil harus terasa premium, dari klik pertama hingga kunci kembali.",
+      "intro": "Ventura Auto bermula pada 2015 dengan satu sedan di Denpasar dan keyakinan sederhana: sewa mobil harus terasa premium, dari klik pertama hingga kunci kembali.",
       "paragraphs": [
-        "Semuanya berawal dari satu sedan sewaan dan janji sederhana — mobil bersih, harga jujur, dan sopir yang memperlakukan setiap perjalanan seperti miliknya sendiri. Pendiri kami menghabiskan malam di tempat cuci mobil dan paginya di balik kemudi, mempelajari setiap rute di Jakarta sebelum matahari terbit.",
-        "Cerita itu menyebar. Perjalanan bisnis menjadi akun perusahaan, pernikahan menjadi sebuah armada. Kini Ventura Auto beroperasi di 12 kota di Indonesia, dari Jakarta dan Bandung hingga Surabaya dan Denpasar, dengan armada pilihan mulai dari sedan eksekutif hingga supercar.",
+        "Semuanya berawal dari satu sedan sewaan dan janji sederhana: mobil bersih, harga jujur, dan sopir yang memperlakukan setiap perjalanan seperti miliknya sendiri. Pendiri kami menghabiskan malam di tempat cuci mobil dan paginya di balik kemudi, mempelajari setiap rute di Denpasar sebelum matahari terbit.",
+        "Cerita itu menyebar. Perjalanan bisnis menjadi akun perusahaan, pernikahan menjadi sebuah armada. Kini Ventura Auto beroperasi di 12 kota di Indonesia, dari Denpasar hingga Bandung, Surabaya, dan Jakarta, dengan armada pilihan mulai dari sedan eksekutif hingga supercar.",
         "Yang tidak berubah adalah standarnya. Setiap unit masih melewati inspeksi 120 poin sebelum disewa, setiap sopir masih dilatih melalui akademi yang sama, dan setiap pemesanan tetap disertai dukungan 24/7. Kami bertumbuh dari penumpang yang kembali menyewa bersama kami."
       ],
       "milestonesTitle": "Perjalanan",
       "milestones": [
         {
           "year": "2015",
-          "title": "Sedan pertama di Jakarta",
+          "title": "Sedan pertama di Denpasar",
           "body": "Ventura Auto dibuka dengan satu kendaraan dan janji utama: layanan sopir yang prima."
         },
         {
           "year": "2017",
           "title": "Armada menembus 50 unit",
-          "body": "Akun korporat dan antar-jemput bandara mendorong ekspansi di Jabodetabek."
+          "body": "Akun korporat dan antar-jemput bandara mendorong ekspansi di Bali."
         },
         {
           "year": "2019",
@@ -559,10 +559,10 @@
     },
     "team": {
       "metaTitle": "Tim Kami | Ventura Auto",
-      "metaDescription": "Kenali orang-orang di balik Ventura Auto — para pendiri, spesialis armada, dan kru layanan yang menjaga setiap sewa tetap premium.",
+      "metaDescription": "Kenali orang-orang di balik Ventura Auto, para pendiri, spesialis armada, dan kru layanan yang menjaga setiap sewa tetap premium.",
       "kicker": "Tentang Kami",
       "title": "Tim Kami",
-      "intro": "Di balik setiap sewa yang mulus ada kru yang teliti pada detail — dari mekanik yang menjalankan inspeksi 120 poin hingga sopir yang menghafal rute Anda.",
+      "intro": "Di balik setiap sewa yang mulus ada kru yang teliti pada detail, dari mekanik yang menjalankan inspeksi 120 poin hingga sopir yang menghafal rute Anda.",
       "members": [
         {
           "name": "Dimas Anggara",
@@ -604,10 +604,10 @@
     },
     "careers": {
       "metaTitle": "Karier | Ventura Auto",
-      "metaDescription": "Bergabung dengan Ventura Auto — lowongan sopir, mekanik, dan spesialis pengalaman pelanggan di seluruh Indonesia.",
+      "metaDescription": "Bergabung dengan Ventura Auto, lowongan sopir, mekanik, dan spesialis pengalaman pelanggan di seluruh Indonesia.",
       "kicker": "Karier",
       "title": "Bergabung dengan Tim",
-      "intro": "Kami selalu mencari orang yang peduli pada detail — orang yang lebih memilih mengilapkan velg daripada sekadar mengunggah fotonya.",
+      "intro": "Kami selalu mencari orang yang peduli pada detail, orang yang lebih memilih mengilapkan velg daripada sekadar mengunggah fotonya.",
       "perksTitle": "Yang kami tawarkan",
       "perks": [
         "Gaji kompetitif dengan insentif kinerja",
@@ -643,7 +643,7 @@
     },
     "press": {
       "metaTitle": "Pers & Media | Ventura Auto",
-      "metaDescription": "Siaran pers dan kit media untuk Ventura Auto — rental mobil premium di Indonesia sejak 2015.",
+      "metaDescription": "Siaran pers dan kit media untuk Ventura Auto, rental mobil premium di Indonesia sejak 2015.",
       "kicker": "Pers",
       "title": "Ruang Media",
       "intro": "Siaran pers, liputan media, dan sumber daya untuk jurnalis yang meliput Ventura Auto.",

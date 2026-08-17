@@ -71,8 +71,8 @@ export const MODEL_HIGHLIGHTS: Record<string, ModelHighlight[]> = {
     {
       label: { en: "Twin-turbo V8", id: "V8 twin-turbo" },
       description: {
-        en: "A 3.9-litre twin-turbo V8 delivering 660 hp at 8,000 rpm with near-zero turbo lag — 0-100 km/h in 3.0 seconds.",
-        id: "V8 twin-turbo 3,9 liter berdaya 660 hp di 8.000 rpm dengan turbo lag hampir nol — 0-100 km/jam dalam 3,0 detik.",
+        en: "A 3.9-litre twin-turbo V8 delivering 660 hp at 8,000 rpm with near-zero turbo lag, hitting 0-100 km/h in 3.0 seconds.",
+        id: "V8 twin-turbo 3,9 liter berdaya 660 hp di 8.000 rpm dengan turbo lag hampir nol, 0-100 km/jam dalam 3,0 detik.",
       },
     },
     {

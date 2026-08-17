@@ -402,7 +402,7 @@
     "close": "Close",
     "greeting": "Hi! I'm the Ventura Auto assistant. Ask me anything about car rental, our fleet, pricing, or rental requirements.",
     "refusal": "Sorry, I can only help with questions about Ventura Auto's car rental services.",
-    "offline": "The assistant is unavailable right now. Please reach out via WhatsApp — our team is happy to help.",
+    "offline": "The assistant is unavailable right now. Please reach out via WhatsApp, our team is happy to help.",
     "error": "Oops, something went wrong. Please try again shortly, or contact us via WhatsApp.",
     "typing": "Typing…"
   },
@@ -519,26 +519,26 @@
   "aboutPages": {
     "story": {
       "metaTitle": "Our Story | Ventura Auto",
-      "metaDescription": "How Ventura Auto grew from a single sedan in Jakarta in 2015 to a premium fleet across 12 Indonesian cities.",
+      "metaDescription": "How Ventura Auto grew from a single sedan in Denpasar in 2015 to a premium fleet across 12 Indonesian cities.",
       "kicker": "About Us",
       "title": "Our Story",
-      "intro": "Ventura Auto began in 2015 with one sedan in Jakarta and a simple belief: a car rental should feel premium from the first click to the final drop-off.",
+      "intro": "Ventura Auto began in 2015 with one sedan in Denpasar and a simple belief: a car rental should feel premium from the first click to the final drop-off.",
       "paragraphs": [
-        "It started with a single rented sedan and a handshake promise — clean cars, honest pricing, and drivers who treat every trip as if it were their own. Our founder spent his evenings at the car wash and his mornings behind the wheel, learning every route in Jakarta before the sun was fully up.",
-        "Word travelled. A business trip became a company account, a wedding became a fleet. Today Ventura Auto operates across 12 cities in Indonesia, from Jakarta and Bandung to Surabaya and Denpasar, with a hand-picked fleet that ranges from executive sedans to full supercars.",
+        "It started with a single rented sedan and a handshake promise: clean cars, honest pricing, and drivers who treat every trip as if it were their own. Our founder spent his evenings at the car wash and his mornings behind the wheel, learning every route in Denpasar before the sun was fully up.",
+        "Word travelled. A business trip became a company account, a wedding became a fleet. Today Ventura Auto operates across 12 cities in Indonesia, from Denpasar to Bandung, Surabaya, and Jakarta, with a hand-picked fleet that ranges from executive sedans to full supercars.",
         "What has not changed is the standard. Every unit still passes a 120-point inspection before each rental, every chauffeur still trains through the same academy, and every booking still comes with 24/7 support. We grow by the number of passengers who ride with us again."
       ],
       "milestonesTitle": "Milestones",
       "milestones": [
         {
           "year": "2015",
-          "title": "First sedan in Jakarta",
+          "title": "First sedan in Denpasar",
           "body": "Ventura Auto opens with a single vehicle and a chauffeur-first promise."
         },
         {
           "year": "2017",
           "title": "Fleet crosses 50 units",
-          "body": "Business accounts and airport transfers drive expansion across Greater Jakarta."
+          "body": "Business accounts and airport transfers drive expansion across Bali."
         },
         {
           "year": "2019",
@@ -559,10 +559,10 @@
     },
     "team": {
       "metaTitle": "Our Team | Ventura Auto",
-      "metaDescription": "Meet the people behind Ventura Auto — the founders, fleet specialists, and service crew who keep every rental premium.",
+      "metaDescription": "Meet the people behind Ventura Auto, the founders, fleet specialists, and service crew who keep every rental premium.",
       "kicker": "About Us",
       "title": "Our Team",
-      "intro": "Behind every seamless rental is a crew obsessed with the details — from the mechanics running 120-point inspections to the chauffeurs who memorise your route.",
+      "intro": "Behind every seamless rental is a crew obsessed with the details, from the mechanics running 120-point inspections to the chauffeurs who memorise your route.",
       "members": [
         {
           "name": "Dimas Anggara",
@@ -604,10 +604,10 @@
     },
     "careers": {
       "metaTitle": "Careers | Ventura Auto",
-      "metaDescription": "Join Ventura Auto — open roles for chauffeurs, mechanics, and customer experience specialists across Indonesia.",
+      "metaDescription": "Join Ventura Auto, open roles for chauffeurs, mechanics, and customer experience specialists across Indonesia.",
       "kicker": "Careers",
       "title": "Join the Crew",
-      "intro": "We are always looking for people who care about the details — people who would rather polish a wheel arch than post about it.",
+      "intro": "We are always looking for people who care about the details, people who would rather polish a wheel arch than post about it.",
       "perksTitle": "What we offer",
       "perks": [
         "Competitive pay with performance incentives",
@@ -643,7 +643,7 @@
     },
     "press": {
       "metaTitle": "Press & Media | Ventura Auto",
-      "metaDescription": "Press releases and media kit for Ventura Auto — premium car rental across Indonesia since 2015.",
+      "metaDescription": "Press releases and media kit for Ventura Auto, premium car rental across Indonesia since 2015.",
       "kicker": "Press",
       "title": "Newsroom",
       "intro": "Press releases, media mentions, and resources for journalists covering Ventura Auto.",
