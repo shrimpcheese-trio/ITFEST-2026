@@ -31,6 +31,7 @@ components/
   ui/                 — base reusable components (buttons, cards, badges)
   3d/                 — car model component + loader/fallback logic
 lib/
+  config/             — site, models (models.json registry), highlights configs
   i18n/               — locale config, helpers
 public/
   models/             — 3d model assets (gltf/glb, compressed)
@@ -63,9 +64,11 @@ Extra sections allowed if relevant to rental business (pricing, testimonials, FA
 - Hero section only.
 - Compress geometry + textures (Draco/gltf-transform); keep model low-poly enough not to tank load time.
 - Recompress exported/processed models with `gltfpak` (e.g. `npx gltfpack -i car.glb -o car-packed.glb`); the shipped model in `public/models/` must be the packed copy, never the raw source.
+- **Always optimize every model for the web by packing it.** Any time a model is added or changed, run a packing tool (e.g. `npx gltfpack -i <model>.glb -o public/models/<model>.glb` or `@gltf-transform/cli`) to compress geometry/textures, and ship only the packed output. Never commit a raw, unpacked export to `public/models/`.
 - Lazy-load the model — don't block LCP/first paint.
 - Provide a static image fallback for slow connections or if WebGL unsupported.
 - Measure FPS after every change. If janky, strip detail before adding more features. Perf > flash.
+- Adding/editing a car touches three files: `lib/config/models.json` (3D props + registry), `messages/{en,id}.json` (display name/copy under `models.<id>`), and `lib/config/highlights.ts` (8 spec markers). See `docs/MODELS.md` for the full guide.
 
 ---
 

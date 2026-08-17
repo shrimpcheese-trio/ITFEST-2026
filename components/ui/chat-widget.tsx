@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 import { MessageCircle, Send, Sparkles, X } from "lucide-react";
-import { siteConfig } from "@/lib/config";
+import { siteConfig } from "@/lib/config/site";
 import { Markdown } from "@/components/ui/markdown";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };

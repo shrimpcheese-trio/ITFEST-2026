@@ -24,8 +24,6 @@
     "slide": "Slide {n}"
   },
   "hero": {
-    "title": "MCLAREN 720S",
-    "subtitle": "Sewa supercar impianmu dengan syarat mudah, didampingi profesional berpengalaman.",
     "badge": "Tersedia di 12 kota",
     "tabs": {
       "performance": "Performa",
@@ -34,19 +32,83 @@
       "luxury": "Kemewahan",
       "multimedia": "Multimedia"
     },
-    "tabCopy": {
-      "performance": "V8 twin-turbo 4.0L, 710 hp, 0–100 km/jam dalam 2,9 detik.",
-      "design": "Aerodinamika aktif dan bodi serat karbon yang ringan.",
-      "safety": "Rem karbon-keramik, kontrol traksi, dan rangka kokpit monokok.",
-      "luxury": "Interior kulit premium dengan jok elektrik berpemanas.",
-      "multimedia": "Sistem audio 12-speaker dan layar sentuh 8 inci."
-    },
     "cta": "Sewa Sekarang",
     "ctaSecondary": "Lihat Armada",
     "priceLabel": "Mulai dari",
-    "price": "Rp 4.500.000/hari",
     "dragHint": "Geser untuk memutar",
     "tabKicker": "Sorotan"
+  },
+  "models": {
+    "mclaren-720s": {
+      "name": "McLaren 720S",
+      "wordmark": "MCLAREN 720S",
+      "subtitle": "Sewa supercar impianmu dengan syarat mudah, didampingi profesional berpengalaman.",
+      "price": "Rp 4.500.000/hari",
+      "tagline": "Supercar impian, siap dipakai harian.",
+      "tabCopy": {
+        "performance": "V8 twin-turbo 4.0L, 710 hp, 0–100 km/jam dalam 2,9 detik.",
+        "design": "Aerodinamika aktif dan bodi serat karbon yang ringan.",
+        "safety": "Rem karbon-keramik, kontrol traksi, dan rangka kokpit monokok.",
+        "luxury": "Interior kulit premium dengan jok elektrik berpemanas.",
+        "multimedia": "Sistem audio 12-speaker dan layar sentuh 8 inci."
+      }
+    },
+    "ferrari-488-gtb": {
+      "name": "Ferrari 488 GTB",
+      "wordmark": "FERRARI 488 GTB",
+      "subtitle": "Sewa ikon Italia dengan syarat mudah, didampingi pengemudi profesional.",
+      "price": "Rp 7.500.000/hari",
+      "tagline": "Ikon Italia, siap melaju setiap hari.",
+      "tabCopy": {
+        "performance": "V8 twin-turbo 3.9L, 660 hp, 0-100 km/jam dalam 3,0 detik.",
+        "design": "Bodi aerodinamis pahatan dengan komponen serat karbon di seluruh bagian.",
+        "safety": "Rem karbon-keramik, diferensial elektronik, dan kontrol stabilitas penuh.",
+        "luxury": "Kabin kulit jahitan tangan dengan jok balap dan AC dua zona.",
+        "multimedia": "Sistem audio Bose dan layar sentuh 8,4 inci dengan telemetri."
+      }
+    },
+    "bmw-m3-2013": {
+      "name": "BMW M3",
+      "wordmark": "BMW M3",
+      "subtitle": "Sedan sport seimbang bagi yang menginginkan kecepatan dan kepraktisan dalam satu paket.",
+      "price": "Rp 3.200.000/hari",
+      "tagline": "Mesin berkendara pamungkas, tanpa kompromi.",
+      "tabCopy": {
+        "performance": "V8 naturally aspirated 4.0L, 414 hp, 0-100 km/jam dalam 4,6 detik.",
+        "design": "Lengkung bodi lebar, atap serat karbon, dan siluet M yang abadi.",
+        "safety": "Enam airbag, pengereman adaptif, dan diferensial presisi.",
+        "luxury": "Interior sport kulit penuh dengan jok berpemanas dan sistem iDrive.",
+        "multimedia": "Navigasi layar 8,8 inci dan speaker Harman Kardon."
+      }
+    },
+    "mustang-shelby-gt500": {
+      "name": "MUSTANG GT500",
+      "wordmark": "MUSTANG GT500",
+      "subtitle": "Legenda otot Amerika, siap mencuri perhatian di setiap boulevard.",
+      "price": "Rp 5.500.000/hari",
+      "tagline": "Otot Amerika, dilepas di jalan terbuka.",
+      "tabCopy": {
+        "performance": "V8 supercharged 5.8L, 662 hp, 0-100 km/jam dalam 3,5 detik.",
+        "design": "Stripping balap agresif, ventilasi kap, dan spoiler belakang yang garang.",
+        "safety": "Rem Brembo, launch control, dan manajemen traksi.",
+        "luxury": "Jok kulit Recaro dengan jahitan kontras dan infotainment modern.",
+        "multimedia": "Layar sentuh dengan Apple CarPlay dan audio 12-speaker."
+      }
+    },
+    "range-rover-evoque": {
+      "name": "Range Rover Evoque",
+      "wordmark": "RANGE ROVER EVOQUE",
+      "subtitle": "SUV mewah ringkas yang meluncur mulus dari jalan kota hingga liburan akhir pekan.",
+      "price": "Rp 2.800.000/hari",
+      "tagline": "Kepiawaian SUV mewah untuk setiap perjalanan, di jalan mana pun.",
+      "tabCopy": {
+        "performance": "Mesin turbo 2.0L, 240 hp, dengan transmisi otomatis 9-percepatan yang halus.",
+        "design": "Lampu LED ramping, atap melayang, dan siluet modern yang tajam.",
+        "safety": "Penggerak semua roda, terrain response, dan bantuan tabrakan penuh.",
+        "luxury": "Atap panorama, kulit premium, dan jok depan berpemanas.",
+        "multimedia": "Infotainment layar sentuh dengan suara surround Meridian."
+      }
+    }
   },
   "stats": {
     "cars": "120+",
@@ -110,46 +172,9 @@
   },
   "valueProps": {
     "title": "Kendaraan, dipahami",
-    "subtitle": "Setiap detail dirancang untuk kenyamanan dan kendali penuh.",
-    "markers": [
-      {
-        "label": "Panel instrumen digital",
-        "description": "Layar aktif beresolusi tinggi yang menyajikan telemetri real-time, overlay navigasi, dan mode berkendara yang dapat disesuaikan tepat pada jarak pandang pengemudi."
-      },
-      {
-        "label": "Material interior premium",
-        "description": "Lapisan kulit Alcantara jahitan tangan berpadu dengan aksen serat karbon berkualitas aerospace, memberikan kemewahan taktil dan peredaman bobot."
-      },
-      {
-        "label": "Sistem keselamatan aktif",
-        "description": "Pemantauan terus-menerus melalui sensor radar dan optik untuk fitur penghindar tabrakan, penjaga lajur, serta pengereman darurat otomatis."
-      },
-      {
-        "label": "Suspensi adaptif",
-        "description": "Sistem peredaman proaktif yang langsung beradaptasi dengan kondisi jalan; menawarkan kestabilan ala sirkuit atau kenyamanan meluncur di jalan tol."
-      },
-      {
-        "label": "Transmisi 7-percepatan",
-        "description": "Transmisi kopling ganda super cepat yang memberikan perpindahan gigi dalam hitungan milidetik, menjamin penyaluran tenaga tanpa henti."
-      },
-      {
-        "label": "Rem karbon-keramik",
-        "description": "Cakram rem berukuran masif yang dirancang khusus untuk menahan panas ekstrem, menawarkan daya henti seketika dan dapat diprediksi."
-      },
-      {
-        "label": "Aerodinamika aktif",
-        "description": "Spoiler yang dapat ditarik dan asupan udara dinamis yang menyesuaikan diri otomatis untuk mengoptimalkan downforce, pendinginan, dan kecepatan."
-      },
-      {
-        "label": "Lampu LED Matrix",
-        "description": "Pencahayaan cerdas yang secara dinamis membentuk sorotan cahaya agar tidak menyilaukan lalu lintas berlawanan sambil memaksimalkan jarak pandang."
-      }
-    ]
+    "subtitle": "Setiap detail dirancang untuk kenyamanan dan kendali penuh."
   },
   "showcase": {
-    "modelName": "Mclaren 720s",
-    "tagline": "Supercar impian, siap dipakai harian.",
-    "price": "Mulai Rp 4.500.000/hari",
     "ctaPrimary": "Sewa Sekarang",
     "ctaSecondary": "Hubungi Sales",
     "badge": "360°"

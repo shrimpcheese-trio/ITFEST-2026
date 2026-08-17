@@ -10,7 +10,7 @@ Built with Next.js 16 (App Router), Tailwind CSS v4, three.js (react-three-fiber
 - **Interactive 3D** — lazy-loaded GLB car model in the hero with a static image fallback; lightweight 3D scenes in Value Props and Showcase
 - **Responsive sections** — Navbar, Hero, Stats, About, Mission, Collection, Value Props, Showcase, Pricing, Testimonials, FAQ, Newsletter, Footer, Contact dialog
 - **Design tokens** — all colors/type/spacing come from `DESIGN.md`
-- **Env-configurable contact details** — site name, email, and phone read from `NEXT_PUBLIC_*` vars with sane defaults (see `lib/config.ts`)
+- **Env-configurable contact details** — site name, email, and phone read from `NEXT_PUBLIC_*` vars with sane defaults (see `lib/config/site.ts`)
 
 ## Tech Stack
 

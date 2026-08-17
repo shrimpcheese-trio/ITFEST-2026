@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/config";
+import { siteConfig } from "@/lib/config/site";
 import { groq } from "@/lib/groq";
 
 const MAX_USER_MESSAGE_LENGTH = 500;

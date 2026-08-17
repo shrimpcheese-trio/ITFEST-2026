@@ -6,7 +6,7 @@ import { staggerContainer, fadeUp } from "@/lib/motion/variants";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/ui/logo";
 import { NewsletterForm } from "./newsletter-form";
-import { siteConfig } from "@/lib/config";
+import { siteConfig } from "@/lib/config/site";
 
 const NAV_LINKS = [
   { key: "home", href: "#home" },

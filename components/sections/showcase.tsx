@@ -10,9 +10,14 @@ import { Button } from "@/components/ui/button";
 import { ContactDialog } from "@/components/ui/contact-dialog";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
 import { ShowcaseScene } from "@/components/3d/showcase-scene";
+import { getCarModel } from "@/lib/config/models";
+import { useActiveModel, useModelMessages } from "@/lib/model-provider";
 
 export function Showcase() {
   const t = useTranslations("showcase");
+  const { modelId } = useActiveModel();
+  const model = useModelMessages();
+  const carConfig = getCarModel(modelId);
   const [spinning, setSpinning] = useState(true);
   const prefersReducedMotion = useReducedMotion();
 
@@ -29,7 +34,7 @@ export function Showcase() {
           variants={blurUp}
           className="text-center font-display text-[26vw] uppercase leading-[0.78] text-ink md:text-[15rem]"
         >
-          {t("modelName")}
+          {model("name")}
         </m.h2>
 
         <m.div variants={scaleIn} className="relative mx-auto mt-2 w-full max-w-6xl px-4 md:px-10">
@@ -49,14 +54,14 @@ export function Showcase() {
             fallback={
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src="/images/showcase-alt.webp"
+                src={carConfig.showcaseFallback}
                 alt=""
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
             }
           >
-            <ShowcaseScene spinning={spinning} />
+            <ShowcaseScene modelId={modelId} spinning={spinning} />
           </LazyCanvas>
           <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-hairline-soft ring-inset" />
         </div>
@@ -80,8 +85,8 @@ export function Showcase() {
         </m.div>
 
         <div className="mx-auto mt-10 max-w-xl px-6 text-center">
-          <m.p variants={fadeUp} className="text-xl font-semibold text-ink">{t("tagline")}</m.p>
-          <m.p variants={fadeUp} className="mt-2 text-sm text-mute">{t("price")}</m.p>
+          <m.p variants={fadeUp} className="text-xl font-semibold text-ink">{model("tagline")}</m.p>
+          <m.p variants={fadeUp} className="mt-2 text-sm text-mute">{model("price")}</m.p>
           <m.div variants={fadeUp} className="mt-7 flex flex-wrap justify-center gap-3">
             <m.div whileHover={{ y: -2, boxShadow: "0px 10px 20px rgba(17, 17, 17, 0.15)" }} whileTap={{ scale: 0.95 }} className="inline-flex rounded-full">
               <Button asChild>
