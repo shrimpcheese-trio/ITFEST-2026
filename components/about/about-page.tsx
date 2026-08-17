@@ -14,7 +14,7 @@ type Release = { date: string; title: string; body: string };
 
 function PageHeader({ kicker, title, intro }: { kicker: string; title: string; intro: string }) {
   return (
-    <div className="mx-auto max-w-3xl px-6 pt-32 md:px-10 md:pt-40">
+    <div className="mx-auto max-w-5xl px-6 pt-32 md:px-10 md:pt-40">
       <p className="text-xs font-semibold uppercase tracking-[0.12em] text-mute">
         {kicker}
       </p>
@@ -83,9 +83,9 @@ async function TeamBody() {
       {members.map((member) => (
         <figure
           key={member.name}
-          className="flex flex-col gap-5 rounded-xl border border-hairline p-6"
+          className="group flex flex-col rounded-xl border border-hairline bg-canvas p-6 transition-all duration-300 hover:border-ink hover:shadow-[8px_8px_0_0_rgba(17,17,17,1)]"
         >
-          <div className="relative aspect-square w-24 overflow-hidden rounded-full bg-soft-cloud">
+          <div className="relative aspect-square size-20 overflow-hidden rounded-full bg-soft-cloud grayscale transition duration-300 group-hover:grayscale-0 md:size-24">
             <Image
               src={member.avatar}
               alt={member.name}
@@ -94,12 +94,16 @@ async function TeamBody() {
               className="object-cover"
             />
           </div>
-          <figcaption>
-            <h2 className="text-lg font-semibold text-ink">{member.name}</h2>
-            <p className="mt-0.5 text-xs font-semibold uppercase tracking-widest text-stone">
+          <figcaption className="mt-6 flex flex-1 flex-col">
+            <h2 className="font-display text-2xl uppercase leading-none text-ink">
+              {member.name}
+            </h2>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-stone">
               {member.role}
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-mute">{member.bio}</p>
+            <p className="mt-4 text-sm leading-relaxed text-mute">
+              {member.bio}
+            </p>
           </figcaption>
         </figure>
       ))}
@@ -254,7 +258,7 @@ export async function AboutPage({
             title={t("title")}
             intro={t("intro")}
           />
-          <div className="mx-auto max-w-3xl px-6 md:px-10">{body}</div>
+          <div className="mx-auto max-w-5xl px-6 md:px-10">{body}</div>
         </div>
       </main>
       <Footer />

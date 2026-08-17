@@ -149,7 +149,7 @@ export function ValueProps() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="relative w-full max-w-md bg-canvas p-8 md:p-10 shadow-2xl"
+              className="relative w-full max-w-md bg-canvas p-8 md:p-10 shadow-2xl rounded-xl"
             >
               <button
                 onClick={() => setSelectedSpec(null)}

@@ -20,7 +20,7 @@ export async function LegalDoc({
     <>
       <Navbar />
       <main id="main">
-        <div className="mx-auto max-w-3xl px-6 py-24 md:px-10 md:py-32">
+        <div className="mx-auto max-w-5xl px-6 py-24 md:px-10 md:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-mute">
             {t("kicker")}
           </p>
