@@ -15,7 +15,11 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
 import { HeroScene } from "@/components/3d/hero-scene";
-import { FEATURE_TABS, getCarModel, type FeatureTabId } from "@/lib/config/models";
+import {
+  FEATURE_TABS,
+  getCarModel,
+  type FeatureTabId,
+} from "@/lib/config/models";
 import { useActiveModel, useModelMessages } from "@/lib/model-provider";
 
 function FeaturePanel({
@@ -29,7 +33,7 @@ function FeaturePanel({
   const model = useModelMessages();
 
   return (
-    <div className="flex w-full flex-col gap-3 md:max-w-xs md:items-end">
+    <div className="flex w-fit lg:w-full flex-col gap-3 md:max-w-xs sm:items-end">
       <m.div
         variants={staggerContainer}
         initial="initial"
@@ -81,9 +85,7 @@ export function Hero() {
   const carConfig = getCarModel(modelId);
   const prefersReducedMotion = useReducedMotion();
 
-  const [active, setActive] = useState<FeatureTabId>(
-    carConfig.defaultFeature,
-  );
+  const [active, setActive] = useState<FeatureTabId>(carConfig.defaultFeature);
   const [seenModel, setSeenModel] = useState(modelId);
   if (seenModel !== modelId) {
     setSeenModel(modelId);
@@ -157,11 +159,7 @@ export function Hero() {
             </m.div>
           </m.div>
 
-          <FeaturePanel
-            key={modelId}
-            active={active}
-            onTabChange={setActive}
-          />
+          <FeaturePanel key={modelId} active={active} onTabChange={setActive} />
         </div>
       </div>
 

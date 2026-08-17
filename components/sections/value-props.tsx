@@ -52,7 +52,7 @@ export function ValueProps() {
         </m.p>
       </div>
 
-      <div className="mx-auto mt-12 h-[460px] max-w-6xl overflow-visible rounded-none px-0 md:h-[600px] md:px-6">
+      <div className="mx-auto mt-12 h-[460px] max-w-6xl overflow-visible rounded-none px-0 md:h-[320px] lg:h-[600px] md:px-6">
         <div ref={canvasWrap} className="relative h-full w-full">
           <LazyCanvas
             orthographic

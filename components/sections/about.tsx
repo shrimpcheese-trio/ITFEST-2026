@@ -26,13 +26,13 @@ export function About() {
     <section
       id="about"
       ref={containerRef}
-      className="relative scroll-mt-20 overflow-hidden bg-canvas py-28 md:py-36"
+      className="relative scroll-mt-20 overflow-hidden bg-canvas py-28 lg:py-36"
     >
       <m.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-100px" }}
-        className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-16 px-6 md:flex-row md:items-start md:px-10"
+        className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-16 px-6 md:flex-row lg:items-start lg::px-10"
       >
         {/* Left Image (Larger) */}
         <m.div
@@ -83,7 +83,7 @@ export function About() {
         {/* Right Image (Smaller, offset) */}
         <m.div
           variants={scaleIn}
-          className="hidden relative w-full md:block md:w-3/12 lg:w-3/12 md:mt-32"
+          className="hidden relative w-full lg:block md:w-3/12 lg:w-3/12 md:mt-32"
         >
           <m.div style={prefersReducedMotion ? {} : { y: yRight }}>
             <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-soft-cloud">

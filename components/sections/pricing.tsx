@@ -29,7 +29,7 @@ export function Pricing() {
           <p className="mx-auto mt-5 max-w-xl text-mute">{t("subtitle")}</p>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {plans.map((plan, index) => {
             const featured = Boolean(plan.popular);
             return (
