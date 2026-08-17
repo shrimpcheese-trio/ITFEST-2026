@@ -144,7 +144,10 @@
   },
   "valueProps": {
     "title": "Kendaraan, dipahami",
-    "subtitle": "Setiap detail dirancang untuk kenyamanan dan kendali penuh."
+    "subtitle": "Setiap detail dirancang untuk kenyamanan dan kendali penuh.",
+    "hoverHint": "Arahkan kursor atau sentuh penanda untuk melihat setiap detail.",
+    "spec": "Spesifikasi {n}",
+    "close": "Tutup"
   },
   "showcase": {
     "ctaPrimary": "Sewa Sekarang",

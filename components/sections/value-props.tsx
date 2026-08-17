@@ -86,14 +86,21 @@ export function ValueProps() {
                 isActive ? "opacity-100" : "opacity-70",
               )}
             >
-              <span className="text-[10px] font-bold text-ink/40 tracking-wider">
-                0{index + 1}
+              <span
+                className={cn(
+                  "flex size-6 items-center justify-center rounded-full text-[10px] font-bold leading-none transition-colors",
+                  isActive
+                    ? "bg-ink text-canvas"
+                    : "border border-hairline bg-canvas text-ink/60 group-hover:border-ink/40",
+                )}
+              >
+                {index + 1 < 10 ? `0${index + 1}` : index + 1}
               </span>
               <div className="relative w-fit">
                 <span
                   className={cn(
                     "text-xs font-semibold uppercase tracking-[0.1em] transition-colors",
-                    isActive ? "text-ink" : "text-mute group-hover:text-ink/70",
+                    isActive ? "text-ink" : "text-ink/70 group-hover:text-ink",
                   )}
                 >
                   {label}
@@ -109,6 +116,46 @@ export function ValueProps() {
           );
         })}
       </m.div>
+
+      <div className="mx-auto mt-8 max-w-6xl px-6">
+        <AnimatePresence mode="wait">
+          {activeMarker !== null && markers[activeMarker] ? (
+            <m.div
+              key={activeMarker}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3 }}
+              className="flex items-start gap-4 border-t border-hairline pt-6"
+            >
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-bold text-canvas">
+                {activeMarker + 1 < 10 ? `0${activeMarker + 1}` : activeMarker + 1}
+              </span>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-mute">
+                  {t("spec", { n: activeMarker + 1 })}
+                </p>
+                <h3 className="font-display text-xl uppercase leading-tight text-ink">
+                  {markers[activeMarker].label}
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-mute">
+                  {markers[activeMarker].description}
+                </p>
+              </div>
+            </m.div>
+          ) : (
+            <m.p
+              key="hint"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="border-t border-hairline pt-6 text-sm text-mute"
+            >
+              {t("hoverHint")}
+            </m.p>
+          )}
+        </AnimatePresence>
+      </div>
 
       {/* Info Modal */}
       <AnimatePresence>
@@ -134,7 +181,7 @@ export function ValueProps() {
               <button
                 onClick={() => setSelectedSpec(null)}
                 className="absolute top-4 right-4 p-2 text-mute hover:text-ink transition-colors"
-                aria-label="Close"
+                aria-label={t("close")}
               >
                 <svg
                   width="24"
@@ -149,7 +196,7 @@ export function ValueProps() {
               </button>
 
               <p className="text-[10px] font-bold text-ink/40 tracking-widest uppercase mb-4">
-                Spec 0{selectedSpec + 1}
+                {t("spec", { n: selectedSpec + 1 })}
               </p>
               <h3 className="font-display text-2xl uppercase leading-tight mb-4 text-ink">
                 {markers[selectedSpec].label}

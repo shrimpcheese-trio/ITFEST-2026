@@ -144,7 +144,10 @@
   },
   "valueProps": {
     "title": "The vehicle, understood",
-    "subtitle": "Every detail is engineered for comfort and total control."
+    "subtitle": "Every detail is engineered for comfort and total control.",
+    "hoverHint": "Hover or tap a marker to explore each detail.",
+    "spec": "Spec {n}",
+    "close": "Close"
   },
   "showcase": {
     "ctaPrimary": "Rent Now",

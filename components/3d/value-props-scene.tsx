@@ -78,10 +78,10 @@ function SvgOverlay({
                   x2={x2}
                   y2={y2}
                   stroke={isActive ? "#111111" : "#9e9ea0"}
-                  strokeWidth={isActive ? 1.5 : 1}
+                  strokeWidth={isActive ? 2 : 1.2}
                   strokeDasharray={isActive ? "none" : "4 4"}
                   initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: isDimmed ? 0.2 : 0.6 }}
+                  animate={{ pathLength: 1, opacity: isDimmed ? 0.2 : isActive ? 1 : 0.85 }}
                   transition={{ delay: 0.1 * i, duration: 0.8, ease: "easeOut" }}
                 />
                 
@@ -89,10 +89,12 @@ function SvgOverlay({
                 <motion.circle
                   cx={x1}
                   cy={y1}
-                  r={isActive ? 4 : 2}
-                  fill={isActive ? "#111111" : "#9e9ea0"}
+                  r={isActive ? 6 : 4}
+                  fill="#111111"
+                  stroke="#ffffff"
+                  strokeWidth={isActive ? 2 : 1.5}
                   initial={{ scale: 0 }}
-                  animate={{ scale: 1, opacity: isDimmed ? 0.2 : 1 }}
+                  animate={{ scale: 1, opacity: isDimmed ? 0.25 : 1 }}
                   transition={{ delay: 0.1 * i + 0.3, type: "spring", stiffness: 300, damping: 20 }}
                 />
                 
@@ -146,37 +148,46 @@ function MarkerLabel({
         animate={{ opacity: 1, x: side === "left" ? "-50%" : "50%" }}
         transition={{ delay: 0.1 * index + 0.2, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         className={cn(
-          "group relative flex items-center gap-3 cursor-pointer transition-all duration-300 max-md:hidden",
+          "group relative flex items-center gap-2.5 cursor-pointer transition-all duration-300 max-md:hidden",
           isDimmed ? "opacity-30" : "opacity-100",
           side === "left" ? "pr-2" : "pl-2"
         )}
       >
-        {/* Number Indicator - Editorial Style */}
         {side === "right" && (
-          <span className="text-[10px] font-bold text-ink/40 tracking-wider">0{index}</span>
-        )}
-        
-        {/* Label with animated underline */}
-        <div className="relative">
           <span
             className={cn(
-              "whitespace-nowrap text-xs font-semibold uppercase tracking-[0.15em] transition-colors md:inline",
-              isActive ? "text-ink" : "text-mute group-hover:text-ink/70"
+              "flex size-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold leading-none transition-colors duration-300",
+              isActive
+                ? "bg-ink text-canvas"
+                : "border border-hairline bg-canvas text-ink/60 group-hover:border-ink/40 group-hover:text-ink",
             )}
           >
-            {label}
+            {index < 10 ? `0${index}` : index}
           </span>
-          <span 
-            className={cn(
-              "absolute -bottom-1 left-0 h-[1px] bg-ink transition-all duration-500 ease-out",
-              isActive ? "w-full" : "w-0 group-hover:w-1/2"
-            )}
-            style={{ transformOrigin: side === "left" ? "right" : "left" }}
-          />
-        </div>
+        )}
+
+        <span
+          className={cn(
+            "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-colors duration-300",
+            isActive
+              ? "border-ink bg-ink text-canvas"
+              : "border-hairline bg-canvas/90 text-ink group-hover:border-ink/40",
+          )}
+        >
+          {label}
+        </span>
 
         {side === "left" && (
-          <span className="text-[10px] font-bold text-ink/40 tracking-wider">0{index}</span>
+          <span
+            className={cn(
+              "flex size-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold leading-none transition-colors duration-300",
+              isActive
+                ? "bg-ink text-canvas"
+                : "border border-hairline bg-canvas text-ink/60 group-hover:border-ink/40 group-hover:text-ink",
+            )}
+          >
+            {index < 10 ? `0${index}` : index}
+          </span>
         )}
       </motion.div>
     </Html>
