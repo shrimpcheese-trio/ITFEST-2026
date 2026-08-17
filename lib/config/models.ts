@@ -25,6 +25,7 @@ export type FeaturePreset = {
 
 export type CarModelConfig = {
   id: string;
+  category: "supercar" | "sedan" | "suv";
   modelUrl: string;
   heroFallback: string;
   showcaseFallback: string;

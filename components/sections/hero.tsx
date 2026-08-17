@@ -29,12 +29,12 @@ function FeaturePanel({
   const model = useModelMessages();
 
   return (
-    <div className="flex flex-col gap-3 md:items-end hidden xl:flex">
+    <div className="flex w-full flex-col gap-3 md:max-w-xs md:items-end">
       <m.div
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="flex xl:flex-col flex-wrap gap-2.5 md:flex-row md:items-end max-w-3/6"
+        className="flex flex-wrap gap-2.5 sm:flex-row sm:items-center sm:justify-end md:flex-col md:items-end"
       >
         {FEATURE_TABS.map((tab) => (
           <m.button
@@ -49,7 +49,7 @@ function FeaturePanel({
             }}
             whileTap={{ scale: 0.95 }}
             className={cn(
-              "rounded-full border px-5 py-2 text-sm font-medium transition-colors w-full",
+              "rounded-full border px-5 py-2 text-sm font-medium transition-colors",
               active === tab
                 ? "border-ink bg-ink text-canvas shadow-[0_0_15px_rgba(17,17,17,0.2)]"
                 : "border-hairline bg-canvas text-ink hover:border-ink/40",
@@ -61,7 +61,7 @@ function FeaturePanel({
       </m.div>
       <div
         key={active}
-        className="max-w-[260px] animate-in fade-in duration-500 md:text-right"
+        className="min-h-[96px] max-w-[260px] animate-in fade-in duration-500 md:text-right"
       >
         <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-mute">
           {t("tabKicker")}

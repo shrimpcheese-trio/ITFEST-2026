@@ -135,40 +135,12 @@
     "title": "Featured Collection",
     "subtitle": "Explore the hand-picked fleet most rented this month.",
     "from": "From",
-    "tabs": [
-      "All",
-      "Supercar",
-      "SUV",
-      "Sedan",
-      "Minibus"
-    ],
-    "featured": {
-      "category": "Supercar",
-      "name": "McLaren 720S",
-      "price": "IDR 4,500,000/day"
-    },
-    "items": [
-      {
-        "category": "Supercar",
-        "name": "Lamborghini Huracán",
-        "price": "IDR 5,200,000/day"
-      },
-      {
-        "category": "SUV",
-        "name": "Range Rover",
-        "price": "IDR 2,800,000/day"
-      },
-      {
-        "category": "Sedan",
-        "name": "BMW 530i",
-        "price": "IDR 1,750,000/day"
-      },
-      {
-        "category": "Minibus",
-        "name": "Toyota Hiace",
-        "price": "IDR 1,200,000/day"
-      }
-    ]
+    "categories": {
+      "all": "All",
+      "supercar": "Supercar",
+      "sedan": "Sedan",
+      "suv": "SUV"
+    }
   },
   "valueProps": {
     "title": "The vehicle, understood",
