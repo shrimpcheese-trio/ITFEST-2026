@@ -4,7 +4,9 @@ import {
   createContext,
   useContext,
   useEffect,
+  useRef,
   useState,
+  type MutableRefObject,
   type ReactNode,
 } from "react";
 import { useReducedMotion } from "motion/react";
@@ -20,15 +22,20 @@ type ModelMessageGetter = {
 type ModelContextValue = {
   modelId: string;
   setModelId: (id: string) => void;
+  rotationEpochRef: MutableRefObject<number | null>;
 };
+
+const emptyEpoch = { current: null };
 
 const ModelContext = createContext<ModelContextValue>({
   modelId: CAR_MODELS[0].id,
   setModelId: () => {},
+  rotationEpochRef: emptyEpoch,
 });
 
 export function ModelProvider({ children }: { children: ReactNode }) {
   const [modelId, setModelId] = useState(CAR_MODELS[0].id);
+  const rotationEpochRef = useRef<number | null>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -39,7 +46,11 @@ export function ModelProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (reduceMotion || CAR_MODELS.length < 2) return;
+    if (reduceMotion || CAR_MODELS.length < 2) {
+      rotationEpochRef.current = null;
+      return;
+    }
+    rotationEpochRef.current = Date.now();
     const timer = setInterval(() => {
       setModelId((current) => {
         const index = CAR_MODELS.findIndex((car) => car.id === current);
@@ -50,7 +61,7 @@ export function ModelProvider({ children }: { children: ReactNode }) {
   }, [reduceMotion]);
 
   return (
-    <ModelContext.Provider value={{ modelId, setModelId }}>
+    <ModelContext.Provider value={{ modelId, setModelId, rotationEpochRef }}>
       {children}
     </ModelContext.Provider>
   );

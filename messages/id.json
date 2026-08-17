@@ -5,7 +5,8 @@
   },
   "common": {
     "loading": "Memuat model…",
-    "loadingPage": "Memuat halaman…"
+    "loadingPage": "Memuat halaman…",
+    "nextModel": "Rotasi model berikutnya"
   },
   "nav": {
     "home": "Beranda",
