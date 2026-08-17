@@ -30,7 +30,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { siteConfig } from "@/lib/config";
+import { siteConfig } from "@/lib/config/site";
 
 function Field({
   label,

@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { CarModel, type CarAnchor } from "./car-model";
 import { ModelLoader } from "./model-loader";
+import { getCarModel } from "@/lib/config/models";
 
 function TopDownCamera() {
   const { width, height } = useThree((s) => s.size);
@@ -183,17 +184,20 @@ function MarkerLabel({
 }
 
 export function ValuePropsScene({ 
+  modelId,
   labels,
   activeMarker,
   setActiveMarker,
   onClickMarker
 }: { 
+  modelId: string;
   labels: string[];
   activeMarker: number | null;
   setActiveMarker: (idx: number | null) => void;
   onClickMarker: (idx: number) => void;
 }) {
   const [anchors, setAnchors] = useState<CarAnchor[] | null>(null);
+  const model = getCarModel(modelId);
 
   return (
     <>
@@ -203,7 +207,11 @@ export function ValuePropsScene({
       <TopDownCamera />
       
       <Suspense fallback={<ModelLoader />}>
-        <CarModel targetLength={3.1} onReady={setAnchors} />
+        <CarModel
+          modelUrl={model.modelUrl}
+          targetLength={3.1}
+          onReady={setAnchors}
+        />
         
         {/* The blueprint lines are drawn via SVG overlay mapped to 3D coordinates */}
         {anchors && (

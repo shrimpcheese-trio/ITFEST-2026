@@ -24,8 +24,6 @@
     "slide": "Slide {n}"
   },
   "hero": {
-    "title": "MCLAREN 720S",
-    "subtitle": "Rent your dream supercar with easy requirements and experienced professional chauffeurs.",
     "badge": "Available in 12 cities",
     "tabs": {
       "performance": "Performance",
@@ -34,19 +32,83 @@
       "luxury": "Luxury",
       "multimedia": "Multimedia"
     },
-    "tabCopy": {
-      "performance": "4.0L twin-turbo V8, 710 hp, 0–100 km/h in 2.9 seconds.",
-      "design": "Active aerodynamics and a lightweight carbon-fibre body.",
-      "safety": "Carbon-ceramic brakes, traction control, monocoque cockpit.",
-      "luxury": "Premium leather interior with heated power seats.",
-      "multimedia": "12-speaker audio system and 8-inch touchscreen."
-    },
     "cta": "Rent Now",
     "ctaSecondary": "View Fleet",
     "priceLabel": "Starting from",
-    "price": "Rp 4,500,000/day",
     "dragHint": "Drag to rotate",
     "tabKicker": "Highlights"
+  },
+  "models": {
+    "mclaren-720s": {
+      "name": "McLaren 720S",
+      "wordmark": "MCLAREN 720S",
+      "subtitle": "Rent your dream supercar with easy requirements and experienced professional chauffeurs.",
+      "price": "Rp 4,500,000/day",
+      "tagline": "Your dream supercar, ready for daily driving.",
+      "tabCopy": {
+        "performance": "4.0L twin-turbo V8, 710 hp, 0–100 km/h in 2.9 seconds.",
+        "design": "Active aerodynamics and a lightweight carbon-fibre body.",
+        "safety": "Carbon-ceramic brakes, traction control, monocoque cockpit.",
+        "luxury": "Premium leather interior with heated power seats.",
+        "multimedia": "12-speaker audio system and 8-inch touchscreen."
+      }
+    },
+    "ferrari-488-gtb": {
+      "name": "Ferrari 488 GTB",
+      "wordmark": "FERRARI 488 GTB",
+      "subtitle": "Borrow an Italian icon with simple paperwork and a professional driver at your side.",
+      "price": "Rp 7,500,000/day",
+      "tagline": "An Italian icon, tuned for the everyday.",
+      "tabCopy": {
+        "performance": "3.9L twin-turbo V8, 660 hp, 0-100 km/h in 3.0 seconds.",
+        "design": "Sculpted aero bodywork and carbon-fibre components throughout.",
+        "safety": "Carbon-ceramic brakes, electronic diff, full stability control.",
+        "luxury": "Hand-stitched leather cabin with racing seats and dual-zone climate.",
+        "multimedia": "Bose sound system and 8.4-inch touchscreen with telemetry."
+      }
+    },
+    "bmw-m3-2013": {
+      "name": "BMW M3",
+      "wordmark": "BMW M3",
+      "subtitle": "A balanced sports sedan for those who want pace and practicality in one package.",
+      "price": "Rp 3,200,000/day",
+      "tagline": "The ultimate driving machine, without the compromise.",
+      "tabCopy": {
+        "performance": "4.0L naturally aspirated V8, 414 hp, 0-100 km/h in 4.6 seconds.",
+        "design": "Wide-body arches, carbon-fibre roof, and a timeless M silhouette.",
+        "safety": "Six airbags, adaptive braking, and precise torque-vectoring diff.",
+        "luxury": "Full leather sport interior with heated seats and iDrive system.",
+        "multimedia": "Navigation with 8.8-inch screen and Harman Kardon speakers."
+      }
+    },
+    "mustang-shelby-gt500": {
+      "name": "Mustang GT500",
+      "wordmark": "Mustang GT500",
+      "subtitle": "An American muscle legend, ready to turn heads on every boulevard.",
+      "price": "Rp 5,500,000/day",
+      "tagline": "American muscle, unleashed on the open road.",
+      "tabCopy": {
+        "performance": "5.8L supercharged V8, 662 hp, 0-100 km/h in 3.5 seconds.",
+        "design": "Aggressive racing stripes, hood vents, and a rear spoiler that means business.",
+        "safety": "Brembo brakes, launch control, and traction management.",
+        "luxury": "Recaro leather seats with contrast stitching and modern infotainment.",
+        "multimedia": "Touchscreen with Apple CarPlay and a punchy 12-speaker audio."
+      }
+    },
+    "range-rover-evoque": {
+      "name": "Range Rover",
+      "wordmark": "RANGE ROVER",
+      "subtitle": "A compact luxury SUV that glides from city streets to weekend getaways.",
+      "price": "Rp 2,800,000/day",
+      "tagline": "Luxury SUV poise for every journey, on any road.",
+      "tabCopy": {
+        "performance": "2.0L turbo engine, 240 hp, with a smooth 9-speed automatic.",
+        "design": "Slim LED lights, floating roof, and a sharp, modern silhouette.",
+        "safety": "All-wheel drive, terrain response, and full collision assist.",
+        "luxury": "Panoramic roof, premium leather, and heated front seats.",
+        "multimedia": "Touchscreen infotainment with Meridian surround sound."
+      }
+    }
   },
   "stats": {
     "cars": "120+",
@@ -73,83 +135,18 @@
     "title": "Featured Collection",
     "subtitle": "Explore the hand-picked fleet most rented this month.",
     "from": "From",
-    "tabs": [
-      "All",
-      "Supercar",
-      "SUV",
-      "Sedan",
-      "Minibus"
-    ],
-    "featured": {
-      "category": "Supercar",
-      "name": "McLaren 720S",
-      "price": "IDR 4,500,000/day"
-    },
-    "items": [
-      {
-        "category": "Supercar",
-        "name": "Lamborghini Huracán",
-        "price": "IDR 5,200,000/day"
-      },
-      {
-        "category": "SUV",
-        "name": "Range Rover",
-        "price": "IDR 2,800,000/day"
-      },
-      {
-        "category": "Sedan",
-        "name": "BMW 530i",
-        "price": "IDR 1,750,000/day"
-      },
-      {
-        "category": "Minibus",
-        "name": "Toyota Hiace",
-        "price": "IDR 1,200,000/day"
-      }
-    ]
+    "categories": {
+      "all": "All",
+      "supercar": "Supercar",
+      "sedan": "Sedan",
+      "suv": "SUV"
+    }
   },
   "valueProps": {
     "title": "The vehicle, understood",
-    "subtitle": "Every detail is engineered for comfort and total control.",
-    "markers": [
-      {
-        "label": "Digital instrument cluster",
-        "description": "A high-resolution active display providing real-time telemetry, advanced navigation overlays, and customizable driving modes directly in your line of sight."
-      },
-      {
-        "label": "Premium cabin materials",
-        "description": "Hand-stitched Alcantara leather and aerospace-grade carbon fiber trim offer unmatched tactile luxury and weight reduction."
-      },
-      {
-        "label": "Active safety systems",
-        "description": "Continuous monitoring via radar and optical sensors to enable collision avoidance, lane keeping, and automated emergency braking."
-      },
-      {
-        "label": "Adaptive suspension",
-        "description": "Proactive damping systems that instantly adjust to road conditions, delivering track-level stiffness or highway comfort at the push of a button."
-      },
-      {
-        "label": "7-speed gearbox",
-        "description": "A lightning-fast dual-clutch transmission providing seamless gear changes in milliseconds, ensuring uninterrupted power delivery."
-      },
-      {
-        "label": "Carbon-ceramic brakes",
-        "description": "Massive rotors designed to resist heat fade under extreme conditions, offering immediate and predictable stopping power."
-      },
-      {
-        "label": "Active aerodynamics",
-        "description": "Deployable spoilers and dynamic air intakes that adjust automatically to optimize downforce, cooling, and straight-line speed."
-      },
-      {
-        "label": "LED Matrix headlights",
-        "description": "Intelligent illumination that dynamically shapes the light beam to avoid dazzling oncoming traffic while maximizing visibility."
-      }
-    ]
+    "subtitle": "Every detail is engineered for comfort and total control."
   },
   "showcase": {
-    "modelName": "McLaren 720s",
-    "tagline": "Your dream supercar, ready for daily driving.",
-    "price": "From IDR 4,500,000/day",
     "ctaPrimary": "Rent Now",
     "ctaSecondary": "Talk to Sales",
     "badge": "360°"

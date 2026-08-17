@@ -7,47 +7,41 @@ import { m, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 
 import { staggerContainer, fadeUp } from "@/lib/motion/variants";
+import { CAR_MODELS } from "@/lib/config/models";
+import { useActiveModel } from "@/lib/model-provider";
 
 type CarItem = {
   id: string;
-  category: string;
+  category: "supercar" | "sedan" | "suv";
   name: string;
   price: string;
   image: string;
 };
 
+const CATEGORY_ORDER: CarItem["category"][] = ["supercar", "sedan", "suv"];
+
 export function Collection() {
   const t = useTranslations("collection");
-  const tabs = t.raw("tabs") as string[];
-  const featuredRaw = t.raw("featured") as Omit<CarItem, "id" | "image">;
-  const itemsRaw = t.raw("items") as Omit<CarItem, "id" | "image">[];
+  const modelT = useTranslations("models");
+  const { modelId, setModelId } = useActiveModel();
+  type ModelKey = Parameters<typeof modelT>[0];
 
-  const allCars: CarItem[] = [
-    {
-      ...featuredRaw,
-      id: "mclaren-720s",
-      image: "/images/collection-supercar.webp",
-    },
-    {
-      ...itemsRaw[0],
-      id: "lamborghini-huracan",
-      image: "/images/collection-supercar.webp",
-    },
-    {
-      ...itemsRaw[1],
-      id: "range-rover-sport",
-      image: "/images/collection-suv.webp",
-    },
-    { ...itemsRaw[2], id: "bmw-530i", image: "/images/collection-sedan.webp" },
-    {
-      ...itemsRaw[3],
-      id: "toyota-hiace-premio",
-      image: "/images/collection-minibus.webp",
-    },
-  ];
+  const allCars: CarItem[] = CAR_MODELS.map((car) => {
+    const scope = (suffix: string) => `${car.id}.${suffix}` as ModelKey;
+    return {
+      id: car.id,
+      category: car.category,
+      name: modelT(scope("name")),
+      price: modelT(scope("price")),
+      image: car.heroFallback,
+    };
+  });
+
+  const tabs = ["all", ...CATEGORY_ORDER.filter((category) =>
+    allCars.some((car) => car.category === category),
+  )];
 
   const [activeTab, setActiveTab] = useState(0);
-  const [selectedCarId, setSelectedCarId] = useState<string | null>(null);
 
   // Filter dataset based on selected tab
   const filteredCars =
@@ -57,8 +51,8 @@ export function Collection() {
 
   // Determine which car is featured vs thumbnails
   const featuredCar =
-    filteredCars.find((c) => c.id === selectedCarId) || filteredCars[0];
-  const thumbs = filteredCars.filter((c) => c.id !== featuredCar?.id);
+    filteredCars.find((car) => car.id === modelId) ?? filteredCars[0];
+  const thumbs = filteredCars.filter((car) => car.id !== featuredCar?.id);
 
   return (
     <section
@@ -97,10 +91,7 @@ export function Collection() {
                 variants={fadeUp}
                 key={tab}
                 type="button"
-                onClick={() => {
-                  setActiveTab(index);
-                  setSelectedCarId(null);
-                }}
+                onClick={() => setActiveTab(index)}
                 className={cn(
                   "relative rounded-full px-5 py-2 text-sm font-medium transition-colors",
                   isActive ? "text-canvas" : "text-ink hover:text-ink/60",
@@ -116,7 +107,9 @@ export function Collection() {
                 {!isActive && (
                   <span className="absolute inset-0 z-0 rounded-full border border-hairline" />
                 )}
-                <span className="relative z-10">{tab}</span>
+                <span className="relative z-10">
+                  {t(`categories.${tab}` as Parameters<typeof t>[0])}
+                </span>
               </m.button>
             );
           })}
@@ -124,7 +117,11 @@ export function Collection() {
 
         {/* Main Featured Card */}
         {featuredCar && (
-          <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-xl bg-canvas md:aspect-[21/10]">
+          <button
+            type="button"
+            onClick={() => setModelId(featuredCar.id)}
+            className="relative mt-12 block w-full aspect-[16/9] overflow-hidden rounded-xl bg-canvas text-left focus:outline-none md:aspect-[21/10]"
+          >
             <AnimatePresence initial={false}>
               <m.div
                 key={featuredCar.id}
@@ -156,7 +153,7 @@ export function Collection() {
                 <div className="absolute inset-x-0 bottom-0 flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-end md:p-10">
                   <div className="translate-y-2 opacity-0 transition-all duration-700 ease-[0.25,0.1,0.25,1] group-hover:translate-y-0 group-hover:opacity-100">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-canvas">
-                      {featuredCar.category}
+                      {t(`categories.${featuredCar.category}` as Parameters<typeof t>[0])}
                     </p>
                     <p className="mt-1.5 font-display text-4xl uppercase leading-none text-canvas md:text-6xl">
                       {featuredCar.name}
@@ -176,7 +173,7 @@ export function Collection() {
               </div>
             </m.div>
           </AnimatePresence>
-          </div>
+          </button>
         )}
 
         <m.div
@@ -197,7 +194,7 @@ export function Collection() {
               >
                 <button
                   type="button"
-                  onClick={() => setSelectedCarId(thumb.id)}
+                  onClick={() => setModelId(thumb.id)}
                   className="group relative flex w-full flex-col text-left focus:outline-none"
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-soft-cloud">
@@ -218,7 +215,7 @@ export function Collection() {
                   {/* Editorial metadata row below image */}
                   <div className="mt-4 flex flex-col gap-1">
                     <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-mute">
-                      {thumb.category}
+                      {t(`categories.${thumb.category}` as Parameters<typeof t>[0])}
                     </span>
                     <span className="text-sm font-bold text-ink">
                       {thumb.name}

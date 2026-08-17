@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/lib/config";
+import { siteConfig } from "@/lib/config/site";
 
 export function Logo({ className }: { className?: string }) {
   return (

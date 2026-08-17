@@ -1,16 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
 import { ValuePropsScene } from "@/components/3d/value-props-scene";
 import { m, AnimatePresence } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion/variants";
 import { cn } from "@/lib/utils";
+import { useActiveModel } from "@/lib/model-provider";
+import { getModelHighlights } from "@/lib/config/highlights";
 
 export function ValueProps() {
   const t = useTranslations("valueProps");
-  const markers = t.raw("markers") as { label: string; description: string }[];
+  const locale = useLocale();
+  const { modelId } = useActiveModel();
+  const markers = getModelHighlights(modelId).map((highlight) => ({
+    label: highlight.label[locale],
+    description: highlight.description[locale],
+  }));
   const labels = markers.map((marker) => marker.label);
 
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
@@ -49,6 +56,7 @@ export function ValueProps() {
           camera={{ position: [0, 10, 0], zoom: 56, near: 0.1, far: 100 }}
         >
           <ValuePropsScene
+            modelId={modelId}
             labels={labels}
             activeMarker={activeMarker}
             setActiveMarker={setActiveMarker}

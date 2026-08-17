@@ -4,7 +4,7 @@ import { useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 
-export const MODEL_URL = "/models/car.glb";
+export const DEFAULT_MODEL_URL = "/models/car.glb";
 
 export type MaterialOverride = {
   color?: string;
@@ -82,13 +82,15 @@ function fitToStage(root: THREE.Object3D, targetLength: number): StagedModel {
 export function CarModel({
   overrides = {},
   targetLength = 3.4,
+  modelUrl = DEFAULT_MODEL_URL,
   onReady,
 }: {
   overrides?: MaterialOverrides;
   targetLength?: number;
+  modelUrl?: string;
   onReady?: (anchors: CarAnchor[]) => void;
 }) {
-  const { scene } = useGLTF(MODEL_URL, false, true);
+  const { scene } = useGLTF(modelUrl, false, true);
 
   const staged = useMemo(() => {
     const clone = scene.clone(true) as THREE.Group;

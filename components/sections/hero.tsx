@@ -14,20 +14,81 @@ import { useReducedMotion } from "@/lib/motion/hooks";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
-import { HeroScene, type HeroTab } from "@/components/3d/hero-scene";
+import { HeroScene } from "@/components/3d/hero-scene";
+import { FEATURE_TABS, getCarModel, type FeatureTabId } from "@/lib/config/models";
+import { useActiveModel, useModelMessages } from "@/lib/model-provider";
 
-const TABS: HeroTab[] = [
-  "performance",
-  "design",
-  "safety",
-  "luxury",
-  "multimedia",
-];
+function FeaturePanel({
+  active,
+  onTabChange,
+}: {
+  active: FeatureTabId;
+  onTabChange: (tab: FeatureTabId) => void;
+}) {
+  const t = useTranslations("hero");
+  const model = useModelMessages();
+
+  return (
+    <div className="flex w-full flex-col gap-3 md:max-w-xs md:items-end">
+      <m.div
+        variants={staggerContainer}
+        initial="initial"
+        animate="animate"
+        className="flex flex-wrap gap-2.5 sm:flex-row sm:items-center sm:justify-end md:flex-col md:items-end"
+      >
+        {FEATURE_TABS.map((tab) => (
+          <m.button
+            key={tab}
+            variants={springUp}
+            type="button"
+            onClick={() => onTabChange(tab)}
+            aria-pressed={active === tab}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 0px 15px rgba(17, 17, 17, 0.2)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            className={cn(
+              "rounded-full border px-5 py-2 text-sm font-medium transition-colors",
+              active === tab
+                ? "border-ink bg-ink text-canvas shadow-[0_0_15px_rgba(17,17,17,0.2)]"
+                : "border-hairline bg-canvas text-ink hover:border-ink/40",
+            )}
+          >
+            {t(`tabs.${tab}`)}
+          </m.button>
+        ))}
+      </m.div>
+      <div
+        key={active}
+        className="min-h-[96px] max-w-[260px] animate-in fade-in duration-500 md:text-right"
+      >
+        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-mute">
+          {t("tabKicker")}
+        </p>
+        <p className="mt-1.5 text-sm leading-relaxed text-mute">
+          {model(`tabCopy.${active}`)}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export function Hero() {
   const t = useTranslations("hero");
-  const [active, setActive] = useState<HeroTab>("performance");
+  const { modelId } = useActiveModel();
+  const model = useModelMessages();
+  const carConfig = getCarModel(modelId);
   const prefersReducedMotion = useReducedMotion();
+
+  const [active, setActive] = useState<FeatureTabId>(
+    carConfig.defaultFeature,
+  );
+  const [seenModel, setSeenModel] = useState(modelId);
+  if (seenModel !== modelId) {
+    setSeenModel(modelId);
+    setActive(carConfig.defaultFeature);
+  }
 
   const { scrollY } = useScroll();
   const smoothScroll = useSpring(scrollY, {
@@ -48,7 +109,7 @@ export function Hero() {
         style={prefersReducedMotion ? {} : { x: ghostX, opacity: ghostOpacity }}
         className="text-watermark pointer-events-none absolute inset-x-0 top-[40%] z-20 text-center font-display text-[30vw] leading-none md:text-[26vw]"
       >
-        MCLAREN&nbsp;720S
+        {model("wordmark")}
       </m.div>
 
       <div className="relative z-20 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-between gap-8 px-6 pb-6 pt-28 md:px-10 md:pt-32">
@@ -63,13 +124,13 @@ export function Hero() {
               variants={blurUp}
               className="mt-5 font-display text-[17vw] uppercase leading-[0.82] md:text-8xl lg:text-9xl"
             >
-              {t("title")}
+              {model("name")}
             </m.h1>
             <m.p
               variants={fadeUp}
               className="mt-4 max-w-sm text-base leading-relaxed text-mute md:text-lg"
             >
-              {t("subtitle")}
+              {model("subtitle")}
             </m.p>
             <m.div variants={springUp} className="mt-6 flex flex-wrap gap-3">
               <m.div
@@ -96,66 +157,29 @@ export function Hero() {
             </m.div>
           </m.div>
 
-          <div className="flex-col gap-3 md:items-end hidden xl:flex">
-            <m.div
-              variants={staggerContainer}
-              initial="initial"
-              animate="animate"
-              className="flex xl:flex-col flex-wrap gap-2.5 md:flex-row md:items-end max-w-3/6"
-            >
-              {TABS.map((tab) => (
-                <m.button
-                  key={tab}
-                  variants={springUp}
-                  type="button"
-                  onClick={() => setActive(tab)}
-                  aria-pressed={active === tab}
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0px 0px 15px rgba(17, 17, 17, 0.2)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className={cn(
-                    "rounded-full border px-5 py-2 text-sm font-medium transition-colors w-full",
-                    active === tab
-                      ? "border-ink bg-ink text-canvas shadow-[0_0_15px_rgba(17,17,17,0.2)]"
-                      : "border-hairline bg-canvas text-ink hover:border-ink/40",
-                  )}
-                >
-                  {t(`tabs.${tab}`)}
-                </m.button>
-              ))}
-            </m.div>
-            <div
-              key={active}
-              className="max-w-[260px] animate-in fade-in duration-500 md:text-right"
-            >
-              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-mute">
-                {t("tabKicker")}
-              </p>
-              <p className="mt-1.5 text-sm leading-relaxed text-mute">
-                {t(`tabCopy.${active}`)}
-              </p>
-            </div>
-          </div>
+          <FeaturePanel
+            key={modelId}
+            active={active}
+            onTabChange={setActive}
+          />
         </div>
       </div>
 
       <div className="relative z-10 h-[52svh] min-h-[380px] md:h-[58svh]">
         <div aria-hidden className="absolute inset-0">
           <LazyCanvas
-            camera={{ position: [-3.4, 1.0, 3.4], fov: 32 }}
+            camera={carConfig.heroCamera}
             fallback={
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src="/images/hero-fallback.webp"
+                src={carConfig.heroFallback}
                 alt=""
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
             }
           >
-            <HeroScene tab={active} />
+            <HeroScene modelId={modelId} tab={active} />
           </LazyCanvas>
         </div>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-44 bg-gradient-to-t from-black to-transparent" />
@@ -175,7 +199,7 @@ export function Hero() {
               {t("priceLabel")}
             </p>
             <p className="font-display text-xl leading-none text-ink">
-              {t("price")}
+              {model("price")}
             </p>
           </div>
         </m.div>

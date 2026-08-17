@@ -1,4 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
+import { ModelProvider } from "@/lib/model-provider";
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
 import { StatsStrip } from "@/components/sections/stats-strip";
@@ -28,15 +29,17 @@ export default async function HomePage({
     <>
       <Navbar />
       <main id="main">
-        <Hero />
-        <StatsStrip />
-        <About />
-        <Collection />
-        <ValueProps />
-        <Showcase />
-        <Pricing />
-        <Faq />
-        <Testimonials />
+        <ModelProvider>
+          <Hero />
+          <StatsStrip />
+          <About />
+          <Collection />
+          <ValueProps />
+          <Showcase />
+          <Pricing />
+          <Faq />
+          <Testimonials />
+        </ModelProvider>
       </main>
       <Footer />
     </>

@@ -16,7 +16,7 @@ import {
 } from "motion/react";
 import { staggerContainer, fadeUp } from "@/lib/motion/variants";
 import { Menu, X } from "lucide-react";
-import { siteConfig } from "@/lib/config";
+import { siteConfig } from "@/lib/config/site";
 import type { Locale } from "@/i18n/routing";
 
 const LINKS = [

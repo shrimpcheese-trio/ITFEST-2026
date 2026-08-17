@@ -1,0 +1,460 @@
+[
+  {
+    "id": "mclaren-720s",
+    "category": "supercar",
+    "modelUrl": "/models/car.glb",
+    "heroFallback": "/images/hero-fallback.webp",
+    "showcaseFallback": "/images/showcase-alt.webp",
+    "heroCamera": {
+      "position": [
+        -3.4,
+        1.0,
+        3.4
+      ],
+      "fov": 32
+    },
+    "targetLength": 3.6,
+    "defaultFeature": "performance",
+    "features": {
+      "performance": {
+        "overrides": {
+          "Car_Paint": {
+            "color": "#c8102e",
+            "clearcoat": 0.9,
+            "metalness": 0.85,
+            "roughness": 0.22
+          },
+          "Carbon_Fiber_Procedural": {
+            "metalness": 0.95,
+            "roughness": 0.3
+          },
+          "Carbon_Fiber_04": {
+            "metalness": 0.95,
+            "roughness": 0.32
+          }
+        },
+        "azimuth": 0,
+        "light": "#ffffff",
+        "intensity": 1.1
+      },
+      "design": {
+        "overrides": {
+          "Car_Paint": {
+            "color": "#c9cfd6",
+            "clearcoat": 1,
+            "metalness": 0.95,
+            "roughness": 0.16
+          },
+          "Car_chrome": {
+            "color": "#d7dce2",
+            "metalness": 1,
+            "roughness": 0.12
+          }
+        },
+        "azimuth": 0.439822971502571,
+        "light": "#ffffff",
+        "intensity": 0.95
+      },
+      "safety": {
+        "overrides": {
+          "Car_Paint": {
+            "color": "#2b2d31",
+            "clearcoat": 0.9,
+            "metalness": 0.7,
+            "roughness": 0.3
+          },
+          "Red_car_lights_glass": {
+            "emissive": "#ff2a1a",
+            "emissiveIntensity": 1.4
+          },
+          "11_Break_Disc.001": {
+            "color": "#aab1ba",
+            "metalness": 0.95,
+            "roughness": 0.28
+          }
+        },
+        "azimuth": -0.439822971502571,
+        "light": "#dbe6ff",
+        "intensity": 1.2
+      },
+      "luxury": {
+        "overrides": {
+          "Car_Paint": {
+            "color": "#6d5a44",
+            "clearcoat": 1,
+            "metalness": 0.85,
+            "roughness": 0.18
+          },
+          "Car_leather_red.001": {
+            "color": "#7c2a2c",
+            "roughness": 0.55
+          },
+          "Leather_Small_pads.001": {
+            "color": "#8a3131",
+            "roughness": 0.55
+          }
+        },
+        "azimuth": 0.879645943005142,
+        "light": "#ffd9a3",
+        "intensity": 0.9
+      },
+      "multimedia": {
+        "overrides": {
+          "Car_Paint": {
+            "color": "#3d3f46",
+            "clearcoat": 0.9,
+            "metalness": 0.8,
+            "roughness": 0.24
+          },
+          "Material.002": {
+            "emissive": "#7fd8ff",
+            "emissiveIntensity": 1.7
+          },
+          "Bulb_Emmision_Light": {
+            "emissive": "#ffe9c4",
+            "emissiveIntensity": 2.2
+          }
+        },
+        "azimuth": -0.879645943005142,
+        "light": "#bfe0ff",
+        "intensity": 1
+      }
+    }
+  },
+  {
+    "id": "ferrari-488-gtb",
+    "category": "supercar",
+    "modelUrl": "/models/ferrari-488-gtb.glb",
+    "heroFallback": "/images/collection-supercar.webp",
+    "showcaseFallback": "/images/collection-supercar.webp",
+    "heroCamera": {
+      "position": [
+        -3.4,
+        1.0,
+        3.4
+      ],
+      "fov": 32
+    },
+    "targetLength": 3.6,
+    "defaultFeature": "performance",
+    "features": {
+      "performance": {
+        "overrides": {
+          "material": {
+            "color": "#c8102e",
+            "clearcoat": 0.9,
+            "metalness": 0.85,
+            "roughness": 0.22
+          }
+        },
+        "azimuth": 0,
+        "light": "#ffffff",
+        "intensity": 1.1
+      },
+      "design": {
+        "overrides": {
+          "material": {
+            "color": "#c9cfd6",
+            "clearcoat": 1,
+            "metalness": 0.95,
+            "roughness": 0.16
+          }
+        },
+        "azimuth": 0.439822971502571,
+        "light": "#ffffff",
+        "intensity": 0.95
+      },
+      "safety": {
+        "overrides": {
+          "material": {
+            "color": "#2b2d31",
+            "clearcoat": 0.9,
+            "metalness": 0.7,
+            "roughness": 0.3
+          }
+        },
+        "azimuth": -0.439822971502571,
+        "light": "#dbe6ff",
+        "intensity": 1.2
+      },
+      "luxury": {
+        "overrides": {
+          "material": {
+            "color": "#6d5a44",
+            "clearcoat": 1,
+            "metalness": 0.85,
+            "roughness": 0.18
+          }
+        },
+        "azimuth": 0.879645943005142,
+        "light": "#ffd9a3",
+        "intensity": 0.9
+      },
+      "multimedia": {
+        "overrides": {
+          "material": {
+            "color": "#3d3f46",
+            "clearcoat": 0.9,
+            "metalness": 0.8,
+            "roughness": 0.24
+          }
+        },
+        "azimuth": -0.879645943005142,
+        "light": "#bfe0ff",
+        "intensity": 1
+      }
+    }
+  },
+  {
+    "id": "bmw-m3-2013",
+    "category": "sedan",
+    "modelUrl": "/models/bmw-m3-2013.glb",
+    "heroFallback": "/images/collection-sedan.webp",
+    "showcaseFallback": "/images/collection-sedan.webp",
+    "heroCamera": {
+      "position": [
+        -3.4,
+        1.0,
+        3.4
+      ],
+      "fov": 32
+    },
+    "targetLength": 3.6,
+    "defaultFeature": "performance",
+    "features": {
+      "performance": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#1a5276",
+            "clearcoat": 0.9,
+            "metalness": 0.85,
+            "roughness": 0.22
+          }
+        },
+        "azimuth": 0,
+        "light": "#ffffff",
+        "intensity": 1.1
+      },
+      "design": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#c9cfd6",
+            "clearcoat": 1,
+            "metalness": 0.95,
+            "roughness": 0.16
+          }
+        },
+        "azimuth": 0.439822971502571,
+        "light": "#ffffff",
+        "intensity": 0.95
+      },
+      "safety": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#2b2d31",
+            "clearcoat": 0.9,
+            "metalness": 0.7,
+            "roughness": 0.3
+          }
+        },
+        "azimuth": -0.439822971502571,
+        "light": "#dbe6ff",
+        "intensity": 1.2
+      },
+      "luxury": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#6d5a44",
+            "clearcoat": 1,
+            "metalness": 0.85,
+            "roughness": 0.18
+          }
+        },
+        "azimuth": 0.879645943005142,
+        "light": "#ffd9a3",
+        "intensity": 0.9
+      },
+      "multimedia": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#3d3f46",
+            "clearcoat": 0.9,
+            "metalness": 0.8,
+            "roughness": 0.24
+          }
+        },
+        "azimuth": -0.879645943005142,
+        "light": "#bfe0ff",
+        "intensity": 1
+      }
+    }
+  },
+  {
+    "id": "mustang-shelby-gt500",
+    "category": "supercar",
+    "modelUrl": "/models/mustang-shelby-gt500.glb",
+    "heroFallback": "/images/collection-supercar.webp",
+    "showcaseFallback": "/images/collection-supercar.webp",
+    "heroCamera": {
+      "position": [
+        -3.4,
+        1.0,
+        3.4
+      ],
+      "fov": 32
+    },
+    "targetLength": 3.6,
+    "defaultFeature": "performance",
+    "features": {
+      "performance": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#1f3a5f",
+            "clearcoat": 0.9,
+            "metalness": 0.85,
+            "roughness": 0.22
+          }
+        },
+        "azimuth": 0,
+        "light": "#ffffff",
+        "intensity": 1.1
+      },
+      "design": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#c9cfd6",
+            "clearcoat": 1,
+            "metalness": 0.95,
+            "roughness": 0.16
+          }
+        },
+        "azimuth": 0.439822971502571,
+        "light": "#ffffff",
+        "intensity": 0.95
+      },
+      "safety": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#2b2d31",
+            "clearcoat": 0.9,
+            "metalness": 0.7,
+            "roughness": 0.3
+          }
+        },
+        "azimuth": -0.439822971502571,
+        "light": "#dbe6ff",
+        "intensity": 1.2
+      },
+      "luxury": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#6d5a44",
+            "clearcoat": 1,
+            "metalness": 0.85,
+            "roughness": 0.18
+          }
+        },
+        "azimuth": 0.879645943005142,
+        "light": "#ffd9a3",
+        "intensity": 0.9
+      },
+      "multimedia": {
+        "overrides": {
+          "PaletteMaterial001": {
+            "color": "#3d3f46",
+            "clearcoat": 0.9,
+            "metalness": 0.8,
+            "roughness": 0.24
+          }
+        },
+        "azimuth": -0.879645943005142,
+        "light": "#bfe0ff",
+        "intensity": 1
+      }
+    }
+  },
+  {
+    "id": "range-rover-evoque",
+    "category": "suv",
+    "modelUrl": "/models/range-rover-evoque.glb",
+    "heroFallback": "/images/collection-suv.webp",
+    "showcaseFallback": "/images/collection-suv.webp",
+    "heroCamera": {
+      "position": [
+        -3.4,
+        1.0,
+        3.4
+      ],
+      "fov": 32
+    },
+    "targetLength": 3.6,
+    "defaultFeature": "performance",
+    "features": {
+      "performance": {
+        "overrides": {
+          "rphong18SG1": {
+            "color": "#3f4a54",
+            "clearcoat": 0.8,
+            "metalness": 0.6,
+            "roughness": 0.3
+          }
+        },
+        "azimuth": 0,
+        "light": "#ffffff",
+        "intensity": 1.1
+      },
+      "design": {
+        "overrides": {
+          "rphong18SG1": {
+            "color": "#c9cfd6",
+            "clearcoat": 0.9,
+            "metalness": 0.7,
+            "roughness": 0.25
+          }
+        },
+        "azimuth": 0.439822971502571,
+        "light": "#ffffff",
+        "intensity": 0.95
+      },
+      "safety": {
+        "overrides": {
+          "rphong18SG1": {
+            "color": "#2b2d31",
+            "clearcoat": 0.8,
+            "metalness": 0.5,
+            "roughness": 0.35
+          }
+        },
+        "azimuth": -0.439822971502571,
+        "light": "#dbe6ff",
+        "intensity": 1.2
+      },
+      "luxury": {
+        "overrides": {
+          "rphong18SG1": {
+            "color": "#6d5a44",
+            "clearcoat": 0.9,
+            "metalness": 0.6,
+            "roughness": 0.28
+          }
+        },
+        "azimuth": 0.879645943005142,
+        "light": "#ffd9a3",
+        "intensity": 0.9
+      },
+      "multimedia": {
+        "overrides": {
+          "rphong18SG1": {
+            "color": "#3d3f46",
+            "clearcoat": 0.8,
+            "metalness": 0.55,
+            "roughness": 0.32
+          }
+        },
+        "azimuth": -0.879645943005142,
+        "light": "#bfe0ff",
+        "intensity": 1
+      }
+    }
+  }
+]
