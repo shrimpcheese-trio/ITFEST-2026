@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useState, type RefObject } from "react";
 import { Html, OrthographicCamera } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { CarModel, type CarAnchor } from "./car-model";
 import { ModelLoader } from "./model-loader";
@@ -31,11 +31,13 @@ function TopDownCamera() {
 function SvgOverlay({ 
   anchors, 
   activeMarker,
-  onClickMarker
+  onClickMarker,
+  portalRef
 }: { 
   anchors: CarAnchor[]; 
   activeMarker: number | null;
   onClickMarker: (idx: number) => void;
+  portalRef: RefObject<HTMLElement>;
 }) {
   const { camera, size } = useThree();
 
@@ -47,6 +49,7 @@ function SvgOverlay({
       center
       transform={false}
       zIndexRange={[10, 0]}
+      portal={portalRef}
       className="pointer-events-none"
     >
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-md:hidden">
@@ -122,24 +125,39 @@ function SvgOverlay({
 function MarkerLabel({
   anchor,
   label,
+  description,
   index,
   side,
   isActive,
   isDimmed,
   onHover,
   onClick,
+  portalRef,
 }: {
   anchor: CarAnchor;
   label: string;
+  description: string;
   index: number;
   side: "left" | "right";
   isActive: boolean;
   isDimmed: boolean;
   onHover: (active: boolean) => void;
   onClick: () => void;
+  portalRef: RefObject<HTMLElement>;
 }) {
+  const { camera, size } = useThree();
+
+  const projected = anchor.anchor.clone().project(camera);
+  const tooltipAbove = -(projected.y * size.height) / 2 > size.height / 2;
+
   return (
-    <Html position={anchor.anchor} center transform={false} zIndexRange={[30, 0]}>
+    <Html
+      position={anchor.anchor}
+      center
+      transform={false}
+      zIndexRange={[30, 0]}
+      portal={portalRef}
+    >
       <motion.div
         onMouseEnter={() => onHover(true)}
         onMouseLeave={() => onHover(false)}
@@ -168,7 +186,7 @@ function MarkerLabel({
 
         <span
           className={cn(
-            "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-colors duration-300",
+            "max-w-[220px] truncate rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-colors duration-300",
             isActive
               ? "border-ink bg-ink text-canvas"
               : "border-hairline bg-canvas/90 text-ink group-hover:border-ink/40",
@@ -189,6 +207,28 @@ function MarkerLabel({
             {index < 10 ? `0${index}` : index}
           </span>
         )}
+
+        <div
+          className={cn(
+            "pointer-events-none absolute left-1/2 z-50 -translate-x-1/2",
+            tooltipAbove ? "bottom-full mb-3" : "top-full mt-3",
+          )}
+        >
+          <AnimatePresence>
+            {isActive && (
+              <motion.div
+                initial={{ opacity: 0, y: tooltipAbove ? 8 : -8, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: tooltipAbove ? 8 : -8, scale: 0.95 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+                className="w-max max-w-[280px] rounded-lg border border-hairline bg-canvas p-4 shadow-lg"
+              >
+                <p className="font-display text-base uppercase leading-tight text-ink">{label}</p>
+                <p className="mt-1 text-xs leading-relaxed text-mute">{description}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </motion.div>
     </Html>
   );
@@ -197,15 +237,19 @@ function MarkerLabel({
 export function ValuePropsScene({ 
   modelId,
   labels,
+  descriptions,
   activeMarker,
   setActiveMarker,
-  onClickMarker
+  onClickMarker,
+  portalRef
 }: { 
   modelId: string;
   labels: string[];
+  descriptions: string[];
   activeMarker: number | null;
   setActiveMarker: (idx: number | null) => void;
   onClickMarker: (idx: number) => void;
+  portalRef: RefObject<HTMLElement>;
 }) {
   const [anchors, setAnchors] = useState<CarAnchor[] | null>(null);
   const model = getCarModel(modelId);
@@ -226,7 +270,7 @@ export function ValuePropsScene({
         
         {/* The blueprint lines are drawn via SVG overlay mapped to 3D coordinates */}
         {anchors && (
-          <SvgOverlay anchors={anchors} activeMarker={activeMarker} onClickMarker={onClickMarker} />
+          <SvgOverlay anchors={anchors} activeMarker={activeMarker} onClickMarker={onClickMarker} portalRef={portalRef} />
         )}
         
         {anchors &&
@@ -235,12 +279,14 @@ export function ValuePropsScene({
               key={i}
               anchor={anchors[i]}
               label={label}
+              description={descriptions[i]}
               index={i + 1}
               side={i < 4 ? "left" : "right"}
               isActive={activeMarker === i}
               isDimmed={activeMarker !== null && activeMarker !== i}
               onHover={(active) => setActiveMarker(active ? i : null)}
               onClick={() => onClickMarker(i)}
+              portalRef={portalRef}
             />
           ))}
       </Suspense>

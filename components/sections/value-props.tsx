@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { LazyCanvas } from "@/components/3d/lazy-canvas";
 import { ValuePropsScene } from "@/components/3d/value-props-scene";
@@ -19,6 +19,9 @@ export function ValueProps() {
     description: highlight.description[locale],
   }));
   const labels = markers.map((marker) => marker.label);
+  const descriptions = markers.map((marker) => marker.description);
+
+  const canvasWrap = useRef<HTMLDivElement>(null!);
 
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
   const [selectedSpec, setSelectedSpec] = useState<number | null>(null);
@@ -50,19 +53,23 @@ export function ValueProps() {
       </div>
 
       <div className="mx-auto mt-12 h-[460px] max-w-6xl overflow-visible rounded-none px-0 md:h-[600px] md:px-6">
-        <LazyCanvas
-          orthographic
-          frameloop="demand"
-          camera={{ position: [0, 10, 0], zoom: 56, near: 0.1, far: 100 }}
-        >
-          <ValuePropsScene
-            modelId={modelId}
-            labels={labels}
-            activeMarker={activeMarker}
-            setActiveMarker={setActiveMarker}
-            onClickMarker={setSelectedSpec}
-          />
-        </LazyCanvas>
+        <div ref={canvasWrap} className="relative h-full w-full">
+          <LazyCanvas
+            orthographic
+            frameloop="demand"
+            camera={{ position: [0, 10, 0], zoom: 56, near: 0.1, far: 100 }}
+          >
+            <ValuePropsScene
+              modelId={modelId}
+              labels={labels}
+              descriptions={descriptions}
+              activeMarker={activeMarker}
+              setActiveMarker={setActiveMarker}
+              onClickMarker={setSelectedSpec}
+              portalRef={canvasWrap}
+            />
+          </LazyCanvas>
+        </div>
       </div>
 
       <m.div
@@ -118,43 +125,9 @@ export function ValueProps() {
       </m.div>
 
       <div className="mx-auto mt-8 max-w-6xl px-6">
-        <AnimatePresence mode="wait">
-          {activeMarker !== null && markers[activeMarker] ? (
-            <m.div
-              key={activeMarker}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-              className="flex items-start gap-4 border-t border-hairline pt-6"
-            >
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-bold text-canvas">
-                {activeMarker + 1 < 10 ? `0${activeMarker + 1}` : activeMarker + 1}
-              </span>
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-mute">
-                  {t("spec", { n: activeMarker + 1 })}
-                </p>
-                <h3 className="font-display text-xl uppercase leading-tight text-ink">
-                  {markers[activeMarker].label}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-mute">
-                  {markers[activeMarker].description}
-                </p>
-              </div>
-            </m.div>
-          ) : (
-            <m.p
-              key="hint"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="border-t border-hairline pt-6 text-sm text-mute"
-            >
-              {t("hoverHint")}
-            </m.p>
-          )}
-        </AnimatePresence>
+        <p className="border-t border-hairline pt-6 text-sm text-mute">
+          {t("hoverHint")}
+        </p>
       </div>
 
       {/* Info Modal */}
