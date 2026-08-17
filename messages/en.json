@@ -82,8 +82,8 @@
       }
     },
     "mustang-shelby-gt500": {
-      "name": "Mustang Shelby GT500",
-      "wordmark": "Mustang SHELBY GT500",
+      "name": "Mustang GT500",
+      "wordmark": "Mustang GT500",
       "subtitle": "An American muscle legend, ready to turn heads on every boulevard.",
       "price": "Rp 5,500,000/day",
       "tagline": "American muscle, unleashed on the open road.",
@@ -96,8 +96,8 @@
       }
     },
     "range-rover-evoque": {
-      "name": "Range Rover Evoque",
-      "wordmark": "RANGE ROVER EVOQUE",
+      "name": "Range Rover",
+      "wordmark": "RANGE ROVER",
       "subtitle": "A compact luxury SUV that glides from city streets to weekend getaways.",
       "price": "Rp 2,800,000/day",
       "tagline": "Luxury SUV poise for every journey, on any road.",
